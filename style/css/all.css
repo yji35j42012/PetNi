@@ -46,7 +46,7 @@ html,
 body {
   width: 100%;
   height: 100%;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   font-family: "Abhaya Libre", sans-serif;
 }
 
@@ -116,6 +116,17 @@ select {
 }
 
 .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
   height: 100%;
 }
@@ -223,7 +234,23 @@ input:checked ~ .switch_ball::after {
 }
 
 .home .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (max-width: 995px) {
+  .container {
+    padding: 0;
+  }
 }
 
 .content {
@@ -231,11 +258,17 @@ input:checked ~ .switch_ball::after {
   height: calc(100% - 77px);
 }
 
+@media screen and (max-width: 995px) {
+  .content {
+    height: calc(100% - 56px);
+  }
+}
+
 .header {
   position: relative;
   width: 100%;
   height: 77px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header .container {
@@ -254,9 +287,24 @@ input:checked ~ .switch_ball::after {
           box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
 }
 
+@media screen and (max-width: 995px) {
+  .header {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    height: 56px;
+  }
+}
+
 .logo {
   width: 118px;
   height: 53px;
+}
+
+@media screen and (max-width: 995px) {
+  .logo {
+    display: none;
+  }
 }
 
 .menu_group {
@@ -271,8 +319,21 @@ input:checked ~ .switch_ball::after {
           justify-content: center;
 }
 
+@media screen and (max-width: 995px) {
+  .menu_group {
+    width: 100%;
+    margin: auto;
+  }
+}
+
 .menu_group li {
   width: 94px;
+}
+
+@media screen and (max-width: 995px) {
+  .menu_group li {
+    width: 20%;
+  }
 }
 
 .menu_group li a {
@@ -340,14 +401,20 @@ input:checked ~ .switch_ball::after {
   opacity: 0;
 }
 
+@media screen and (max-width: 995px) {
+  .menu_group span {
+    display: none;
+  }
+}
+
 .menu_group svg {
   width: 100%;
   height: 100%;
 }
 
 .func {
-  width: 100%;
-  max-width: 413px;
+  position: relative;
+  width: 413px;
   height: 100%;
   padding: 27px 35px 47px 88px;
   background: #fafafa;
@@ -449,8 +516,160 @@ input:checked ~ .switch_ball::after {
 .func .btn {
   width: 100%;
   height: 50px;
+  margin-top: 27px;
   background-color: #262626;
   color: #fff;
   border-radius: 16px;
+}
+
+@media screen and (max-width: 599px) {
+  .func {
+    display: none;
+  }
+}
+
+.info {
+  width: calc(100% - 413px);
+  height: 100%;
+  padding: 64px 20px 0;
+  background-color: #f8f8f8;
+}
+
+@media screen and (max-width: 995px) {
+  .info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .info {
+    width: 100%;
+  }
+}
+
+.slip {
+  position: relative;
+}
+
+.slip::before {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  right: 0;
+  content: "";
+  display: block;
+  width: 231px;
+  height: 402px;
+  margin: auto;
+  background-color: #fff;
+  border: 12px solid #ffffff;
+  border-radius: 32px;
+  -webkit-box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
+          box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+@media screen and (max-width: 599px) {
+  .slip::before {
+    width: 210px;
+    height: 365px;
+  }
+}
+
+.slip::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  display: block;
+  width: 253px;
+  height: 430px;
+  margin: auto;
+  background-color: #fff;
+  border: 12px solid #ffffff;
+  border-radius: 32px;
+  -webkit-filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+@media screen and (max-width: 599px) {
+  .slip::after {
+    width: 230px;
+    height: 390px;
+  }
+}
+
+.slip_item {
+  position: relative;
+  width: 287px;
+  height: 461px;
+  margin: auto;
+  background: url("https://asms.coa.gov.tw/amlapp/upload/pic/807e09bf-36b5-4927-8b04-c846ba1c3960_org.jpg") no-repeat center/cover;
+  border: 12px solid #ffffff;
+  border-radius: 32px;
+  -webkit-filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+  z-index: 2;
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+@media screen and (max-width: 599px) {
+  .slip_item {
+    width: 261px;
+    height: 419px;
+  }
+}
+
+.recommend {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 65px;
+}
+
+.recommend li {
+  width: 247px;
+  height: 70px;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 23px;
+}
+
+.recommend_info {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+@media screen and (max-width: 599px) {
+  .recommend {
+    display: none;
+  }
 }
 /*# sourceMappingURL=all.css.map */

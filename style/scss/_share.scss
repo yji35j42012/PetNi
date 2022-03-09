@@ -1,4 +1,6 @@
 .wrap {
+    @include d_f(flex);
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
 }
@@ -102,37 +104,61 @@ h2 {
     padding: 0 88px;
     margin: auto;
     @at-root .home & {
+        @include d_f(flex);
         padding-left: 0;
+        padding-right: 0;
+    }
+    @include mw(M) {
+        padding: 0;
     }
 }
 .content {
     width: 100%;
     height: calc(100% - 77px);
+    @include mw(M) {
+        height: calc(100% - 56px);
+    }
 }
 .header {
     position: relative;
     width: 100%;
     height: 77px;
-    z-index: 1;
+    z-index: 2;
     .container {
         @include d_f(flex, center, space-between);
         height: 100%;
         background-color: #fff;
         box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
     }
+    @include mw(M) {
+        order: 2;
+        height: 56px;
+    }
+    @include mw(XS) {
+        // display: none;
+    }
 }
 
 .logo {
     width: 118px;
     height: 53px;
+    @include mw(M) {
+        display: none;
+    }
 }
 
 .menu {
     &_group {
         @include d_f(flex, center, center);
-
+        @include mw(M) {
+            width: 100%;
+            margin: auto;
+        }
         li {
             width: 94px;
+            @include mw(M) {
+                width: 20%;
+            }
             a {
                 @include d_f(flex, center, center);
                 color: #dedede;
@@ -174,6 +200,9 @@ h2 {
             white-space: nowrap;
             opacity: 0;
             @extend %transition;
+            @include mw(M) {
+                display: none;
+            }
         }
         svg {
             width: 100%;
@@ -182,8 +211,8 @@ h2 {
     }
 }
 .func {
-    width: 100%;
-    max-width: 413px;
+    position: relative;
+    width: 413px;
     height: 100%;
     padding: 27px 35px 47px 88px;
     background: #fafafa;
@@ -247,9 +276,111 @@ h2 {
     .btn {
         width: 100%;
         height: 50px;
+        margin-top: 27px;
         background-color: #262626;
         color: #fff;
         border-radius: 16px;
         @extend %hand;
+    }
+
+    @include mw(XS) {
+        display: none;
+    }
+}
+.info {
+    width: calc(100% - 413px);
+    height: 100%;
+    padding: 64px 20px 0;
+    background-color: #f8f8f8;
+    @include mw(M) {
+        @include d_f(flex, center, center);
+    }
+    @include mw(XS) {
+        width: 100%;
+    }
+}
+
+.slip {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        right: 0;
+        content: "";
+        display: block;
+        width: 231px;
+        height: 402px;
+        margin: auto;
+        background-color: #fff;
+        border: 12px solid #ffffff;
+        border-radius: 32px;
+        box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
+        box-sizing: border-box;
+        transform: rotate(20deg);
+        @include mw(XS) {
+            width: 210px;
+            height: 365px;
+        }
+    }
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        content: "";
+        display: block;
+        width: 253px;
+        height: 430px;
+        margin: auto;
+        background-color: #fff;
+        border: 12px solid #ffffff;
+        border-radius: 32px;
+        filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+        box-sizing: border-box;
+        transform: rotate(15deg);
+        @include mw(XS) {
+            width: 230px;
+            height: 390px;
+        }
+    }
+    &_item {
+        position: relative;
+        width: 287px;
+        height: 461px;
+        margin: auto;
+        background: url("https://asms.coa.gov.tw/amlapp/upload/pic/807e09bf-36b5-4927-8b04-c846ba1c3960_org.jpg")
+            no-repeat center/cover;
+        border: 12px solid #ffffff;
+        border-radius: 32px;
+        filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+        z-index: 2;
+        transform: rotate(-3deg);
+        box-sizing: content-box;
+        @include mw(XS) {
+            width: 261px;
+            height: 419px;
+        }
+    }
+}
+.recommend {
+    @include d_f(flex, center, space-between);
+    margin-top: 65px;
+    li {
+        width: 247px;
+        height: 70px;
+        background: #ffffff;
+        box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+        border-radius: 23px;
+    }
+    &_info {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+
+    @include mw(XS) {
+        display: none;
     }
 }
