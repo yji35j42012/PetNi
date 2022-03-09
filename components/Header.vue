@@ -2,37 +2,97 @@
 
 <template>
     <div class="header">
-        <h1 class="logo">
-            <router-link to="/">
-                <img src="./images/logo.png" alt="" />
-                <!-- <img src="./images/logo-mobile.png" alt="" /> -->
-            </router-link>
-        </h1>
+        <div class="container">
+            <h1 class="logo">
+                <router-link to="/">
+                    <img src="./images/logo.png" alt="" />
+                    <!-- <img src="./images/logo-mobile.png" alt="" /> -->
+                </router-link>
+            </h1>
 
-        <button
-            :class="['menu_btn', menuShow ? 'open' : false]"
-            @click="btnHandler"
-        >
-            <span></span>
-        </button>
-        <ul class="menu_group">
-            <li>
-                <router-link to="/attractions">探索景點</router-link>
-            </li>
-            <li>
-                <router-link to="/activity">節慶活動</router-link>
-            </li>
-            <li>
-                <router-link to="/restaurant">品嚐美食</router-link>
-            </li>
-        </ul>
+            <!-- <button
+                :class="['menu_btn', menuShow ? 'open' : false]"
+                @click="btnHandler"
+            >
+                <span></span>
+            </button> -->
+            <ul class="menu_group">
+                <li class="on">
+                    <router-link to="/">
+                        <i>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 25 21"
+                            >
+                                <path :d="icon_all.pair" />
+                            </svg>
+                        </i>
+                        <span>配對</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/">
+                        <i>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 25"
+                            >
+                                <path :d="icon_all.favorites" />
+                            </svg>
+                        </i>
+                        <span>收藏</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/">
+                        <i>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 25"
+                            >
+                                <path :d="icon_all.theme" />
+                            </svg>
+                        </i>
+                        <span>主題館</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/">
+                         <i>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 26 25"
+                            >
+                                <path :d="icon_all.collar" />
+                            </svg>
+                        </i>
+                        <span>送養</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/">
+                         <i>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 25"
+                            >
+                                <path :d="icon_all.hospital" />
+                            </svg>
+                        </i>
+                        <span>急診</span>
+                    </router-link>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script>
 module.exports = {
     data() {
-        return {};
+        return {
+            icon_all: icon_all,
+        };
     },
     computes: {},
     methods: {},

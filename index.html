@@ -13,11 +13,14 @@
 
     <body>
         <div id="app" class="wrap">
-            <div class="homeAni">
+            <div class="homeAni" style="display: none">
                 <img src="./images/petnilogo.gif" alt="" />
                 <p>PetNi © Code: Alex Han / Design: K.T</p>
             </div>
             <htitle></htitle>
+            <div :class="['content' , nowPage]">
+                <router-view></router-view>
+            </div>
         </div>
 
         <script src="./js/libs/axios.js"></script>
@@ -79,7 +82,9 @@
             var vue = new Vue({
                 el: "#app",
                 data() {
-                    return {};
+                    return {
+                        nowPage: "",
+                    };
                 },
                 components: {
                     htitle: httpVueLoader("./components/Header.vue"),
@@ -87,7 +92,19 @@
                 router,
                 mounted() {},
                 computed: {},
-                watch: {},
+                watch: {
+                    $route(to, from) {
+                        var now = this.$route.path;
+                        if (this.$route.path == "/") {
+                            this.nowPage = "home";
+                            store.dispatch("PAGE", "home");
+                        } else {
+                            store.dispatch("SET_LOADING", true);
+                            this.nowPage = now.split("/")[1];
+                            store.dispatch("PAGE", now.split("/")[1]);
+                        }
+                    },
+                },
                 methods: {},
             });
         </script>
