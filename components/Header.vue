@@ -58,7 +58,7 @@
                 </li>
                 <li>
                     <router-link to="/">
-                         <i>
+                        <i>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 26 25"
@@ -71,7 +71,7 @@
                 </li>
                 <li>
                     <router-link to="/">
-                         <i>
+                        <i>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 25"

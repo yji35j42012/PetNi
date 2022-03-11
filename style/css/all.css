@@ -239,6 +239,7 @@ input:checked ~ .switch_ball::after {
 }
 
 .container {
+  overflow: hidden;
   width: 100%;
   max-width: 1280px;
   height: 100%;
@@ -453,8 +454,8 @@ input:checked ~ .switch_ball::after {
 }
 
 .detail .func {
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateX(-101%);
+          transform: translateX(-101%);
 }
 
 @media screen and (max-width: 995px) {
