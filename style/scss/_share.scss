@@ -9,7 +9,16 @@ h2 {
     font-weight: 500;
     line-height: 24px;
 }
-
+svg {
+    width: 100%;
+    height: 100%;
+}
+.female {
+    fill: #fdaaa2;
+}
+.male {
+    fill: #70d4f4;
+}
 .switch {
     position: relative;
     display: block;
@@ -105,6 +114,7 @@ h2 {
     margin: auto;
     @at-root .home & {
         @include d_f(flex);
+        flex-wrap: wrap;
         padding-left: 0;
         padding-right: 0;
     }
@@ -115,6 +125,7 @@ h2 {
 .content {
     width: 100%;
     height: calc(100% - 77px);
+    background-color: #f8f8f8;
     @include mw(M) {
         height: calc(100% - 56px);
     }
@@ -129,6 +140,11 @@ h2 {
         height: 100%;
         background-color: #fff;
         box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
+
+        @include mw(M) {
+            padding: 0 16px;
+            box-shadow: 0px -3.6px 8px rgba(38, 38, 38, 0.05);
+        }
     }
     @include mw(M) {
         order: 2;
@@ -184,6 +200,9 @@ h2 {
                 }
                 i {
                     margin-right: 14px;
+                    @include mw(M) {
+                        margin-right: 0;
+                    }
                 }
             }
         }
@@ -217,6 +236,14 @@ h2 {
     padding: 27px 35px 47px 88px;
     background: #fafafa;
     box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+    @extend %transition;
+    @at-root .detail & {
+        transform: translateX(-100%);
+    }
+
+    @include mw(M) {
+        display: none;
+    }
 
     // .func_ul
     &_ul {
@@ -282,9 +309,28 @@ h2 {
         border-radius: 16px;
         @extend %hand;
     }
-
-    @include mw(XS) {
-        display: none;
+}
+.headFunc {
+    display: none;
+    width: 100%;
+    height: 92px;
+    padding: 0 16px;
+    background-color: #f8f8f8;
+    @include mw(M) {
+        @include d_f(flex, center, space-between);
+    }
+    .backCard {
+        width: 46px;
+        height: 46px;
+    }
+    .name {
+        color: #262626;
+        font-size: 20px;
+        line-height: 27px;
+    }
+    .searchBtn {
+        width: 38px;
+        height: 38px;
     }
 }
 .info {
@@ -294,90 +340,176 @@ h2 {
     background-color: #f8f8f8;
     @include mw(M) {
         @include d_f(flex, center, center);
-    }
-    @include mw(XS) {
         width: 100%;
+        height: calc(100% - 92px);
+        padding: 44px 20px 0;
     }
 }
 
 .slip {
     position: relative;
-
-    &::before {
+    &::before,
+    &::after {
         position: absolute;
-        top: 50px;
-        left: 50px;
         right: 0;
         content: "";
         display: block;
-        width: 231px;
-        height: 402px;
         margin: auto;
         background-color: #fff;
         border: 12px solid #ffffff;
         border-radius: 32px;
-        box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
         box-sizing: border-box;
+        @extend %transition;
+        @at-root .detail & {
+            opacity: 0;
+        }
+    }
+    &::before {
+        top: 50px;
+        left: 35px;
+        width: 231px;
+        height: 402px;
+        box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
         transform: rotate(20deg);
         @include mw(XS) {
+            top: 70px;
+            left: 25px;
             width: 210px;
             height: 365px;
         }
     }
     &::after {
-        position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        content: "";
-        display: block;
         width: 253px;
         height: 430px;
-        margin: auto;
-        background-color: #fff;
-        border: 12px solid #ffffff;
-        border-radius: 32px;
         filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
-        box-sizing: border-box;
         transform: rotate(15deg);
         @include mw(XS) {
+            left: 0;
             width: 230px;
             height: 390px;
         }
     }
+    // .slip_item
     &_item {
         position: relative;
+        @include d_f(flex, flex-end, space-between);
         width: 287px;
         height: 461px;
         margin: auto;
-        background: url("https://asms.coa.gov.tw/amlapp/upload/pic/807e09bf-36b5-4927-8b04-c846ba1c3960_org.jpg")
-            no-repeat center/cover;
+        // background: url("https://asms.coa.gov.tw/amlapp/upload/pic/807e09bf-36b5-4927-8b04-c846ba1c3960_org.jpg")
+        //     no-repeat center/cover;
         border: 12px solid #ffffff;
         border-radius: 32px;
         filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
         z-index: 2;
         transform: rotate(-3deg);
         box-sizing: content-box;
+        @extend %transition;
+        @at-root .detail & {
+            width: 390px;
+            height: 542px;
+            transform: rotate(0deg);
+        }
         @include mw(XS) {
             width: 261px;
             height: 419px;
+        }
+
+        &_detail {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            fill: #ffffff;
+            transform: rotate(3deg);
+            @at-root .detail & {
+                transform: rotate(0deg);
+            }
+        }
+        &_unlike,
+        &_like {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 100%;
+        }
+        &_unlike {
+            padding: 13px;
+        }
+        &_like {
+            padding: 9px;
+            fill: #fdaaa2;
+        }
+        // .slip_item_box
+        &_box {
+            @include d_f(flex, center, space-between);
+            width: 100%;
+            padding: 0 15px 20px;
+            transform: rotate(3deg);
+            @at-root .detail & {
+                transform: rotate(0deg);
+            }
+        }
+        // .slip_item_info
+        &_info {
+            .name {
+                @include d_f(flex, center, center);
+            }
+
+            .gender {
+                display: block;
+                width: 24px;
+                height: 24px;
+            }
         }
     }
 }
 .recommend {
     @include d_f(flex, center, space-between);
     margin-top: 65px;
+    @extend %transition;
+    @at-root .detail & {
+        opacity: 0;
+    }
+    @include mw(M) {
+        display: none;
+    }
     li {
+        @include d_f(flex, center);
         width: 247px;
         height: 70px;
+        padding: 0 12px;
         background: #ffffff;
         box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
         border-radius: 23px;
     }
-    &_info {
+    &_pic {
         width: 50px;
         height: 50px;
+        background-color: #ccc;
+        margin-right: 12px;
         border-radius: 100%;
+    }
+    .name {
+        @include d_f(flex, center);
+        color: #262626;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .address {
+        color: #878787;
+        font-size: 12px;
+    }
+    .gender {
+        flex: none;
+        @include d_f(flex, center, center);
+        width: 24px;
+        height: 24px;
+        margin-left: 4px;
+        padding: 1px 4px;
     }
 
     @include mw(XS) {
