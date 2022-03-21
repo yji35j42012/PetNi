@@ -22,7 +22,7 @@
             <img :src="item.src" alt="" />
         </div>
 
-        <div :class="['theme_switch', themeSwitch == 'cat' ? 'cat' : 'dog']">
+        <div :class="['theme_switch', themeSwitch]">
             <button class="cat_btn" @click="themeSwitchHandler('cat')">
                 喵星人
             </button>
