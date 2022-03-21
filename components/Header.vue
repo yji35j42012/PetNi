@@ -3,7 +3,7 @@
 <template>
     <div class="header">
         <div class="container">
-            <h1 class="logo"  @click="change('home')">
+            <h1 class="logo" @click="change('home')">
                 <router-link to="/">
                     <img src="./images/logo.png" alt="" />
                     <!-- <img src="./images/logo-mobile.png" alt="" /> -->
@@ -49,8 +49,11 @@
                         <span>收藏</span>
                     </router-link>
                 </li>
-                <li>
-                    <router-link to="/">
+                <li
+                    @click="change('theme')"
+                    :class="nowPage == 'theme' ? 'on' : ''"
+                >
+                    <router-link to="/theme">
                         <i>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

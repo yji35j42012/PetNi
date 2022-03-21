@@ -47,6 +47,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
+  color: #262626;
   font-family: "Abhaya Libre", sans-serif;
 }
 
@@ -231,6 +232,42 @@ input:checked ~ .switch_ball::after {
   left: 26px;
 }
 
+.searchBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 195px;
+  height: 45px;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 16px;
+}
+
+.searchBox input {
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.searchBox_icon {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 37px;
+  height: 37px;
+  padding: 9px;
+  background: #262626;
+  border-radius: 16px;
+  fill: #fff;
+}
+
 .homeAni {
   position: absolute;
   top: 0;
@@ -330,6 +367,18 @@ input:checked ~ .switch_ball::after {
     max-width: 768px;
     height: auto;
   }
+}
+
+.theme .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .content {
@@ -793,7 +842,6 @@ input:checked ~ .switch_ball::after {
   width: 287px;
   height: 461px;
   margin: auto;
-  background: linear-gradient(180.01deg, rgba(0, 0, 0, 0) 48.59%, rgba(0, 0, 0, 0) 70.09%, rgba(0, 0, 0, 0.4) 90.71%), url("https://asms.coa.gov.tw/amlapp/upload/pic/807e09bf-36b5-4927-8b04-c846ba1c3960_org.jpg") no-repeat center/cover;
   border: 12px solid #ffffff;
   border-radius: 32px;
   -webkit-filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
@@ -1263,7 +1311,6 @@ input:checked ~ .switch_ball::after {
 .collect_pic {
   width: 138px;
   height: 132px;
-  background: url("https://asms.coa.gov.tw/amlapp/upload/pic/807e09bf-36b5-4927-8b04-c846ba1c3960_org.jpg") no-repeat center/cover;
   border-radius: 28px;
 }
 
@@ -1385,5 +1432,75 @@ input:checked ~ .switch_ball::after {
   .showPAD {
     display: block;
   }
+}
+
+.theme_txt {
+  margin-right: 121px;
+}
+
+.theme_txt_title {
+  font-weight: 700;
+  font-size: 76px;
+}
+
+.theme_txt_p {
+  max-width: 307px;
+  margin-bottom: 37px;
+  color: #878787;
+  font-weight: 400px;
+  line-height: 27px;
+}
+
+.theme_switch {
+  position: absolute;
+  top: 40px;
+  right: 118px;
+  width: 132px;
+  height: 30px;
+  padding: 2px;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 10px;
+  font-size: 0;
+}
+
+.theme_switch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: block;
+  margin: auto 0;
+  width: calc(50% - 4px);
+  height: calc(100% - 4px);
+  background-color: #262626;
+  border-radius: 10px;
+}
+
+.theme_switch button {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.theme_switch.cat::before {
+  left: 2px;
+}
+
+.theme_switch.cat .cat_btn {
+  color: #fff;
+}
+
+.theme_switch.dog::before {
+  right: 2px;
+}
+
+.theme_switch.dog .dog_btn {
+  color: #fff;
 }
 /*# sourceMappingURL=all.css.map */
