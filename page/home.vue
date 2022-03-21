@@ -120,7 +120,7 @@
                         </svg>
                     </button>
                     <div class="slip_item_box">
-                        <button class="slip_item_unlike">
+                        <button class="unlike_btn">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 25 25"
@@ -130,7 +130,7 @@
                         </button>
                         <div class="slip_item_info">
                             <p class="name female">
-                                157763
+                                <span>157763</span>
                                 <i class="gender">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -156,54 +156,15 @@
             <ul class="recommend">
                 <li>
                     <div class="recommend_pic"></div>
-                    <div class="recommend_info">
-                        <p class="name female">
-                            157763
-                            <i class="gender">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path :d="icon_all.female" />
-                                </svg>
-                            </i>
-                        </p>
-                        <p class="address">臺南市南區</p>
-                    </div>
+                    <petinfo></petinfo>
                 </li>
                 <li>
                     <div class="recommend_pic"></div>
-                    <div class="recommend_info">
-                        <p class="name">
-                            157763
-                            <i class="gender female">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path :d="icon_all.female" />
-                                </svg>
-                            </i>
-                        </p>
-                        <p class="address">臺南市南區</p>
-                    </div>
+                    <petinfo></petinfo>
                 </li>
                 <li>
                     <div class="recommend_pic"></div>
-                    <div class="recommend_info">
-                        <p class="name">
-                            157763
-                            <i class="gender male">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path :d="icon_all.male" />
-                                </svg>
-                            </i>
-                        </p>
-                        <p class="address">臺南市南區</p>
-                    </div>
+                    <petinfo></petinfo>
                 </li>
             </ul>
         </div>
@@ -218,7 +179,7 @@ module.exports = {
         };
     },
     components: {
-        // func: httpVueLoader("../components/Func.vue"),
+        petinfo: httpVueLoader("../components/PetInfo.vue"),
     },
     mounted() {},
     computed: {},

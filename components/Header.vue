@@ -3,7 +3,7 @@
 <template>
     <div class="header">
         <div class="container">
-            <h1 class="logo">
+            <h1 class="logo"  @click="change('home')">
                 <router-link to="/">
                     <img src="./images/logo.png" alt="" />
                     <!-- <img src="./images/logo-mobile.png" alt="" /> -->
@@ -17,7 +17,10 @@
                 <span></span>
             </button> -->
             <ul class="menu_group">
-                <li class="on">
+                <li
+                    @click="change('home')"
+                    :class="nowPage == 'home' ? 'on' : ''"
+                >
                     <router-link to="/">
                         <i>
                             <svg
@@ -30,8 +33,11 @@
                         <span>配對</span>
                     </router-link>
                 </li>
-                <li>
-                    <router-link to="/">
+                <li
+                    @click="change('collect')"
+                    :class="nowPage == 'collect' ? 'on' : ''"
+                >
+                    <router-link to="/collect">
                         <i>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -92,9 +98,17 @@ module.exports = {
     data() {
         return {
             icon_all: icon_all,
+            nowPage: "",
         };
     },
+    mounted() {
+        this.nowPage = store.state.nowPage;
+    },
     computes: {},
-    methods: {},
+    methods: {
+        change(str) {
+            this.nowPage = str;
+        },
+    },
 };
 </script>
