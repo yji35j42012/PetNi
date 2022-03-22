@@ -2,50 +2,63 @@
 
 <template>
     <div class="container">
-        <div :class="['theme_switch', themeSwitch]">
-            <button class="cat_btn" @click="themeSwitchHandler('cat')">
-                喵星人
-            </button>
-            <button class="dog_btn" @click="themeSwitchHandler('dog')">
-                汪星人
-            </button>
-        </div>
-        <div class="theme_txt" v-for="(item, index) in theme" :key="index">
-            <div class="theme_txt_title">
-                {{ item.title }}
+        <div class="theme_head">
+            <div :class="['theme_switch', themeSwitch]">
+                <button class="cat_btn" @click="themeSwitchHandler('cat')">
+                    喵星人
+                </button>
+                <button class="dog_btn" @click="themeSwitchHandler('dog')">
+                    汪星人
+                </button>
             </div>
-            <div class="theme_txt_p">
-                {{ item.txt }}
+        </div>
+        <div class="theme_group">
+            <div class="theme_item">
+                <div
+                    class="theme_txt"
+                    v-for="(item, index) in theme"
+                    :key="index"
+                >
+                    <div class="theme_txt_title">
+                        {{ item.title }}
+                    </div>
+                    <div class="theme_txt_p">
+                        {{ item.txt }}
+                    </div>
+                    <label class="searchBox">
+                        <input type="text" :placeholder="item.searchTxt" />
+                        <i class="searchBox_icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 25 24"
+                            >
+                                <path :d="icon_all.search" />
+                            </svg>
+                        </i>
+                    </label>
+                </div>
+                <div
+                    class="theme_pic"
+                    v-for="(item, index) in theme"
+                    :key="index"
+                >
+                    <img src="" alt="" style="width:480px;height:671px;" />
+                    <!-- <img :src="item.src" alt="" /> -->
+                </div>
             </div>
-            <label class="searchBox">
-                <input type="text" :placeholder="item.searchTxt" />
-                <i class="searchBox_icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24">
-                        <path :d="icon_all.search" />
-                    </svg>
-                </i>
-            </label>
-        </div>
-        <div
-            class="theme_pic"
-            v-for="(item, index) in theme"
-            :key="index"
-            style="width:514px;"
-        >
-            <!-- <img :src="item.src" alt="" /> -->
-        </div>
 
-        <div class="theme_btn">
-            <button class="theme_btn_page">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path :d="icon_all.arrowLeft" />
-                </svg>
-            </button>
-            <button class="theme_btn_page">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path :d="icon_all.arrowRight" />
-                </svg>
-            </button>
+            <div class="theme_btn">
+                <button class="theme_btn_page">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path :d="icon_all.arrowLeft" />
+                    </svg>
+                </button>
+                <button class="theme_btn_page">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path :d="icon_all.arrowRight" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 </template>
