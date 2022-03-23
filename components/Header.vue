@@ -65,8 +65,11 @@
                         <span>主題館</span>
                     </router-link>
                 </li>
-                <li>
-                    <router-link to="/">
+                <li
+                    @click="change('adoption')"
+                    :class="nowPage == 'adoption' ? 'on' : ''"
+                >
+                    <router-link to="/adoption">
                         <i>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

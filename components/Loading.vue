@@ -12,25 +12,32 @@
 
 <template>
     <div id="loading" class="loading">
-        loading
+        <div id="lottie_content"></div>
     </div>
 </template>
 
 <script>
-var animation = bodymovin.loadAnimation({
-    container: document.getElementById("loading"),
-    renderer: "svg",
-    loop: true,
-    autoplay: true,
-    path: "../js/loading.json",
-});
+
+
+
 module.exports = {
     data() {
         return {
             icon_all: icon_all,
+            loading: loading,
         };
     },
-    mounted() {},
+    mounted() {
+        // console.log("this.loading[0]", this.loading);
+
+        // const anlottie = lottie.loadAnimation({
+        //     container: lottie_content,
+        //     animType: "svg",
+        //     loop: true,
+        //     path: this.loading,
+        // });
+        // anlottie.setSpeed(6);
+    },
     computes: {},
     methods: {},
 };

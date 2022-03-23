@@ -112,7 +112,7 @@ svg {
     background: #ffffff;
     box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
     border-radius: 16px;
-    @include mw(M){
+    @include mw(M) {
         margin: auto;
     }
     input {
@@ -753,7 +753,71 @@ svg {
         }
     }
 }
+.petCard {
+	@include d_f(flex);
+	flex-wrap: wrap;
+    padding: 42px 0;
+    @include mw(M) {
+        width: 100%;
+        max-width: 768px;
+        padding: 42px 5px;
+        margin: auto;
+    }
+    @include mw(S) {
+        max-width: 600px;
+    }
+    @include mw(XS) {
+        max-width: 360px;
+    }
+    // .petCard_item
+    &_item {
+        position: relative;
+        // display: inline-block;
+        margin-right: 12px;
+        margin-bottom: 12px;
+        padding: 12px;
+        background-color: #fff;
+        border-radius: 28px;
+        @include mw(M) {
+            width: calc(100% / 4 - 20px);
+            margin: 0 10px 12px;
+        }
+        @include mw(S) {
+            width: calc(100% / 3 - 20px);
+        }
+        @include mw(XS) {
+            width: calc(100% / 2 - 20px);
+        }
 
+        &._new {
+			width: 162px;
+			height: 209px;
+        }
+        .petInfoTxt {
+            margin-top: 8px;
+        }
+        .close_btn {
+            top: 20px;
+            right: 22px;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            background-color: #ffffff;
+            fill: #262626;
+            box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+            svg {
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        }
+    }
+}
 .collect {
     // collect_head
     &_head {
