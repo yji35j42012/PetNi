@@ -5,7 +5,7 @@
         <div class="func">
             <div class="func_box">
                 <h2>我想尋找</h2>
-                <div class="func_ul">
+                <ul class="func_ul">
                     <li class="square on">
                         <i class="animal">
                             <svg
@@ -27,7 +27,7 @@
                         </i>
                     </li>
                     <li class="square">不拘</li>
-                </div>
+                </ul>
             </div>
             <div class="func_box">
                 <h2>性別</h2>
