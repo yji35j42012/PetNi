@@ -1057,6 +1057,9 @@ svg {
         @at-root &.collect_head {
             @include d_f(flex, center, center);
         }
+        @at-root .emergency_head &.name {
+            @include d_f(flex, center, center);
+        }
     }
 }
 
@@ -1403,6 +1406,9 @@ svg {
         @include mw(M) {
             background-color: #f8f8f8;
         }
+        @include mw(XS) {
+            width: 64px;
+        }
         &.on {
             background-color: #fdaaa2;
             color: #fff;
@@ -1410,10 +1416,14 @@ svg {
     }
     li + li {
         margin-left: 12px;
+        @include mw(XS) {
+            margin-left: 6px;
+        }
     }
 }
 
 .emergency {
+    // .emergency_head
     &_head {
         display: inline-flex;
         flex-direction: column;
@@ -1428,6 +1438,7 @@ svg {
             width: 100%;
             height: 92px;
             margin-top: 0;
+            padding: 0 24px;
             background-color: #fff;
 
             .tab {
@@ -1439,6 +1450,21 @@ svg {
                 top: calc(100% + 20px);
                 right: 16px;
                 width: 100%;
+            }
+        }
+        @include mw(XS) {
+            height: 62px;
+            padding: 0 16px;
+        }
+        .name {
+            font-weight: 700;
+            font-size: 20px;
+            &::after {
+                content: attr(data-txt);
+
+                @include mw(XS) {
+                    display: none;
+                }
             }
         }
     }
@@ -1455,6 +1481,7 @@ svg {
         &_title {
             @include d_f(flex, center);
             width: 100%;
+            margin-bottom: 8px;
             font-weight: 700;
             font-size: 20px;
             line-height: 27px;
@@ -1469,24 +1496,74 @@ svg {
         // .emergency_group_card
         &_card {
             @include d_f(flex, stretch, space-between);
-            width: calc(100% / 3 - 8px);
-			margin-right: 8px;
-			margin-bottom: 8px;
+            width: calc(100% / 3 - 5.5px);
+            margin-right: 8px;
+            margin-bottom: 8px;
             padding: 12px;
             background-color: #fff;
             box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
             border-radius: 20px;
-            .detail {
-                margin-right: 70px;
+            // .detail {
+            //     margin-right: 70px;
+            // }
+            &:nth-child(3n + 1) {
+                margin-right: 0;
+            }
+            @include mw(M) {
+                width: calc(100% / 2 - 4px);
+                &:nth-child(3n + 1) {
+                    margin-right: 8px;
+                }
+                &:nth-child(2n + 1) {
+                    margin-right: 0;
+                }
+            }
+            @include mw(XS) {
+                width: 100%;
+                &:nth-child(3n + 1) {
+                    margin-right: 0;
+                }
+            }
+            p {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 21px;
+
+                &.title {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
             }
             p + p {
                 margin-top: 8px;
             }
             span {
+                display: block;
+                width: 100%;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 21px;
+                color: #fdaaa2;
+                text-align: right;
                 white-space: nowrap;
             }
-            &:nth-child(3n + 1) {
-                margin-right: 0;
+            .state {
+                @include d_f(flex, space-between, flex-end);
+                align-content: space-between;
+                flex-wrap: wrap;
+            }
+            a {
+                @include d_f(flex, center, center);
+                width: 40px;
+                height: 40px;
+                background: #262626;
+                fill: #ffffff;
+                border-radius: 50px;
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
             }
         }
     }

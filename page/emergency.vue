@@ -3,7 +3,7 @@
 <template>
     <div class="container">
         <div class="emergency_head">
-            <div class="name showPAD">24H急診</div>
+            <div class="name showPAD" data-txt="急診">24H</div>
             <ul class="tab">
                 <li class="on">北部</li>
                 <li>中部</li>
@@ -22,59 +22,26 @@
                 </i>
                 台北市
             </li>
-            <li class="emergency_group_card">
+            <li
+                class="emergency_group_card"
+                v-for="(item, index) in 7"
+                :key="index"
+            >
                 <div class="detail">
-                    <p>展望動物醫院</p>
+                    <p class="title">展望動物醫院</p>
                     <p>02 2388 0122</p>
                     <p>台北市萬華區中華路2段2號</p>
                 </div>
                 <div class="state">
                     <span>*疫情期間有開</span>
-                    <a href=""></a>
-                </div>
-            </li>
-            <li class="emergency_group_card">
-                <div class="detail">
-                    <p>展望動物醫院</p>
-                    <p>02 2388 0122</p>
-                    <p>台北市萬華區中華路2段2號</p>
-                </div>
-                <div class="state">
-                    <span>*疫情期間有開</span>
-                    <a href=""></a>
-                </div>
-            </li>
-            <li class="emergency_group_card">
-                <div class="detail">
-                    <p>展望動物醫院</p>
-                    <p>02 2388 0122</p>
-                    <p>台北市萬華區中華路2段2號</p>
-                </div>
-                <div class="state">
-                    <span>*疫情期間有開</span>
-                    <a href=""></a>
-                </div>
-            </li>
-            <li class="emergency_group_card">
-                <div class="detail">
-                    <p>展望動物醫院</p>
-                    <p>02 2388 0122</p>
-                    <p>台北市萬華區中華路2段2號</p>
-                </div>
-                <div class="state">
-                    <span>*疫情期間有開</span>
-                    <a href=""></a>
-                </div>
-            </li>
-            <li class="emergency_group_card">
-                <div class="detail">
-                    <p>展望動物醫院</p>
-                    <p>02 2388 0122</p>
-                    <p>台北市萬華區中華路2段2號</p>
-                </div>
-                <div class="state">
-                    <span>*疫情期間有開</span>
-                    <a href=""></a>
+                    <a href="">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path :d="icon_all.phone" />
+                        </svg>
+                    </a>
                 </div>
             </li>
         </ul>

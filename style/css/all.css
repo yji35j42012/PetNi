@@ -1674,6 +1674,17 @@ input:checked ~ .switch_ball::after {
         -ms-flex-pack: center;
             justify-content: center;
   }
+  .emergency_head .showPAD.name {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .theme_group {
@@ -2167,6 +2178,12 @@ input:checked ~ .switch_ball::after {
   }
 }
 
+@media screen and (max-width: 599px) {
+  .tab li {
+    width: 64px;
+  }
+}
+
 .tab li.on {
   background-color: #fdaaa2;
   color: #fff;
@@ -2174,6 +2191,12 @@ input:checked ~ .switch_ball::after {
 
 .tab li + li {
   margin-left: 12px;
+}
+
+@media screen and (max-width: 599px) {
+  .tab li + li {
+    margin-left: 6px;
+  }
 }
 
 .emergency_head {
@@ -2205,6 +2228,7 @@ input:checked ~ .switch_ball::after {
     width: 100%;
     height: 92px;
     margin-top: 0;
+    padding: 0 24px;
     background-color: #fff;
   }
   .emergency_head .tab {
@@ -2216,6 +2240,28 @@ input:checked ~ .switch_ball::after {
     top: calc(100% + 20px);
     right: 16px;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .emergency_head {
+    height: 62px;
+    padding: 0 16px;
+  }
+}
+
+.emergency_head .name {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.emergency_head .name::after {
+  content: attr(data-txt);
+}
+
+@media screen and (max-width: 599px) {
+  .emergency_head .name::after {
+    display: none;
   }
 }
 
@@ -2253,6 +2299,7 @@ input:checked ~ .switch_ball::after {
       -ms-flex-pack: start;
           justify-content: flex-start;
   width: 100%;
+  margin-bottom: 8px;
   font-weight: 700;
   font-size: 20px;
   line-height: 27px;
@@ -2275,7 +2322,7 @@ input:checked ~ .switch_ball::after {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: calc(100% / 3 - 8px);
+  width: calc(100% / 3 - 5.5px);
   margin-right: 8px;
   margin-bottom: 8px;
   padding: 12px;
@@ -2285,8 +2332,41 @@ input:checked ~ .switch_ball::after {
   border-radius: 20px;
 }
 
-.emergency_group_card .detail {
-  margin-right: 70px;
+.emergency_group_card:nth-child(3n + 1) {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 995px) {
+  .emergency_group_card {
+    width: calc(100% / 2 - 4px);
+  }
+  .emergency_group_card:nth-child(3n + 1) {
+    margin-right: 8px;
+  }
+  .emergency_group_card:nth-child(2n + 1) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .emergency_group_card {
+    width: 100%;
+  }
+  .emergency_group_card:nth-child(3n + 1) {
+    margin-right: 0;
+  }
+}
+
+.emergency_group_card p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.emergency_group_card p.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .emergency_group_card p + p {
@@ -2294,10 +2374,51 @@ input:checked ~ .switch_ball::after {
 }
 
 .emergency_group_card span {
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fdaaa2;
+  text-align: right;
   white-space: nowrap;
 }
 
-.emergency_group_card:nth-child(3n + 1) {
-  margin-right: 0;
+.emergency_group_card .state {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.emergency_group_card a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #262626;
+  fill: #ffffff;
+  border-radius: 50px;
+}
+
+.emergency_group_card a svg {
+  width: 24px;
+  height: 24px;
 }
 /*# sourceMappingURL=all.css.map */
