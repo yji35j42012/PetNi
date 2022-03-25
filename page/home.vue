@@ -92,7 +92,7 @@
             </div>
             <button class="btn">套用</button>
         </div>
-        <div class="headFunc">
+        <div class="headFunc" style="display:none">
             <button class="backCard">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46">
                     <path :d="icon_all.back" />
@@ -107,7 +107,20 @@
         </div>
         <div class="info">
             <div class="slip">
-                <div class="slip_item">
+                <div
+                    v-for="(item, index) in 2"
+                    :key="index"
+                    :id="'slip' + index"
+                    class="slip_item"
+                    @mousedown="slipMouseDown('slip' + index)"
+                    @touchstart="slipMouseDown('slip' + index)"
+                    @mouseup="slipMouseUp('slip' + index)"
+                    @touchend="slipMouseUp('slip' + index)"
+                    @mousemove="slipMouseMove('slip' + index)"
+                    @touchmove="slipMouseMove('slip' + index)"
+                >
+                    <!-- v-on="{ mousedown: slipMouseDown, mouseup: slipMouseUp }" -->
+
                     <button
                         class="slip_item_detail"
                         @click="detailHandler('123')"
@@ -176,6 +189,9 @@ module.exports = {
     data() {
         return {
             icon_all: icon_all,
+            isDown: false,
+            startX: "",
+            scrollLeft: "",
         };
     },
     components: {
@@ -186,6 +202,35 @@ module.exports = {
     methods: {
         detailHandler(id) {
             this.$router.push("/detail");
+        },
+        slipMouseDown(str, $event) {
+            console.log("slipMouseDown", str);
+            this.isDown = true;
+            this.startX = event.clientX;
+            let scrollitem = document.getElementById(str);
+            this.scrollLeft = scrollitem.scrollLeft;
+
+            scrollitem.classList.add("scroll");
+        },
+        slipMouseUp(str) {
+            this.isDown = false;
+            console.log("scroll", str);
+            let scrollitem = document.getElementById(str);
+            scrollitem.classList.remove("scroll");
+        },
+        slipMouseMove(str, $event) {
+            if (!this.isDown) return;
+            // console.log("scroll", event.clientX);
+            let scrollitem = document.getElementById(str);
+            event.preventDefault();
+            // console.log("scrollitem.event", event);
+
+            const x = this.startX - event.pageX;
+            console.log("x", x);
+            console.log("scrollitemLeft", scrollitem.clientLeft);
+            scrollitem.style.left = (this.startX - event.pageX) * 3 * -1 + "px";
+            // const walk = (x - this.startX) * 3;
+            // scrollitem.scrollLeft = this.scrollLeft - walk;
         },
     },
 };

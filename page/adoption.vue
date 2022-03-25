@@ -98,6 +98,9 @@
                         <label class="sel">
                             <span>選擇縣市</span>
                             <ul>
+                                <li>台北市</li>
+                                <li>台中市</li>
+                                <li>台北市</li>
                                 <li>台中市</li>
                             </ul>
                         </label>
