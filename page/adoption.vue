@@ -19,9 +19,9 @@
                 <button class="change">替換照片</button>
             </div>
             <div class="adoption_info_group">
-                <div class="adoption_info_item">
+                <div class="adoption_info_item d_flex">
                     <div class="adoption_info_item_box">
-                        <h2>種類<span>(*必選)</span></h2>
+                        <h2>種類<span class="required_txt">(*必選)</span></h2>
                         <ul class="ul">
                             <li class="square on">
                                 <i class="animal">
@@ -46,7 +46,7 @@
                         </ul>
                     </div>
                     <div class="adoption_info_item_box">
-                        <h2>性別<span>(*必選)</span></h2>
+                        <h2>性別<span class="required_txt">(*必選)</span></h2>
                         <ul class="ul">
                             <li class="square male on">
                                 <i class="gender">
@@ -68,7 +68,7 @@
                                     </svg>
                                 </i>
                             </li>
-                            <li class="square">不拘</li>
+                            <li class="square">不明</li>
                         </ul>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                     <input type="text" placeholder="若尚未取名可不填" />
                 </div>
                 <div class="adoption_info_item">
-                    <h2>毛色<span>(*必選)</span></h2>
+                    <h2>毛色<span class="required_txt">(*必選)</span></h2>
                     <ul class="ul">
                         <li>黑犬</li>
                     </ul>
@@ -92,20 +92,37 @@
             </div>
             <div class="adoption_info_group">
                 <div class="adoption_info_item">
-                    <h2>聯絡方式<span>(*必選)</span></h2>
+                    <h2>聯絡方式<span class="required_txt">(*必選)</span></h2>
                     <input type="text" placeholder="聯絡方式 (電話、通訊等…)" />
-                    <label class="sel">
-                        <span>選擇縣市</span>
-                        <ul>
-                            <li>台中市</li>
-                        </ul>
-                    </label>
-                    <label class="sel">
-                        <span>選擇區別</span>
-                        <ul>
-                            <li>士林區</li>
-                        </ul>
-                    </label>
+                    <div class="d_flex">
+                        <label class="sel">
+                            <span>選擇縣市</span>
+                            <ul>
+                                <li>台中市</li>
+                            </ul>
+                        </label>
+                        <label class="sel">
+                            <span>選擇區別</span>
+                            <ul>
+                                <li>士林區</li>
+                            </ul>
+                        </label>
+                    </div>
+                </div>
+                <div class="adoption_info_item">
+                    <h2>狀況</h2>
+                    <textarea
+                        type="text"
+                        class="normal_textarea"
+                        maxlength="40"
+                        placeholder="限40字"
+                    ></textarea>
+                </div>
+                <div class="adoption_info_item">
+                    <button class="adoption_info_send">發佈</button>
+                    <div class="adoption_info_notie" style="display:none">
+                        *必填項目尚未填寫完，請填寫完整後再發佈。
+                    </div>
                 </div>
             </div>
         </div>

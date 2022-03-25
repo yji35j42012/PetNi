@@ -199,6 +199,11 @@ svg {
             height: auto;
         }
     }
+    @at-root .adoption & {
+        @include mw(XL) {
+            padding: 0 15px;
+        }
+    }
     // @at-root .theme & {
     //     @include d_f(flex, center, center);
     //     @include mw(M) {
@@ -831,13 +836,15 @@ svg {
         display: none;
         width: 100%;
         height: 92px;
-        line-height: 92px;
         background-color: #fff;
         color: #262626;
         box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
-        text-align: center;
         font-size: 20px;
         font-weight: 700;
+
+        @include mw(S) {
+            height: 62px;
+        }
     }
     // .collect_group
     &_group {
@@ -1032,14 +1039,19 @@ svg {
 }
 .showPC {
     display: block;
+
     @include mw(M) {
         display: none;
     }
 }
 .showPAD {
     display: none;
+
     @include mw(M) {
         display: block;
+        @at-root &.collect_head {
+            @include d_f(flex, center, center);
+        }
     }
 }
 
@@ -1105,6 +1117,9 @@ svg {
             width: 100%;
             height: 92px;
             background-color: #fff;
+        }
+        @include mw(S) {
+            height: 62px;
         }
     }
     // .theme_switch
@@ -1194,16 +1209,23 @@ svg {
 .adoption {
     // .adoption_info
     &_info {
-        @include d_f(flex, flex-start);
-		padding-top: 63px;
+        @include d_f(flex, flex-start, center);
+        padding-top: 63px;
+        @include mw(L) {
+            flex-wrap: wrap;
+        }
+
         // .adoption_info_pic
         &_pic {
             width: 237px;
             height: 356px;
-			padding: 16px;
-			background-color: #fff;
+            padding: 16px;
+            background-color: #fff;
             box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
             border-radius: 28px;
+            @include mw(S) {
+                margin-bottom: 28px;
+            }
             img {
                 width: 100%;
                 height: calc(100% - 50px - 10px);
@@ -1219,21 +1241,44 @@ svg {
                 border-radius: 16px;
             }
         }
-
+        // .adoption_info_txt
+        &_txt {
+            @include d_f(flex);
+            width: calc(100% - 237px);
+        }
         // .adoption_info_group
         &_group {
-			margin-left: 14px;
+            width: 100%;
+            max-width: 380px;
+            margin-left: 14px;
+            @include mw(L) {
+                &:last-child {
+                    margin-left: calc(14px + 237px);
+                }
+            }
+            @include mw(S) {
+                max-width: none;
+                margin-left: 0;
+                &:last-child {
+                    margin-left: 0;
+                }
+            }
+            .required_txt {
+                color: #fdaaa2;
+            }
         }
         // .adoption_info_item
         &_item {
-            @include d_f(flex);
-            flex-wrap: wrap;
             margin-bottom: 12px;
             padding: 18px;
             background: #ffffff;
             box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
             border-radius: 20px;
-
+            @include mw(S) {
+                &.d_flex {
+                    justify-content: center;
+                }
+            }
             // .adoption_info_item_box
             h2 {
                 width: 100%;
@@ -1267,10 +1312,6 @@ svg {
                 border-radius: 14px;
             }
             &_box {
-                span {
-                    color: #fdaaa2;
-                }
-
                 li + li {
                     margin-left: 4px;
                 }
@@ -1280,7 +1321,10 @@ svg {
                     height: 60px;
                     background-color: #f8f8f8;
                     border-radius: 16px;
-
+                    @include mw(XS) {
+                        width: 53px;
+                        height: 53px;
+                    }
                     .animal {
                         width: 36px;
                         height: 36px;
@@ -1292,6 +1336,23 @@ svg {
                 }
             }
         }
+        // .adoption_info_send
+        &_send {
+            width: 100%;
+            height: 65px;
+            background-color: #262626;
+            color: #ffffff;
+            box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+            border-radius: 16px;
+        }
+        // .adoption_info_notie
+        &_notie {
+            margin-top: 24px;
+            color: #fdaaa2;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 27px;
+        }
     }
 }
 
@@ -1300,8 +1361,8 @@ svg {
     width: calc(50% - 4px);
     margin-top: 12px;
     padding: 9px 10px;
-	background-color: #f8f8f8;
-	border-radius: 14px;
+    background-color: #f8f8f8;
+    border-radius: 14px;
     // height: 40px;
     & + & {
         margin-left: 8px;
@@ -1309,4 +1370,14 @@ svg {
     ul {
         display: none;
     }
+}
+.d_flex {
+    @include d_f(flex);
+}
+.normal_textarea {
+    width: 100%;
+    height: 118px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 14px;
 }
