@@ -398,6 +398,22 @@ input:checked ~ .switch_ball::after {
   }
 }
 
+.emergency .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
 .content {
   width: 100%;
   height: calc(100% - 77px);
@@ -2110,5 +2126,178 @@ input:checked ~ .switch_ball::after {
   padding: 10px;
   background-color: #f8f8f8;
   border-radius: 14px;
+}
+
+.tab {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.tab li {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95px;
+  height: 38px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 995px) {
+  .tab li {
+    background-color: #f8f8f8;
+  }
+}
+
+.tab li.on {
+  background-color: #fdaaa2;
+  color: #fff;
+}
+
+.tab li + li {
+  margin-left: 12px;
+}
+
+.emergency_head {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 42px;
+  text-align: right;
+}
+
+@media screen and (max-width: 995px) {
+  .emergency_head {
+    position: relative;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+    height: 92px;
+    margin-top: 0;
+    background-color: #fff;
+  }
+  .emergency_head .tab {
+    width: auto;
+    margin-bottom: 0;
+  }
+  .emergency_head span {
+    position: absolute;
+    top: calc(100% + 20px);
+    right: 16px;
+    width: 100%;
+  }
+}
+
+.emergency_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin-top: 48px;
+}
+
+@media screen and (max-width: 995px) {
+  .emergency_group {
+    margin-top: 43px;
+    padding: 0 16px;
+  }
+}
+
+.emergency_group_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  fill: #fdaaa2;
+}
+
+.emergency_group_title i {
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.emergency_group_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: calc(100% / 3 - 8px);
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 12px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 20px;
+}
+
+.emergency_group_card .detail {
+  margin-right: 70px;
+}
+
+.emergency_group_card p + p {
+  margin-top: 8px;
+}
+
+.emergency_group_card span {
+  white-space: nowrap;
+}
+
+.emergency_group_card:nth-child(3n + 1) {
+  margin-right: 0;
 }
 /*# sourceMappingURL=all.css.map */

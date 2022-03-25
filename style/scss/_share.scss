@@ -204,6 +204,11 @@ svg {
             padding: 0 15px;
         }
     }
+    @at-root .emergency & {
+        @include d_f(flex, stretch, center);
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
     // @at-root .theme & {
     //     @include d_f(flex, center, center);
     //     @include mw(M) {
@@ -1380,4 +1385,109 @@ svg {
     padding: 10px;
     background-color: #f8f8f8;
     border-radius: 14px;
+}
+
+.tab {
+    @include d_f(inline-flex, center, center);
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 10px;
+    li {
+        position: relative;
+        @include d_f(flex, center, center);
+        width: 95px;
+        height: 38px;
+        background-color: #fff;
+        border-radius: 10px;
+
+        @include mw(M) {
+            background-color: #f8f8f8;
+        }
+        &.on {
+            background-color: #fdaaa2;
+            color: #fff;
+        }
+    }
+    li + li {
+        margin-left: 12px;
+    }
+}
+
+.emergency {
+    &_head {
+        display: inline-flex;
+        flex-direction: column;
+        margin-top: 42px;
+        text-align: right;
+        @include mw(M) {
+            position: relative;
+            justify-content: space-between;
+            align-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 92px;
+            margin-top: 0;
+            background-color: #fff;
+
+            .tab {
+                width: auto;
+                margin-bottom: 0;
+            }
+            span {
+                position: absolute;
+                top: calc(100% + 20px);
+                right: 16px;
+                width: 100%;
+            }
+        }
+    }
+    &_group {
+        @include d_f(flex);
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 48px;
+        @include mw(M) {
+            margin-top: 43px;
+            padding: 0 16px;
+        }
+        // .emergency_group_title
+        &_title {
+            @include d_f(flex, center);
+            width: 100%;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 27px;
+            fill: #fdaaa2;
+
+            i {
+                display: block;
+                width: 24px;
+                height: 23px;
+            }
+        }
+        // .emergency_group_card
+        &_card {
+            @include d_f(flex, stretch, space-between);
+            width: calc(100% / 3 - 8px);
+			margin-right: 8px;
+			margin-bottom: 8px;
+            padding: 12px;
+            background-color: #fff;
+            box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+            border-radius: 20px;
+            .detail {
+                margin-right: 70px;
+            }
+            p + p {
+                margin-top: 8px;
+            }
+            span {
+                white-space: nowrap;
+            }
+            &:nth-child(3n + 1) {
+                margin-right: 0;
+            }
+        }
+    }
 }

@@ -81,8 +81,11 @@
                         <span>送養</span>
                     </router-link>
                 </li>
-                <li>
-                    <router-link to="/">
+                <li
+                    @click="change('emergency')"
+                    :class="nowPage == 'emergency' ? 'on' : ''"
+                >
+                    <router-link to="/emergency">
                         <i>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
