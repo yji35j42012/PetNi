@@ -1,7 +1,7 @@
 <style scoped></style>
 
 <template>
-    <div class="container">
+    <div id="container" class="container">
         <div class="func">
             <div class="func_box">
                 <h2>我想尋找</h2>
@@ -106,18 +106,18 @@
             </button>
         </div>
         <div class="info">
-            <div class="slip">
+            <div id="slip" class="slip">
                 <div
                     v-for="(item, index) in 2"
                     :key="index"
                     :id="'slip' + index"
                     class="slip_item"
+                    @click="showHandler('slip' + index)"
                     @mousedown="slipMouseDown('slip' + index)"
                     @touchstart="slipMouseDown('slip' + index)"
                     @mouseup="slipMouseUp('slip' + index)"
                     @touchend="slipMouseUp('slip' + index)"
                     @mousemove="slipMouseMove('slip' + index)"
-                    @touchmove="slipMouseMove('slip' + index)"
                 >
                     <!-- v-on="{ mousedown: slipMouseDown, mouseup: slipMouseUp }" -->
 
@@ -190,47 +190,92 @@ module.exports = {
         return {
             icon_all: icon_all,
             isDown: false,
-            startX: "",
-            scrollLeft: "",
+            cardX: "",
+            cardY: "",
+            slipX: "",
+            slipY: "",
         };
     },
     components: {
         petinfo: httpVueLoader("../components/PetInfo.vue"),
     },
-    mounted() {},
+    mounted() {
+        window.onload = function() {};
+    },
     computed: {},
     methods: {
+        showHandler(str) {
+            // console.log("showHandler", str);
+            let scrollitem = document.getElementById(str);
+            // console.log(this.getMousePos());
+        },
+        getMousePos(event) {
+            var e = event || window.event;
+            var scrollX =
+                document.documentElement.scrollLeft || document.body.scrollLeft;
+            var scrollY =
+                document.documentElement.scrollTop || document.body.scrollTop;
+            var x = e.pageX || e.clientX + scrollX;
+            var y = e.pageY || e.clientY + scrollY;
+            //alert('x: ' + x + '\ny: ' + y);
+            return { x: x, y: y };
+        },
         detailHandler(id) {
             this.$router.push("/detail");
         },
         slipMouseDown(str, $event) {
-            console.log("slipMouseDown", str);
+            console.log("按下卡片", str);
             this.isDown = true;
-            this.startX = event.clientX;
+            this.cardX = event.offsetX * -1;
+            this.cardY = event.offsetY * -1;
+
+            console.log("按下卡片 cardX", this.cardX);
+            console.log("按下卡片 cardY", this.cardY);
             let scrollitem = document.getElementById(str);
-            this.scrollLeft = scrollitem.scrollLeft;
 
             scrollitem.classList.add("scroll");
+            let slip = document.getElementById("slip");
+            let info = document.getElementById("container");
+            console.log("slipTop", slip.offsetTop);
+            console.log("slipLeft", slip.offsetLeft);
+            console.log("infoTop", info.offsetTop);
+            console.log("infoLeft", info.offsetLeft);
+            this.slipX = slip.offsetLeft + info.offsetLeft;
+            this.slipY = slip.offsetTop + info.offsetTop;
         },
         slipMouseUp(str) {
+            console.log("鬆開卡片", str);
             this.isDown = false;
-            console.log("scroll", str);
             let scrollitem = document.getElementById(str);
             scrollitem.classList.remove("scroll");
         },
         slipMouseMove(str, $event) {
             if (!this.isDown) return;
-            // console.log("scroll", event.clientX);
+            console.log("卡片滑動", str);
             let scrollitem = document.getElementById(str);
-            event.preventDefault();
-            // console.log("scrollitem.event", event);
+            var slip = document.getElementById(slip);
+            if (!event.touches) {
+                //相容移動端
+                var x = event.clientX;
+                var y = event.clientY;
+            } else {
+                //相容PC端
+                var x = event.touches[0].pageX;
+                var y = event.touches[0].pageY;
+            }
+            // console.log("X", x);
+            // console.log("Y", y);
+            var moveX = x - this.slipX; //小方塊相對於父元素（長線條）的left值
+            var moveY = y - this.slipY; //小方塊相對於父元素（長線條）的left值
+            // console.log("moveX", moveX);
+            // console.log("moveY", moveY);
+            // console.log("moveX", moveX);
+            // console.log("moveY", moveY);
 
-            const x = this.startX - event.pageX;
-            console.log("x", x);
-            console.log("scrollitemLeft", scrollitem.clientLeft);
-            scrollitem.style.left = (this.startX - event.pageX) * 3 * -1 + "px";
-            // const walk = (x - this.startX) * 3;
-            // scrollitem.scrollLeft = this.scrollLeft - walk;
+            if (!scrollitem.classList.contains("scroll")) return;
+            scrollitem.style.left = moveX + "px";
+            scrollitem.style.top = moveY + "px";
+            scrollitem.style.transform = `translate3d(${this.cardX}px, ${this.cardY}px, 0)`;
         },
     },
 };
