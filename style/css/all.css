@@ -885,17 +885,32 @@ input:checked ~ .switch_ball::after {
           justify-content: space-between;
   width: 287px;
   height: 461px;
-  margin: auto;
-  background-color: #fff;
+  background-color: #ccc;
   border: 12px solid #ffffff;
   border-radius: 32px;
   -webkit-filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
   z-index: 2;
-  -webkit-transform: translate3d(-1px, 0px, 0px) rotate(-3deg);
-          transform: translate3d(-1px, 0px, 0px) rotate(-3deg);
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
+}
+
+.slip_item.like {
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  left: 1000px !important;
+}
+
+.slip_item.unlike {
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  left: -1000px !important;
 }
 
 .detail .slip_item {

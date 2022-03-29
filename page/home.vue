@@ -92,7 +92,7 @@
             </div>
             <button class="btn">套用</button>
         </div>
-        <div class="headFunc" style="display:none">
+        <div class="headFunc">
             <button class="backCard">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46">
                     <path :d="icon_all.back" />
@@ -106,19 +106,19 @@
             </button>
         </div>
         <div class="info">
-            <div id="slip" class="slip">
+            <div class="slip">
                 <div
                     v-for="(item, index) in 2"
                     :key="index"
                     :id="'slip' + index"
                     class="slip_item"
-                    @click="showHandler('slip' + index)"
                     @mousedown="slipMouseDown('slip' + index)"
                     @touchstart="slipMouseDown('slip' + index)"
-                    @mouseup="slipMouseUp('slip' + index)"
-                    @touchend="slipMouseUp('slip' + index)"
-                    @mousemove="slipMouseMove('slip' + index)"
                 >
+                    <!-- 
+					@mouseup="slipMouseUp('slip' + index)"
+					@touchend="slipMouseUp('slip' + index)" -->
+                    <!-- @mousemove="slipMouseMove('slip' + index)" -->
                     <!-- v-on="{ mousedown: slipMouseDown, mouseup: slipMouseUp }" -->
 
                     <button
@@ -133,7 +133,10 @@
                         </svg>
                     </button>
                     <div class="slip_item_box">
-                        <button class="unlike_btn">
+                        <button
+                            class="unlike_btn"
+                            @click="unlikeHandler('slip' + index)"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 25 25"
@@ -155,7 +158,10 @@
                             </p>
                             <p class="address">臺南市南區</p>
                         </div>
-                        <button class="like_btn">
+                        <button
+                            class="like_btn"
+                            @click="likeHandler('slip' + index)"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 32 32"
@@ -190,18 +196,19 @@ module.exports = {
         return {
             icon_all: icon_all,
             isDown: false,
-            cardX: "",
-            cardY: "",
-            slipX: "",
-            slipY: "",
+            who: "",
+            startX: "",
+            startY: "",
+            cardL: "",
+            cardT: "",
+            box2CurrentX: 0,
+            box2CurrentY: 100,
         };
     },
     components: {
         petinfo: httpVueLoader("../components/PetInfo.vue"),
     },
-    mounted() {
-        window.onload = function() {};
-    },
+    mounted() {},
     computed: {},
     methods: {
         showHandler(str) {
@@ -223,59 +230,71 @@ module.exports = {
         detailHandler(id) {
             this.$router.push("/detail");
         },
-        slipMouseDown(str, $event) {
-            console.log("按下卡片", str);
-            this.isDown = true;
-            this.cardX = event.offsetX * -1;
-            this.cardY = event.offsetY * -1;
+        slipMouseUp() {
+            console.log("鬆開卡片");
 
-            console.log("按下卡片 cardX", this.cardX);
-            console.log("按下卡片 cardY", this.cardY);
-            let scrollitem = document.getElementById(str);
+            window.removeEventListener("mousemove", this.slipMouseMove);
+            window.removeEventListener("mouseup", this.slipMouseUp);
 
-            scrollitem.classList.add("scroll");
-            let slip = document.getElementById("slip");
-            let info = document.getElementById("container");
-            console.log("slipTop", slip.offsetTop);
-            console.log("slipLeft", slip.offsetLeft);
-            console.log("infoTop", info.offsetTop);
-            console.log("infoLeft", info.offsetLeft);
-            this.slipX = slip.offsetLeft + info.offsetLeft;
-            this.slipY = slip.offsetTop + info.offsetTop;
-        },
-        slipMouseUp(str) {
-            console.log("鬆開卡片", str);
-            this.isDown = false;
-            let scrollitem = document.getElementById(str);
-            scrollitem.classList.remove("scroll");
-        },
-        slipMouseMove(str, $event) {
-            if (!this.isDown) return;
-            console.log("卡片滑動", str);
-            let scrollitem = document.getElementById(str);
-            var slip = document.getElementById(slip);
-            if (!event.touches) {
-                //相容移動端
-                var x = event.clientX;
-                var y = event.clientY;
-            } else {
-                //相容PC端
-                var x = event.touches[0].pageX;
-                var y = event.touches[0].pageY;
+            let boxW = document.getElementById("container");
+            let scrollitem = document.getElementById(this.who);
+
+            let boxWMin = boxW.offsetWidth * (1 / 4);
+            let boxWMax = boxW.offsetWidth * (3 / 4);
+
+            let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
+            console.log("boxWMin", boxWMin);
+            console.log("boxWMax", boxWMax);
+            console.log("itemCenter", itemCenter);
+
+            if (itemCenter >= boxWMax * (3 / 4)) {
+                console.log("like");
+            } else if (itemCenter <= boxWMin) {
+                console.log("unlike");
             }
-            // console.log("X", x);
-            // console.log("Y", y);
-            var moveX = x - this.slipX; //小方塊相對於父元素（長線條）的left值
-            var moveY = y - this.slipY; //小方塊相對於父元素（長線條）的left值
-            // console.log("moveX", moveX);
-            // console.log("moveY", moveY);
-            // console.log("moveX", moveX);
-            // console.log("moveY", moveY);
+        },
+        slipMouseMove($event) {
+            let scrollitem = document.getElementById(this.who);
+            console.log("卡片滑動");
 
-            if (!scrollitem.classList.contains("scroll")) return;
-            scrollitem.style.left = moveX + "px";
-            scrollitem.style.top = moveY + "px";
-            scrollitem.style.transform = `translate3d(${this.cardX}px, ${this.cardY}px, 0)`;
+            let nx = event.clientX;
+            let ny = event.clientY;
+            let nl = nx - (this.startX - this.cardL);
+            let nt = ny - (this.startY - this.cardT);
+
+            // 程式碼關鍵處
+            this.box2CurrentX = nl;
+            this.box2CurrentY = nt;
+
+            scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;`;
+        },
+        slipMouseDown(str, $event) {
+            this.who = str;
+            this.startX = event.clientX;
+            this.startY = event.clientY;
+
+            let scrollitem = document.getElementById(str);
+
+            window.addEventListener("mousemove", this.slipMouseMove);
+            window.addEventListener("mouseup", this.slipMouseUp);
+            this.cardL = scrollitem.offsetLeft;
+            this.cardT = scrollitem.offsetTop;
+        },
+        unlikeHandler(str) {
+            console.log("unlikeHandler", str);
+            let ac = document.getElementById(str);
+            ac.style = `left: ${ac.offsetLeft}px; top:${ac.offsetTop}px;transition-duration: 1s;`;
+            setTimeout(() => {
+                ac.classList.add("unlike");
+            }, 10);
+        },
+        likeHandler(str) {
+            console.log("likeHandler", str);
+            let ac = document.getElementById(str);
+            ac.style = `left: ${ac.offsetLeft}px; top:${ac.offsetTop}px;transition-duration: 1s;`;
+            setTimeout(() => {
+                ac.classList.add("like");
+            }, 10);
         },
     },
 };

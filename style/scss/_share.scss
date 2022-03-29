@@ -509,14 +509,10 @@ svg {
     // .slip_item
     &_item {
         position: absolute;
-        // left: 0;
-        // right: 0;
-
         @include d_f(flex, flex-end, space-between);
         width: 287px;
         height: 461px;
-        margin: auto;
-        background-color: #fff;
+        background-color: #ccc;
         // background: linear-gradient(
         //         180.01deg,
         //         rgba(0, 0, 0, 0) 48.59%,
@@ -528,9 +524,20 @@ svg {
         border-radius: 32px;
         filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
         z-index: 2;
-        transform: translate3d(-1px, 0px, 0px) rotate(-3deg);
-        box-sizing: content-box;
+        transform: rotate(-3deg);
         @extend %transition;
+        &.like {
+            transform-origin: bottom center;
+			transform: rotate(45deg);
+			left: 1000px !important;
+        }
+        &.unlike {
+            transform-origin: bottom center;
+			transform: rotate(-45deg);
+			left: -1000px !important;
+        }
+        box-sizing: content-box;
+        // @extend %transition;
         @at-root .detail & {
             width: 390px;
             height: 542px;
