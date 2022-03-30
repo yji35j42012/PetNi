@@ -410,7 +410,10 @@ svg {
     background-color: #f8f8f8;
     @include mw(M) {
         @include d_f(flex, center, space-between);
-    }
+	}
+	@include mw(S) {
+		height: 62px;
+	}
     .backCard {
         width: 46px;
         height: 46px;

@@ -730,6 +730,12 @@ input:checked ~ .switch_ball::after {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .headFunc {
+    height: 62px;
+  }
+}
+
 .headFunc .backCard {
   width: 46px;
   height: 46px;
