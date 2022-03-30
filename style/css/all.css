@@ -120,7 +120,7 @@ select {
   }
 }
 
-.switch_ball, .switch_ball::after, .menu_group span, .func, .slip::before, .slip::after, .slip_item, .recommend {
+.switch_ball, .switch_ball::after, .menu_group span, .func, .slip::before, .slip_item, .slip_item._noData, .recommend {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
 }
@@ -803,7 +803,7 @@ input:checked ~ .switch_ball::after {
   height: 461px;
 }
 
-.slip::before, .slip::after {
+.slip::before {
   position: absolute;
   right: 0;
   content: "";
@@ -816,7 +816,7 @@ input:checked ~ .switch_ball::after {
           box-sizing: border-box;
 }
 
-.detail .slip::before, .detail .slip::after {
+.detail .slip::before {
   opacity: 0;
 }
 
@@ -840,25 +840,6 @@ input:checked ~ .switch_ball::after {
   }
 }
 
-.slip::after {
-  top: 0;
-  left: 0;
-  width: 253px;
-  height: 430px;
-  -webkit-filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
-          filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
-}
-
-@media screen and (max-width: 599px) {
-  .slip::after {
-    left: 0;
-    width: 230px;
-    height: 390px;
-  }
-}
-
 @media screen and (max-width: 995px) {
   .detail .slip {
     width: 100%;
@@ -873,6 +854,7 @@ input:checked ~ .switch_ball::after {
 }
 
 .slip_item {
+  overflow: hidden;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -885,7 +867,7 @@ input:checked ~ .switch_ball::after {
           justify-content: space-between;
   width: 287px;
   height: 461px;
-  background-color: #ccc;
+  background-color: #fff;
   border: 12px solid #ffffff;
   border-radius: 32px;
   -webkit-filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
@@ -897,6 +879,27 @@ input:checked ~ .switch_ball::after {
           box-sizing: content-box;
 }
 
+.slip_item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180.01deg, rgba(0, 0, 0, 0) 48.59%, rgba(0, 0, 0, 0) 70.09%, rgba(0, 0, 0, 0.4) 90.71%);
+}
+
+.slip_item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  margin: auto;
+}
+
 .slip_item.like {
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
@@ -905,12 +908,28 @@ input:checked ~ .switch_ball::after {
   left: 1000px !important;
 }
 
+@media screen and (max-width: 767px) {
+  .slip_item.like {
+    left: 800px !important;
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+}
+
 .slip_item.unlike {
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
   left: -1000px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .slip_item.unlike {
+    left: -800px !important;
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
 }
 
 .detail .slip_item {
@@ -1013,6 +1032,55 @@ input:checked ~ .switch_ball::after {
   display: block;
   width: 24px;
   height: 24px;
+}
+
+.slip_item._noData {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 253px;
+  height: 430px;
+  margin: auto;
+  background-color: #fff;
+  color: #fdaaa2;
+  border: 12px solid #ffffff;
+  border-radius: 32px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+  text-align: center;
+}
+
+@media screen and (max-width: 599px) {
+  .slip_item._noData {
+    left: 0;
+    width: 230px;
+    height: 390px;
+  }
+}
+
+.detail .slip_item._noData {
+  opacity: 0;
+}
+
+.slip_item._noData span {
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-transform: rotate(-15deg);
+          transform: rotate(-15deg);
 }
 
 .recommend {

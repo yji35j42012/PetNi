@@ -107,20 +107,20 @@
         </div>
         <div class="info">
             <div class="slip">
+                <div class="slip_item _noData">
+                    <span>
+                        很抱歉 ！<br />已沒有單身狗、單身貓了，<br />請嘗試修改篩選條件。
+                    </span>
+                </div>
                 <div
-                    v-for="(item, index) in 2"
+                    v-for="(item, index) in petInfo"
                     :key="index"
                     :id="'slip' + index"
                     class="slip_item"
                     @mousedown="slipMouseDown('slip' + index)"
                     @touchstart="slipMouseDown('slip' + index)"
                 >
-                    <!-- 
-					@mouseup="slipMouseUp('slip' + index)"
-					@touchend="slipMouseUp('slip' + index)" -->
-                    <!-- @mousemove="slipMouseMove('slip' + index)" -->
-                    <!-- v-on="{ mousedown: slipMouseDown, mouseup: slipMouseUp }" -->
-
+                    <img :src="item.album_file" alt="" />
                     <button
                         class="slip_item_detail"
                         @click="detailHandler('123')"
@@ -146,7 +146,7 @@
                         </button>
                         <div class="slip_item_info">
                             <p class="name female">
-                                <span>157763</span>
+                                <span>{{ item.animal_id }}</span>
                                 <i class="gender">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +156,7 @@
                                     </svg>
                                 </i>
                             </p>
-                            <p class="address">臺南市南區</p>
+                            <p class="address">{{item.animal_place}}</p>
                         </div>
                         <button
                             class="like_btn"
@@ -203,30 +203,22 @@ module.exports = {
             cardT: "",
             box2CurrentX: 0,
             box2CurrentY: 100,
+            moveRotateRight: 0, //移動兼具＋
+            petInfo: pet,
         };
     },
     components: {
         petinfo: httpVueLoader("../components/PetInfo.vue"),
     },
-    mounted() {},
-    computed: {},
+    mounted() {
+        // console.log(this.petInfo);
+    },
+    computed: {
+        petInfo() {
+            return this.petInfo;
+        },
+    },
     methods: {
-        showHandler(str) {
-            // console.log("showHandler", str);
-            let scrollitem = document.getElementById(str);
-            // console.log(this.getMousePos());
-        },
-        getMousePos(event) {
-            var e = event || window.event;
-            var scrollX =
-                document.documentElement.scrollLeft || document.body.scrollLeft;
-            var scrollY =
-                document.documentElement.scrollTop || document.body.scrollTop;
-            var x = e.pageX || e.clientX + scrollX;
-            var y = e.pageY || e.clientY + scrollY;
-            //alert('x: ' + x + '\ny: ' + y);
-            return { x: x, y: y };
-        },
         detailHandler(id) {
             this.$router.push("/detail");
         },
@@ -235,66 +227,126 @@ module.exports = {
 
             window.removeEventListener("mousemove", this.slipMouseMove);
             window.removeEventListener("mouseup", this.slipMouseUp);
+            window.removeEventListener("touchmove", this.slipMouseMove);
+            window.removeEventListener("touchend", this.slipMouseUp);
 
             let boxW = document.getElementById("container");
             let scrollitem = document.getElementById(this.who);
-
-            let boxWMin = boxW.offsetWidth * (1 / 4);
-            let boxWMax = boxW.offsetWidth * (3 / 4);
+            let boxWMin = boxW.offsetWidth * (1 / 5);
+            let boxWMax = boxW.offsetWidth * (4 / 5);
 
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
-            console.log("boxWMin", boxWMin);
-            console.log("boxWMax", boxWMax);
-            console.log("itemCenter", itemCenter);
+            let itemLeft = scrollitem.offsetLeft;
 
-            if (itemCenter >= boxWMax * (3 / 4)) {
+            if (itemCenter >= boxWMax) {
                 console.log("like");
+                scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+                this.addClassHandler(this.who, "like", 10);
             } else if (itemCenter <= boxWMin) {
                 console.log("unlike");
+                scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+                this.addClassHandler(this.who, "unlike", 10);
+            } else {
+                // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
+                console.log("回赴");
+                scrollitem.style = `left: ${this.cardL}px; top:${this.cardT}px;transition-duration: 1s;`;
             }
         },
         slipMouseMove($event) {
             let scrollitem = document.getElementById(this.who);
             console.log("卡片滑動");
-
-            let nx = event.clientX;
-            let ny = event.clientY;
+            if (!event.touches) {
+                //相容移動端
+                var nx = event.clientX;
+                var ny = event.clientY;
+            } else {
+                //相容PC端
+                var nx = event.touches[0].pageX;
+                var ny = event.touches[0].pageY;
+            }
             let nl = nx - (this.startX - this.cardL);
             let nt = ny - (this.startY - this.cardT);
-
             // 程式碼關鍵處
             this.box2CurrentX = nl;
             this.box2CurrentY = nt;
+            let boxW = document.getElementById("container");
+            let boxWTotal = boxW.offsetWidth;
+            console.log("boxWTotal", boxWTotal);
 
-            scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;`;
+            let boxWMin = boxW.offsetWidth * (1 / 5);
+            let boxWCen = boxW.offsetWidth * (1 / 2);
+            let boxWMax = boxW.offsetWidth * (4 / 5);
+            let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
+            if (boxWTotal > 768) {
+                var rotateNum = 30;
+                var rotateMaxNum = 45;
+            } else {
+                var rotateNum = 10;
+                var rotateMaxNum = 15;
+            }
+            var nowRotate = scrollitem.style.transform
+                .split("rotate(")[1]
+                .split("deg)")[0];
+            let rotate = rotateNum / this.moveRotateRight;
+            if (
+                boxWMax - itemCenter >= 0 &&
+                nowRotate <= rotateMaxNum &&
+                nowRotate >= -rotateMaxNum
+            ) {
+                nowRotate =
+                    rotate * (this.moveRotateRight - (boxWMax - itemCenter));
+                if (nowRotate > rotateMaxNum) {
+                    nowRotate = rotateMaxNum;
+                } else if (nowRotate < -rotateMaxNum) {
+                    nowRotate = -rotateMaxNum;
+                }
+            }
+            scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;transform: rotate(${nowRotate}deg);`;
         },
         slipMouseDown(str, $event) {
             this.who = str;
             this.startX = event.clientX;
-            this.startY = event.clientY;
+            if (!event.touches) {
+                //相容移動端
+                this.startX = event.clientX;
+                this.startY = event.clientY;
+            } else {
+                //相容PC端
+                this.startX = event.touches[0].pageX;
+                this.startY = event.touches[0].pageY;
+            }
 
             let scrollitem = document.getElementById(str);
-
+            let boxW = document.getElementById("container");
             window.addEventListener("mousemove", this.slipMouseMove);
             window.addEventListener("mouseup", this.slipMouseUp);
+            window.addEventListener("touchmove", this.slipMouseMove);
+            window.addEventListener("touchend", this.slipMouseUp);
+
             this.cardL = scrollitem.offsetLeft;
             this.cardT = scrollitem.offsetTop;
+            let boxWMax = boxW.offsetWidth * (3 / 4);
+            let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
+            this.moveRotateRight = boxWMax - itemCenter;
+            scrollitem.style = `left: ${this.cardL}px; top:${this.cardT}px;transition-duration: 0s;transform: rotate(-3deg)`;
         },
         unlikeHandler(str) {
             console.log("unlikeHandler", str);
-            let ac = document.getElementById(str);
-            ac.style = `left: ${ac.offsetLeft}px; top:${ac.offsetTop}px;transition-duration: 1s;`;
-            setTimeout(() => {
-                ac.classList.add("unlike");
-            }, 10);
+            let scrollitem = document.getElementById(str);
+            scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+            this.addClassHandler(str, "unlike", 10);
         },
         likeHandler(str) {
             console.log("likeHandler", str);
-            let ac = document.getElementById(str);
-            ac.style = `left: ${ac.offsetLeft}px; top:${ac.offsetTop}px;transition-duration: 1s;`;
+            let scrollitem = document.getElementById(str);
+            scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+            this.addClassHandler(str, "like", 10);
+        },
+        addClassHandler(who, what, when) {
+            let addObj = document.getElementById(who);
             setTimeout(() => {
-                ac.classList.add("like");
-            }, 10);
+                addObj.classList.add(what);
+            }, when);
         },
     },
 };
