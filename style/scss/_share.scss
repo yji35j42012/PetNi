@@ -529,7 +529,8 @@ svg {
         //     url("https://asms.coa.gov.tw/amlapp/upload/pic/807e09bf-36b5-4927-8b04-c846ba1c3960_org.jpg") no-repeat center/cover;
         border: 12px solid #ffffff;
         border-radius: 32px;
-        filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+        // filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
         z-index: 2;
         transform: rotate(-3deg);
         @extend %transition;
