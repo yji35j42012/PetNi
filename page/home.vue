@@ -204,7 +204,7 @@ module.exports = {
             box2CurrentX: 0,
             box2CurrentY: 100,
             moveRotateRight: 0, //移動兼具＋
-            petData: pet,
+            oldpetData: pet,
             resetCardL: 0,
             resetCardT: 0,
         };
@@ -217,10 +217,12 @@ module.exports = {
         let scrollitem = document.getElementById("slip0");
         this.resetCardL = scrollitem.offsetLeft;
         this.resetCardT = scrollitem.offsetTop;
+
+        console.log("oldpetData", this.oldpetData);
     },
     computed: {
         petItem() {
-            return this.petData;
+            return this.oldpetData;
         },
     },
     methods: {
@@ -230,9 +232,9 @@ module.exports = {
         // 鬆開卡片
         slipMouseUp() {
             console.log("鬆開卡片");
-			let outside = document.getElementById('app');
-			outside.style=""
-			window.removeEventListener("mousemove", this.slipMouseMove);
+            let outside = document.getElementById("app");
+            outside.style = "";
+            window.removeEventListener("mousemove", this.slipMouseMove);
             window.removeEventListener("mouseup", this.slipMouseUp);
             window.removeEventListener("touchmove", this.slipMouseMove);
             window.removeEventListener("touchend", this.slipMouseUp);
@@ -241,7 +243,6 @@ module.exports = {
             let scrollitem = document.getElementById(this.who);
             let boxWMin = boxW.offsetWidth * (1 / 5);
             let boxWMax = boxW.offsetWidth * (4 / 5);
-
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             let itemLeft = scrollitem.offsetLeft;
 
@@ -256,7 +257,12 @@ module.exports = {
             } else {
                 // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
                 console.log("回赴");
-                scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px;transition-duration: 0.5s;`;
+
+                scrollitem.classList.add("rot");
+                scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; `;
+                setTimeout(() => {
+                    scrollitem.classList.remove("rot");
+                }, 500);
             }
         },
         // 卡片滑動
@@ -310,14 +316,16 @@ module.exports = {
                 }
             }
             scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;transform: rotate(${nowRotate}deg);`;
+            // scrollitem.style = `transition-duration: 0s;transform: translate3d(${nt}px,${nl}px,0) ;rotate(${nowRotate}deg);`;
         },
         // 按下卡片
         slipMouseDown(str, $event) {
-			console.log("按下卡片");
-			let outside = document.getElementById('app');
-			outside.style="position: fixed;"
+            console.log("按下卡片");
+            let outside = document.getElementById("app");
+            outside.style = "position: fixed;";
             this.who = str;
             this.startX = event.clientX;
+
             if (!event.touches) {
                 //相容移動端
                 this.startX = event.clientX;
