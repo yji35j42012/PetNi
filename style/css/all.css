@@ -901,6 +901,8 @@ input:checked ~ .switch_ball::after {
   z-index: 2;
   -webkit-transform: rotate(-3deg);
           transform: rotate(-3deg);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
 }
