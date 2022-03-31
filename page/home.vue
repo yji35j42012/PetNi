@@ -272,6 +272,7 @@ module.exports = {
         },
         // 卡片滑動
         slipMouseMove($event) {
+			$event.preventDefault();
             let scrollitem = document.getElementById(this.who);
             console.log("卡片滑動");
             if (!event.touches) {
