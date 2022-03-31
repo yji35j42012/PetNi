@@ -251,28 +251,33 @@ module.exports = {
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             let itemLeft = scrollitem.offsetLeft;
 
-            if (itemCenter >= boxWMax) {
-                console.log("like");
-                scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
-                this.addClassHandler(this.who, "like", 10);
-            } else if (itemCenter <= boxWMin) {
-                console.log("unlike");
-                scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
-                this.addClassHandler(this.who, "unlike", 10);
-            } else {
-                // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
-                console.log("回赴");
+            // if (itemCenter >= boxWMax) {
+            //     console.log("like");
+            //     scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+            //     this.addClassHandler(this.who, "like", 10);
+            // } else if (itemCenter <= boxWMin) {
+            //     console.log("unlike");
+            //     scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+            //     this.addClassHandler(this.who, "unlike", 10);
+            // } else {
+            //     // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
+            //     console.log("回赴");
 
-                scrollitem.classList.add("rot");
-                scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
-                setTimeout(() => {
-                    scrollitem.classList.remove("rot");
-                }, 500);
-            }
+            //     scrollitem.classList.add("rot");
+            //     scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
+            //     setTimeout(() => {
+            //         scrollitem.classList.remove("rot");
+            //     }, 500);
+            // }
+            scrollitem.classList.add("rot");
+            scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
+            setTimeout(() => {
+                scrollitem.classList.remove("rot");
+            }, 1000);
         },
         // 卡片滑動
         slipMouseMove($event) {
-			$event.preventDefault();
+            // $event.preventDefault();
             let scrollitem = document.getElementById(this.who);
             console.log("卡片滑動");
             if (!event.touches) {
@@ -284,17 +289,22 @@ module.exports = {
                 var nx = event.touches[0].pageX;
                 var ny = event.touches[0].pageY;
             }
+
             let nl = nx - (this.startX - this.cardL);
             let nt = ny - (this.startY - this.cardT);
 
-            console.log("test", nt);
+            // console.log("event.clientX", nx);
+            // console.log("this.startX", this.startX);
+            console.log("test", nx - this.startX);
+
+            let newl = nx - this.startX;
+            let newt = ny - this.startY;
 
             // 程式碼關鍵處
             this.box2CurrentX = nl;
             this.box2CurrentY = nt;
             let boxW = document.getElementById("container");
             let boxWTotal = boxW.offsetWidth;
-            console.log("boxWTotal", boxWTotal);
 
             let boxWMin = boxW.offsetWidth * (1 / 5);
             let boxWCen = boxW.offsetWidth * (1 / 2);
@@ -307,9 +317,15 @@ module.exports = {
                 var rotateNum = 10;
                 var rotateMaxNum = 15;
             }
+            // var nowRotate = scrollitem.style.transform
+            //     .split("rotate(")[1]
+            //     .split("deg)")[0];
             var nowRotate = scrollitem.style.transform
                 .split("rotate(")[1]
                 .split("deg)")[0];
+
+            console.log("nowRotate", nowRotate);
+
             let rotate = rotateNum / this.moveRotateRight;
             if (
                 boxWMax - itemCenter >= 0 &&
@@ -324,8 +340,9 @@ module.exports = {
                     nowRotate = -rotateMaxNum;
                 }
             }
-            scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;transform: rotate(${nowRotate}deg);transform-origin: bottom center;`;
-            // scrollitem.style = `transition-duration: 0s;transform: translate3d(${nt}px,${nl}px,0) ;rotate(${nowRotate}deg);`;
+            // //
+            // scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;transform: rotate(${nowRotate}deg);transform-origin: bottom center;`;
+            scrollitem.style = `transition-duration: 0s;transform: translate3d(${newl}px,${newt}px,0) rotate(40deg);`;
         },
         // 按下卡片
         slipMouseDown(str, $event) {
@@ -334,7 +351,7 @@ module.exports = {
             // outside.style = "position: fixed; top:0;left:0; ";
             this.who = str;
             this.startX = event.clientX;
-
+            // 點擊位置
             if (!event.touches) {
                 //相容移動端
                 this.startX = event.clientX;
@@ -344,7 +361,6 @@ module.exports = {
                 this.startX = event.touches[0].pageX;
                 this.startY = event.touches[0].pageY;
             }
-
             let scrollitem = document.getElementById(str);
             let boxW = document.getElementById("container");
             window.addEventListener("mousemove", this.slipMouseMove);
