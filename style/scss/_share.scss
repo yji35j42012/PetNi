@@ -537,7 +537,7 @@ svg {
         transform-origin: bottom center;
 
         @extend %transition;
-        img {
+        .picSpan {
             position: absolute;
             top: 0;
             left: 0;
@@ -545,6 +545,9 @@ svg {
             right: 0;
             width: 100%;
             margin: auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
         }
         &.like {
             transform-origin: bottom center;

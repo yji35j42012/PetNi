@@ -120,7 +120,13 @@
                     @mousedown="slipMouseDown('slip' + index)"
                     @touchstart="slipMouseDown('slip' + index)"
                 >
-                    <img :src="item.album_file" alt="" />
+                    <span
+                        class="picSpan"
+                        :style="
+                            'background-image:url(' + item.album_file +')'
+                        "
+                    ></span>
+                    <!-- <img :src="item.album_file" alt="" /> -->
                     <button
                         class="slip_item_detail"
                         @click="detailHandler('123')"
@@ -247,29 +253,24 @@ module.exports = {
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             let itemLeft = scrollitem.offsetLeft;
 
-            // if (itemCenter >= boxWMax) {
-            //     console.log("like");
-            //     scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
-            //     this.addClassHandler(this.who, "like", 10);
-            // } else if (itemCenter <= boxWMin) {
-            //     console.log("unlike");
-            //     scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
-            //     this.addClassHandler(this.who, "unlike", 10);
-            // } else {
-            //     // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
-            //     console.log("回赴");
+            if (itemCenter >= boxWMax) {
+                console.log("like");
+                scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+                this.addClassHandler(this.who, "like", 10);
+            } else if (itemCenter <= boxWMin) {
+                console.log("unlike");
+                scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
+                this.addClassHandler(this.who, "unlike", 10);
+            } else {
+                // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
+                console.log("回赴");
 
-            //     scrollitem.classList.add("rot");
-            //     scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
-            //     setTimeout(() => {
-            //         scrollitem.classList.remove("rot");
-            //     }, 500);
-            // }
-            scrollitem.classList.add("rot");
-            scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform:translate3d(0,0,0) rotate(-3deg);`;
-            setTimeout(() => {
-                scrollitem.classList.remove("rot");
-            }, 500);
+                scrollitem.classList.add("rot");
+                scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
+                setTimeout(() => {
+                    scrollitem.classList.remove("rot");
+                }, 500);
+            }
         },
         // 卡片滑動
         slipMouseMove($event) {

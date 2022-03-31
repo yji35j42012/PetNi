@@ -918,7 +918,7 @@ input:checked ~ .switch_ball::after {
   background: linear-gradient(180.01deg, rgba(0, 0, 0, 0) 48.59%, rgba(0, 0, 0, 0) 70.09%, rgba(0, 0, 0, 0.4) 90.71%);
 }
 
-.slip_item img {
+.slip_item .picSpan {
   position: absolute;
   top: 0;
   left: 0;
@@ -926,6 +926,9 @@ input:checked ~ .switch_ball::after {
   right: 0;
   width: 100%;
   margin: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .slip_item.like {
