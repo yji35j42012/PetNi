@@ -230,7 +230,9 @@ module.exports = {
         // 鬆開卡片
         slipMouseUp() {
             console.log("鬆開卡片");
-            window.removeEventListener("mousemove", this.slipMouseMove);
+			let outside = document.getElementById('app');
+			outside.style=""
+			window.removeEventListener("mousemove", this.slipMouseMove);
             window.removeEventListener("mouseup", this.slipMouseUp);
             window.removeEventListener("touchmove", this.slipMouseMove);
             window.removeEventListener("touchend", this.slipMouseUp);
@@ -311,7 +313,9 @@ module.exports = {
         },
         // 按下卡片
         slipMouseDown(str, $event) {
-            console.log("按下卡片");
+			console.log("按下卡片");
+			let outside = document.getElementById('app');
+			outside.style="position: fixed;"
             this.who = str;
             this.startX = event.clientX;
             if (!event.touches) {
