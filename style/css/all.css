@@ -145,6 +145,13 @@ select {
   cursor: pointer;
 }
 
+html,
+body {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .wrap {
   display: -webkit-box;
   display: -ms-flexbox;

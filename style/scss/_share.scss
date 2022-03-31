@@ -1,3 +1,8 @@
+html,body{
+	position: fixed;
+	top: 0;
+	left: 0;
+}
 .wrap {
     @include d_f(flex);
     flex-wrap: wrap;

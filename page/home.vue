@@ -120,12 +120,10 @@
                     @mousedown="slipMouseDown('slip' + index)"
                     @touchstart="slipMouseDown('slip' + index)"
                 >
-                    <span
+                    <!-- <span
                         class="picSpan"
-                        :style="
-                            'background-image:url(' + item.album_file +')'
-                        "
-                    ></span>
+                        :style="'background-image:url(' + item.album_file + ')'"
+                    ></span> -->
                     <!-- <img :src="item.album_file" alt="" /> -->
                     <button
                         class="slip_item_detail"
@@ -287,6 +285,9 @@ module.exports = {
             }
             let nl = nx - (this.startX - this.cardL);
             let nt = ny - (this.startY - this.cardT);
+
+            console.log("test", nt);
+
             // 程式碼關鍵處
             this.box2CurrentX = nl;
             this.box2CurrentY = nt;
