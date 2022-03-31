@@ -52,6 +52,22 @@ body {
   font-family: "Abhaya Libre", sans-serif;
 }
 
+/* 
+僅限ios15以上的safari瀏覽器
+才加class在html上(高度改為100vh的class)
+並於以下狀態
+在html加上重整高度class(一秒後移除)
+1.從登入頁進入到主框架時
+2.鍵盤彈出後收起時 
+*/
+html.ios15 {
+  height: 100vh;
+}
+
+.ios15 body {
+  height: 100vh;
+}
+
 *:hover,
 *:focus,
 *:active {
@@ -69,7 +85,7 @@ input,
 textarea,
 button {
   border: none;
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
   padding: 0;
   border: 0;
   background-color: transparent;
