@@ -113,7 +113,7 @@
                     </span>
                 </div>
                 <div
-                    v-for="(item, index) in petInfo"
+                    v-for="(item, index) in petItem"
                     :key="index"
                     :id="'slip' + index"
                     class="slip_item"
@@ -156,7 +156,7 @@
                                     </svg>
                                 </i>
                             </p>
-                            <p class="address">{{item.animal_place}}</p>
+                            <p class="address">{{ item.animal_place }}</p>
                         </div>
                         <button
                             class="like_btn"
@@ -204,7 +204,9 @@ module.exports = {
             box2CurrentX: 0,
             box2CurrentY: 100,
             moveRotateRight: 0, //移動兼具＋
-            petInfo: pet,
+            petData: pet,
+            resetCardL: 0,
+            resetCardT: 0,
         };
     },
     components: {
@@ -212,19 +214,22 @@ module.exports = {
     },
     mounted() {
         // console.log(this.petInfo);
+        let scrollitem = document.getElementById("slip0");
+        this.resetCardL = scrollitem.offsetLeft;
+        this.resetCardT = scrollitem.offsetTop;
     },
     computed: {
-        petInfo() {
-            return this.petInfo;
+        petItem() {
+            return this.petData;
         },
     },
     methods: {
         detailHandler(id) {
             this.$router.push("/detail");
         },
+        // 鬆開卡片
         slipMouseUp() {
             console.log("鬆開卡片");
-
             window.removeEventListener("mousemove", this.slipMouseMove);
             window.removeEventListener("mouseup", this.slipMouseUp);
             window.removeEventListener("touchmove", this.slipMouseMove);
@@ -249,9 +254,10 @@ module.exports = {
             } else {
                 // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
                 console.log("回赴");
-                scrollitem.style = `left: ${this.cardL}px; top:${this.cardT}px;transition-duration: 1s;`;
+                scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px;transition-duration: 0.5s;`;
             }
         },
+        // 卡片滑動
         slipMouseMove($event) {
             let scrollitem = document.getElementById(this.who);
             console.log("卡片滑動");
@@ -303,7 +309,9 @@ module.exports = {
             }
             scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;transform: rotate(${nowRotate}deg);`;
         },
+        // 按下卡片
         slipMouseDown(str, $event) {
+            console.log("按下卡片");
             this.who = str;
             this.startX = event.clientX;
             if (!event.touches) {
