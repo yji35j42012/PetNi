@@ -546,7 +546,16 @@ svg {
                 rgba(0, 0, 0, 0.4) 90.71%
             );
         }
-
+        img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            margin: auto;
+            pointer-events: none;
+        }
         // background: linear-gradient(
         //         180.01deg,
         //         rgba(0, 0, 0, 0) 48.59%,
@@ -577,20 +586,19 @@ svg {
         }
         &.like {
             transform-origin: bottom center;
-            transform: rotate(45deg);
-            left: 1000px !important;
+            transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
+
+            transition-duration: 0.5s !important;
             @include mw(S) {
-                left: 800px !important;
-                transform: rotate(15deg);
+                transform: translate3d(1000px, 0, 0) rotate(15deg) !important;
             }
         }
         &.unlike {
             transform-origin: bottom center;
-            transform: rotate(-45deg);
-            left: -1000px !important;
+            transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
+            transition-duration: 0.5s !important;
             @include mw(S) {
-                left: -800px !important;
-                transform: rotate(-15deg);
+                transform: translate3d(-1000px, 0, 0) rotate(-15deg) !important;
             }
         }
         box-sizing: content-box;

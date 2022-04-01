@@ -943,6 +943,17 @@ input:checked ~ .switch_ball::after {
   background: linear-gradient(180.01deg, rgba(0, 0, 0, 0) 48.59%, rgba(0, 0, 0, 0) 70.09%, rgba(0, 0, 0, 0.4) 90.71%);
 }
 
+.slip_item img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  margin: auto;
+  pointer-events: none;
+}
+
 .slip_item .picSpan {
   position: absolute;
   top: 0;
@@ -959,32 +970,32 @@ input:checked ~ .switch_ball::after {
 .slip_item.like {
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  left: 1000px !important;
+  -webkit-transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
+          transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
+  -webkit-transition-duration: 0.5s !important;
+          transition-duration: 0.5s !important;
 }
 
 @media screen and (max-width: 767px) {
   .slip_item.like {
-    left: 800px !important;
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+    -webkit-transform: translate3d(1000px, 0, 0) rotate(15deg) !important;
+            transform: translate3d(1000px, 0, 0) rotate(15deg) !important;
   }
 }
 
 .slip_item.unlike {
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  left: -1000px !important;
+  -webkit-transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
+          transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
+  -webkit-transition-duration: 0.5s !important;
+          transition-duration: 0.5s !important;
 }
 
 @media screen and (max-width: 767px) {
   .slip_item.unlike {
-    left: -800px !important;
-    -webkit-transform: rotate(-15deg);
-            transform: rotate(-15deg);
+    -webkit-transform: translate3d(-1000px, 0, 0) rotate(-15deg) !important;
+            transform: translate3d(-1000px, 0, 0) rotate(-15deg) !important;
   }
 }
 

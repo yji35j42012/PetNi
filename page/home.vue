@@ -214,6 +214,7 @@ module.exports = {
             cardIndex: null,
             rotateNum: 30,
             rotateMaxNum: 45,
+            newL: 0,
         };
     },
     components: {
@@ -252,31 +253,20 @@ module.exports = {
             let boxWMax = boxW.offsetWidth * (4 / 5);
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             let itemLeft = scrollitem.offsetLeft;
-            this.transformHandler(0, 0, -3, 0.5);
+            console.log("itemCenter", itemCenter + this.newL);
+            console.log("boxWMax", boxWMax);
 
-            // if (itemCenter >= boxWMax) {
-            //     console.log("like");
-            //     scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
-            //     this.addClassHandler(this.who, "like", 10);
-            // } else if (itemCenter <= boxWMin) {
-            //     console.log("unlike");
-            //     scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
-            //     this.addClassHandler(this.who, "unlike", 10);
-            // } else {
-            //     // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
-            //     console.log("回赴");
-
-            //     scrollitem.classList.add("rot");
-            //     scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
-            //     setTimeout(() => {
-            //         scrollitem.classList.remove("rot");
-            //     }, 500);
-            // }
-            // scrollitem.classList.add("rot");
-            // scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
-            // setTimeout(() => {
-            //     scrollitem.classList.remove("rot");
-            // }, 1000);
+            if (itemCenter + this.newL >= boxWMax) {
+                console.log("like");
+                this.addClassHandler(this.who, "like", 10);
+            } else if (itemCenter + this.newL <= boxWMin) {
+                console.log("unlike");
+                this.addClassHandler(this.who, "unlike", 10);
+            } else {
+                // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
+                console.log("回赴");
+                this.transformHandler(0, 0, -3, 0.5);
+            }
         },
         // 卡片滑動
         slipMouseMove($event) {
@@ -295,6 +285,7 @@ module.exports = {
             let nt = ny - (this.startY - this.cardT);
 
             let newl = nx - this.startX;
+            this.newL = newl;
             let newt = ny - this.startY;
             // 程式碼關鍵處
             this.box2CurrentX = nl;
@@ -355,8 +346,6 @@ module.exports = {
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             this.moveRotateRight = boxWMax - itemCenter;
             this.transformHandler(0, 0, -3, 0);
-            // scrollitem.style = `left: ${this.cardL}px; top:${this.cardT}px;transition-duration: 0s;transform: rotate(-3deg);`;
-            // scrollitem.style = `transform: rotate(-3deg); transition-duration: 0s;`;
         },
         transformHandler(x, y, rotate, time) {
             let scrollitem = document.getElementById(this.who);
