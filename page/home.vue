@@ -98,7 +98,9 @@
                     <path :d="icon_all.back" />
                 </svg>
             </button>
-            <span class="name">雙色狗</span>
+            <span class="name">
+                {{ showTitle }}
+            </span>
             <button class="searchBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
                     <path :d="icon_all.filter" />
@@ -156,7 +158,8 @@
                                     </svg>
                                 </i>
                             </p>
-                            <p class="address">{{ item.animal_place }}</p>
+                            <!-- <p class="address">{{ item.animal_place }}</p> -->
+                            <p class="address">{{ item.animal_Variety }}</p>
                         </div>
                         <button
                             class="like_btn"
@@ -195,37 +198,50 @@ module.exports = {
     data() {
         return {
             icon_all: icon_all,
-            isDown: false,
             who: "",
             startX: "",
             startY: "",
             cardL: "",
             cardT: "",
-            box2CurrentX: 0,
-            box2CurrentY: 100,
             moveRotateRight: 0, //移動兼具＋
             oldpetData: pet,
-            resetCardL: 0,
-            resetCardT: 0,
-            cardIndex: null,
             rotateNum: 30,
             rotateMaxNum: 45,
             newL: 0,
+            totalItem: 0,
+            scolled: 0,
         };
     },
     components: {
         petinfo: httpVueLoader("../components/PetInfo.vue"),
     },
     mounted() {
-        // console.log(this.petInfo);
-        let scrollitem = document.getElementById("slip0");
-        this.resetCardL = scrollitem.offsetLeft;
-        this.resetCardT = scrollitem.offsetTop;
+        // let scrollitem = document.getElementById("slip0");
+        // console.log("oldpetData", this.oldpetData);
 
-        console.log("oldpetData", this.oldpetData);
+        this.totalItem = this.oldpetData.length;
     },
     computed: {
+        showTitle() {
+            let show = "";
+            if (this.totalItem !== 0 && this.totalItem !== this.scolled) {
+                console.log("totalItem", this.totalItem);
+                console.log("scolled", this.scolled);
+
+                show = this.oldpetData[this.totalItem - this.scolled - 1]
+                    .animal_Variety;
+            } else if (this.totalItem == this.scolled) {
+                show = "沒資料了";
+            }
+            return show;
+        },
         petItem() {
+            // console.log("totalItem", this.totalItem);
+            // console.log("scolled", this.scolled);
+            // console.log(
+            //     "txt",
+            //     this.oldpetData[this.totalItem - this.scolled].animal_Variety
+            // );
             return this.oldpetData;
         },
     },
@@ -249,15 +265,16 @@ module.exports = {
             let boxWMax = boxW.offsetWidth * (4 / 5);
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             let itemLeft = scrollitem.offsetLeft;
-            console.log("itemCenter", itemCenter + this.newL);
-            console.log("boxWMax", boxWMax);
 
             if (itemCenter + this.newL >= boxWMax) {
                 console.log("like");
+                this.transformHandler(0, 0, -3, 0.5);
                 this.addClassHandler(this.who, "like", 10);
+                this.scolled++;
             } else if (itemCenter + this.newL <= boxWMin) {
                 console.log("unlike");
                 this.addClassHandler(this.who, "unlike", 10);
+                this.scolled++;
             } else {
                 console.log("回赴");
                 this.transformHandler(0, 0, -3, 0.5);
@@ -276,34 +293,25 @@ module.exports = {
                 var nx = event.touches[0].pageX;
                 var ny = event.touches[0].pageY;
             }
-            let nl = nx - (this.startX - this.cardL);
-            let nt = ny - (this.startY - this.cardT);
 
             let newl = nx - this.startX;
             this.newL = newl;
             let newt = ny - this.startY;
             // 程式碼關鍵處
-            this.box2CurrentX = nl;
-            this.box2CurrentY = nt;
             let boxW = document.getElementById("container");
-
             let boxWMin = boxW.offsetWidth * (1 / 5);
             let boxWCen = boxW.offsetWidth * (1 / 2);
             let boxWMax = boxW.offsetWidth * (4 / 5);
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
 
-            var nowRotate = scrollitem.style.transform
-                .split("rotate(")[1]
-                .split("deg)")[0];
             let rotate = 45 / this.moveRotateRight;
-            let rotate2 = rotate * newl + -3;
-            if (rotate2 >= this.rotateMaxNum) {
-                rotate2 = this.rotateMaxNum;
-            } else if (rotate2 <= -this.rotateMaxNum) {
-                rotate2 = -this.rotateMaxNum;
+            let nowRotate = rotate * newl + -3;
+            if (nowRotate >= this.rotateMaxNum) {
+                nowRotate = this.rotateMaxNum;
+            } else if (nowRotate <= -this.rotateMaxNum) {
+                nowRotate = -this.rotateMaxNum;
             }
-            console.log("rotate2", rotate2);
-            this.transformHandler(newl, newt, rotate2, 0);
+            this.transformHandler(newl, newt, nowRotate, 0);
         },
         // 按下卡片
         slipMouseDown(str, $event) {
@@ -348,17 +356,12 @@ module.exports = {
         },
         unlikeHandler(str) {
             console.log("unlikeHandler", str);
-            let scrollitem = document.getElementById(str);
-            scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
             this.addClassHandler(str, "unlike", 10);
+            this.scolled++;
         },
         likeHandler(str) {
-            console.log("likeHandler", str);
-            let scrollitem = document.getElementById(str);
-            scrollitem.style = `left: ${scrollitem.offsetLeft}px; top:${scrollitem.offsetTop}px;transition-duration: 1s;`;
             this.addClassHandler(str, "like", 10);
-            console.log();
-            this.cardIndex = parseInt(str.split("slip")[1]);
+            this.scolled++;
         },
         addClassHandler(who, what, when) {
             let addObj = document.getElementById(who);
@@ -367,9 +370,19 @@ module.exports = {
             }, when);
         },
         backCard() {
-            if (this.cardIndex == null) return;
-            let removeObj = document.getElementById("slip" + this.cardIndex);
-            removeObj.classList.remove("like");
+            let returnId = this.totalItem - this.scolled;
+            if (this.scolled == 0) return;
+
+            let removeObj = document.getElementById("slip" + returnId);
+            if (removeObj.classList.contains("like")) {
+                removeObj.classList.remove("like");
+                this.scolled--;
+            } else if (removeObj.classList.contains("unlike")) {
+                removeObj.classList.remove("unlike");
+                this.scolled--;
+            } else {
+                console.log("來亂？");
+            }
         },
     },
 };

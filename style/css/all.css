@@ -799,6 +799,7 @@ input:checked ~ .switch_ball::after {
 }
 
 .info {
+  overflow: hidden;
   width: calc(100% - 413px);
   height: 100%;
   padding: 64px 20px 0;
@@ -817,7 +818,7 @@ input:checked ~ .switch_ball::after {
         -ms-flex-pack: center;
             justify-content: center;
     width: 100%;
-    height: calc(100% - 92px);
+    height: calc(100% - 62px);
     padding: 44px 20px 0;
   }
 }
@@ -932,7 +933,7 @@ input:checked ~ .switch_ball::after {
           box-sizing: content-box;
 }
 
-.slip_item::before {
+.slip_item:not(._noData)::before {
   content: "";
   display: block;
   position: absolute;
@@ -955,34 +956,30 @@ input:checked ~ .switch_ball::after {
 }
 
 .slip_item.like {
-  -webkit-transform-origin: bottom center;
-          transform-origin: bottom center;
   -webkit-transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
           transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
-  -webkit-transition-duration: 0.5s !important;
-          transition-duration: 0.5s !important;
+  -webkit-transition-duration: 1s !important;
+          transition-duration: 1s !important;
 }
 
 @media screen and (max-width: 767px) {
   .slip_item.like {
-    -webkit-transform: translate3d(1000px, 0, 0) rotate(15deg) !important;
-            transform: translate3d(1000px, 0, 0) rotate(15deg) !important;
+    -webkit-transform: translate3d(1000px, 0, 0) rotate(30deg) !important;
+            transform: translate3d(1000px, 0, 0) rotate(30deg) !important;
   }
 }
 
 .slip_item.unlike {
-  -webkit-transform-origin: bottom center;
-          transform-origin: bottom center;
   -webkit-transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
           transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
-  -webkit-transition-duration: 0.5s !important;
-          transition-duration: 0.5s !important;
+  -webkit-transition-duration: 1s !important;
+          transition-duration: 1s !important;
 }
 
 @media screen and (max-width: 767px) {
   .slip_item.unlike {
-    -webkit-transform: translate3d(-1000px, 0, 0) rotate(-15deg) !important;
-            transform: translate3d(-1000px, 0, 0) rotate(-15deg) !important;
+    -webkit-transform: translate3d(-1000px, 0, 0) rotate(-30deg) !important;
+            transform: translate3d(-1000px, 0, 0) rotate(-30deg) !important;
   }
 }
 
@@ -2580,12 +2577,5 @@ input:checked ~ .switch_ball::after {
 .emergency_group_card a svg {
   width: 24px;
   height: 24px;
-}
-
-.rot {
-  -webkit-transition-duration: 0.5s !important;
-          transition-duration: 0.5s !important;
-  -webkit-transform: rotate(-3deg) !important;
-          transform: rotate(-3deg) !important;
 }
 /*# sourceMappingURL=all.css.map */
