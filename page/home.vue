@@ -120,10 +120,6 @@
                     @mousedown="slipMouseDown('slip' + index)"
                     @touchstart="slipMouseDown('slip' + index)"
                 >
-                    <!-- <span
-						class="picSpan"
-						:style="'background-image:url(' + item.album_file + ')'"
-					></span> -->
                     <img :src="item.album_file" alt="" />
                     <button
                         class="slip_item_detail"
@@ -263,7 +259,6 @@ module.exports = {
                 console.log("unlike");
                 this.addClassHandler(this.who, "unlike", 10);
             } else {
-                // if (itemCenter < boxWMax * (3 / 4) && itemCenter > boxWMin)
                 console.log("回赴");
                 this.transformHandler(0, 0, -3, 0.5);
             }

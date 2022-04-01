@@ -572,18 +572,7 @@ svg {
         // transform-origin: bottom center;
 
         @extend %transition;
-        .picSpan {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            margin: auto;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-        }
+
         &.like {
             transform-origin: bottom center;
             transform: translate3d(1000px, 0, 0) rotate(45deg) !important;

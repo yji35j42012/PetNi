@@ -954,19 +954,6 @@ input:checked ~ .switch_ball::after {
   pointer-events: none;
 }
 
-.slip_item .picSpan {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  margin: auto;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
 .slip_item.like {
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
