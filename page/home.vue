@@ -316,8 +316,8 @@ module.exports = {
         // 按下卡片
         slipMouseDown(str, $event) {
             console.log("按下卡片");
-            let outside = document.getElementById("app");
-            outside.style = `position: fixed; top: 0; left: 0;`;
+            // let outside = document.getElementById("app");
+            // outside.style = `position: fixed; top: 0; left: 0;`;
             this.who = str;
             this.startX = event.clientX;
             // 點擊位置
