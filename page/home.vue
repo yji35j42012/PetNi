@@ -121,10 +121,10 @@
                     @touchstart="slipMouseDown('slip' + index)"
                 >
                     <!-- <span
-                        class="picSpan"
-                        :style="'background-image:url(' + item.album_file + ')'"
-                    ></span> -->
-                    <!-- <img :src="item.album_file" alt="" /> -->
+						class="picSpan"
+						:style="'background-image:url(' + item.album_file + ')'"
+					></span> -->
+                    <img :src="item.album_file" alt="" />
                     <button
                         class="slip_item_detail"
                         @click="detailHandler('123')"
@@ -212,6 +212,8 @@ module.exports = {
             resetCardL: 0,
             resetCardT: 0,
             cardIndex: null,
+            rotateNum: 30,
+            rotateMaxNum: 45,
         };
     },
     components: {
@@ -250,6 +252,7 @@ module.exports = {
             let boxWMax = boxW.offsetWidth * (4 / 5);
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             let itemLeft = scrollitem.offsetLeft;
+            this.transformHandler(0, 0, -3, 0.5);
 
             // if (itemCenter >= boxWMax) {
             //     console.log("like");
@@ -269,17 +272,16 @@ module.exports = {
             //         scrollitem.classList.remove("rot");
             //     }, 500);
             // }
-            scrollitem.classList.add("rot");
-            scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
-            setTimeout(() => {
-                scrollitem.classList.remove("rot");
-            }, 1000);
+            // scrollitem.classList.add("rot");
+            // scrollitem.style = `left: ${this.resetCardL}px; top:${this.resetCardT}px; transform-origin: bottom center;`;
+            // setTimeout(() => {
+            //     scrollitem.classList.remove("rot");
+            // }, 1000);
         },
         // 卡片滑動
         slipMouseMove($event) {
-            // $event.preventDefault();
-            let scrollitem = document.getElementById(this.who);
             console.log("卡片滑動");
+            let scrollitem = document.getElementById(this.who);
             if (!event.touches) {
                 //相容移動端
                 var nx = event.clientX;
@@ -289,66 +291,37 @@ module.exports = {
                 var nx = event.touches[0].pageX;
                 var ny = event.touches[0].pageY;
             }
-
             let nl = nx - (this.startX - this.cardL);
             let nt = ny - (this.startY - this.cardT);
 
-            // console.log("event.clientX", nx);
-            // console.log("this.startX", this.startX);
-            console.log("test", nx - this.startX);
-
             let newl = nx - this.startX;
             let newt = ny - this.startY;
-
             // 程式碼關鍵處
             this.box2CurrentX = nl;
             this.box2CurrentY = nt;
             let boxW = document.getElementById("container");
-            let boxWTotal = boxW.offsetWidth;
 
             let boxWMin = boxW.offsetWidth * (1 / 5);
             let boxWCen = boxW.offsetWidth * (1 / 2);
             let boxWMax = boxW.offsetWidth * (4 / 5);
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
-            if (boxWTotal > 768) {
-                var rotateNum = 30;
-                var rotateMaxNum = 45;
-            } else {
-                var rotateNum = 10;
-                var rotateMaxNum = 15;
-            }
-            // var nowRotate = scrollitem.style.transform
-            //     .split("rotate(")[1]
-            //     .split("deg)")[0];
+
             var nowRotate = scrollitem.style.transform
                 .split("rotate(")[1]
                 .split("deg)")[0];
-
-            console.log("nowRotate", nowRotate);
-
-            let rotate = rotateNum / this.moveRotateRight;
-            if (
-                boxWMax - itemCenter >= 0 &&
-                nowRotate <= rotateMaxNum &&
-                nowRotate >= -rotateMaxNum
-            ) {
-                nowRotate =
-                    rotate * (this.moveRotateRight - (boxWMax - itemCenter));
-                if (nowRotate > rotateMaxNum) {
-                    nowRotate = rotateMaxNum;
-                } else if (nowRotate < -rotateMaxNum) {
-                    nowRotate = -rotateMaxNum;
-                }
+            let rotate = 45 / this.moveRotateRight;
+            let rotate2 = rotate * newl + -3;
+            if (rotate2 >= this.rotateMaxNum) {
+                rotate2 = this.rotateMaxNum;
+            } else if (rotate2 <= -this.rotateMaxNum) {
+                rotate2 = -this.rotateMaxNum;
             }
-            // //
-            // scrollitem.style = `left: ${nl}px; top:${nt}px;transition-duration: 0s;transform: rotate(${nowRotate}deg);transform-origin: bottom center;`;
-            scrollitem.style = `transition-duration: 0s;transform: translate3d(${newl}px,${newt}px,0) rotate(40deg);`;
+            console.log("rotate2", rotate2);
+            this.transformHandler(newl, newt, rotate2, 0);
         },
         // 按下卡片
         slipMouseDown(str, $event) {
             console.log("按下卡片");
-            // let outside = document.getElementById("app");
-            // outside.style = "position: fixed; top:0;left:0; ";
             this.who = str;
             this.startX = event.clientX;
             // 點擊位置
@@ -370,10 +343,24 @@ module.exports = {
 
             this.cardL = scrollitem.offsetLeft;
             this.cardT = scrollitem.offsetTop;
-            let boxWMax = boxW.offsetWidth * (3 / 4);
+            let boxWMax = boxW.offsetWidth * (4 / 5);
+            let boxWTotal = boxW.offsetWidth;
+            if (boxWTotal > 768) {
+                this.rotateNum = 30;
+                this.rotateMaxNum = 45;
+            } else {
+                this.rotateNum = 10;
+                this.rotateMaxNum = 15;
+            }
             let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
             this.moveRotateRight = boxWMax - itemCenter;
-            scrollitem.style = `left: ${this.cardL}px; top:${this.cardT}px;transition-duration: 0s;transform: rotate(-3deg);`;
+            this.transformHandler(0, 0, -3, 0);
+            // scrollitem.style = `left: ${this.cardL}px; top:${this.cardT}px;transition-duration: 0s;transform: rotate(-3deg);`;
+            // scrollitem.style = `transform: rotate(-3deg); transition-duration: 0s;`;
+        },
+        transformHandler(x, y, rotate, time) {
+            let scrollitem = document.getElementById(this.who);
+            scrollitem.style = `transform: translate3d(${x}px ,${y}px , 0) rotate(${rotate}deg); transition-duration: ${time}s;`;
         },
         unlikeHandler(str) {
             console.log("unlikeHandler", str);

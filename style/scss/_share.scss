@@ -1,7 +1,28 @@
-html,body{
-	position: fixed;
-	top: 0;
-	left: 0;
+html,
+body {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.line {
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 304.5px;
+        width: 2px;
+        height: 100vh;
+        background-color: #000;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 518px;
+        width: 2px;
+        height: 100vh;
+        background-color: #000;
+    }
 }
 .wrap {
     @include d_f(flex);
@@ -539,7 +560,7 @@ svg {
         // filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
         z-index: 2;
         transform: rotate(-3deg);
-        transform-origin: bottom center;
+        // transform-origin: bottom center;
 
         @extend %transition;
         .picSpan {

@@ -152,6 +152,26 @@ body {
   left: 0;
 }
 
+.line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 304.5px;
+  width: 2px;
+  height: 100vh;
+  background-color: #000;
+}
+
+.line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 518px;
+  width: 2px;
+  height: 100vh;
+  background-color: #000;
+}
+
 .wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -908,8 +928,6 @@ input:checked ~ .switch_ball::after {
   z-index: 2;
   -webkit-transform: rotate(-3deg);
           transform: rotate(-3deg);
-  -webkit-transform-origin: bottom center;
-          transform-origin: bottom center;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
 }
