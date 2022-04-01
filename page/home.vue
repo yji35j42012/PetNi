@@ -158,8 +158,7 @@
                                     </svg>
                                 </i>
                             </p>
-                            <!-- <p class="address">{{ item.animal_place }}</p> -->
-                            <p class="address">{{ item.animal_Variety }}</p>
+                            <p class="address">{{ item.animal_place }}</p>
                         </div>
                         <button
                             class="like_btn"
@@ -286,6 +285,7 @@ module.exports = {
             let scrollitem = document.getElementById(this.who);
             if (!event.touches) {
                 //相容移動端
+                $event.preventDefault();
                 var nx = event.clientX;
                 var ny = event.clientY;
             } else {
@@ -316,6 +316,8 @@ module.exports = {
         // 按下卡片
         slipMouseDown(str, $event) {
             console.log("按下卡片");
+            let outside = document.getElementById("app");
+            outside.style = `position: fixed; top: 0; left: 0;`;
             this.who = str;
             this.startX = event.clientX;
             // 點擊位置

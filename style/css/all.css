@@ -145,13 +145,6 @@ select {
   cursor: pointer;
 }
 
-html,
-body {
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
 .line::after {
   content: "";
   position: absolute;
