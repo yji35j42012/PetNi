@@ -141,7 +141,8 @@ select {
           transition-duration: 0.3s;
 }
 
-.switch, .func_ul li, .func .btn, .sel {
+.unlike_btn,
+.like_btn, .switch, .func_ul li, .func .btn, .sel {
   cursor: pointer;
 }
 
@@ -387,6 +388,7 @@ input:checked ~ .switch_ball::after {
   position: relative;
   width: 100%;
   max-width: 1280px;
+  height: 100%;
   min-height: 100%;
   padding: 0 88px;
   margin: auto;
@@ -818,8 +820,14 @@ input:checked ~ .switch_ball::after {
         -ms-flex-pack: center;
             justify-content: center;
     width: 100%;
-    height: calc(100% - 62px);
+    height: calc(100% - 92px);
     padding: 44px 20px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .info {
+    height: calc(100% - 62px);
   }
 }
 
@@ -853,7 +861,7 @@ input:checked ~ .switch_ball::after {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  height: 461px;
+  height: 100%;
 }
 
 .slip::before {

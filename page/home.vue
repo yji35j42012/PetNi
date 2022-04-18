@@ -6,7 +6,10 @@
             <div class="func_box">
                 <h2>我想尋找</h2>
                 <ul class="func_ul">
-                    <li class="square on">
+                    <li
+                        :class="['square', search.type == 'cat' ? 'on' : '']"
+                        @click="searchType('cat')"
+                    >
                         <i class="animal">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +19,10 @@
                             </svg>
                         </i>
                     </li>
-                    <li class="square">
+                    <li
+                        :class="['square', search.type == 'dog' ? 'on' : '']"
+                        @click="searchType('dog')"
+                    >
                         <i class="animal">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -26,13 +32,25 @@
                             </svg>
                         </i>
                     </li>
-                    <li class="square">不拘</li>
+                    <li
+                        :class="['square', search.type == 'all' ? 'on' : '']"
+                        @click="searchType('all')"
+                    >
+                        不拘
+                    </li>
                 </ul>
             </div>
             <div class="func_box">
                 <h2>性別</h2>
                 <ul class="func_ul">
-                    <li class="square male">
+                    <li
+                        :class="[
+                            'square',
+                            'male',
+                            search.gender == 'male' ? 'on' : '',
+                        ]"
+                        @click="searchGender('male')"
+                    >
                         <i class="gender">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +60,14 @@
                             </svg>
                         </i>
                     </li>
-                    <li class="square female">
+                    <li
+                        :class="[
+                            'square',
+                            'female',
+                            search.gender == 'female' ? 'on' : '',
+                        ]"
+                        @click="searchGender('female')"
+                    >
                         <i class="gender">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -52,15 +77,35 @@
                             </svg>
                         </i>
                     </li>
-                    <li class="square on">不拘</li>
+                    <li
+                        :class="['square', search.gender == 'all' ? 'on' : '']"
+                        @click="searchGender('all')"
+                    >
+                        不拘
+                    </li>
                 </ul>
             </div>
             <div class="func_box">
                 <h2>年齡</h2>
                 <ul class="func_ul">
-                    <li>幼齡</li>
-                    <li>成年</li>
-                    <li class="on">不拘</li>
+                    <li
+                        :class="[search.age == 'child' ? 'on' : '']"
+                        @click="searchAge('child')"
+                    >
+                        幼齡
+                    </li>
+                    <li
+                        :class="[search.age == 'adult' ? 'on' : '']"
+                        @click="searchAge('adult')"
+                    >
+                        成年
+                    </li>
+                    <li
+                        :class="[search.age == 'all' ? 'on' : '']"
+                        @click="searchAge('all')"
+                    >
+                        不拘
+                    </li>
                 </ul>
             </div>
             <div class="func_box">
@@ -196,6 +241,11 @@
 module.exports = {
     data() {
         return {
+            search: {
+                type: "all",
+                gender: "all",
+                age: "all",
+            },
             icon_all: icon_all,
             who: "",
             startX: "",
@@ -245,6 +295,15 @@ module.exports = {
         },
     },
     methods: {
+        searchType(str) {
+            this.search.type = str;
+        },
+        searchGender(str) {
+            this.search.gender = str;
+        },
+        searchAge(str) {
+            this.search.age = str;
+        },
         detailHandler(id) {
             this.$router.push("/detail");
         },
