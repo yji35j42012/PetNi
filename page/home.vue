@@ -265,10 +265,7 @@ module.exports = {
         petinfo: httpVueLoader("../components/PetInfo.vue"),
     },
     mounted() {
-        // let scrollitem = document.getElementById("slip0");
-        // console.log("oldpetData", this.oldpetData);
-
-        this.totalItem = this.oldpetData.length;
+		this.totalItem = this.oldpetData.length;
     },
     computed: {
         showTitle() {
