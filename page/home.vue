@@ -265,7 +265,15 @@ module.exports = {
         petinfo: httpVueLoader("../components/PetInfo.vue"),
     },
     mounted() {
-		this.totalItem = this.oldpetData.length;
+        this.totalItem = this.oldpetData.length;
+        // axios
+        //     .get(
+        //         "https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL"
+        //     )
+        //     .then((res) => {
+        //         console.log("test", res.data);
+        //         this.oldpetData = res.data;
+        //     });
     },
     computed: {
         showTitle() {
