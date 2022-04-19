@@ -156,7 +156,7 @@
             <div class="slip">
                 <div class="slip_item _noData">
                     <span>
-                        很抱歉 ！<br />已沒有單身狗、單身貓了，<br />請嘗試修改篩選條件。
+                        很抱歉！<br />已沒有單身狗、單身貓了，<br />請嘗試修改篩選條件。
                     </span>
                 </div>
                 <div
@@ -279,10 +279,7 @@ module.exports = {
         showTitle() {
             let show = "";
             if (this.totalItem !== 0 && this.totalItem !== this.scolled) {
-                console.log("totalItem", this.totalItem);
-                console.log("scolled", this.scolled);
-
-                show = this.oldpetData[this.totalItem - this.scolled - 1]
+				show = this.oldpetData[this.totalItem - this.scolled - 1]
                     .animal_Variety;
             } else if (this.totalItem == this.scolled) {
                 show = "沒資料了";
@@ -380,8 +377,6 @@ module.exports = {
         // 按下卡片
         slipMouseDown(str, $event) {
             console.log("按下卡片");
-            // let outside = document.getElementById("app");
-            // outside.style = `position: fixed; top: 0; left: 0;`;
             this.who = str;
             this.startX = event.clientX;
             // 點擊位置
