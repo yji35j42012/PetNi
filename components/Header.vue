@@ -6,16 +6,9 @@
             <h1 class="logo" @click="change('home')">
                 <router-link to="/">
                     <img src="./images/logo.png" alt="" />
-                    <!-- <img src="./images/logo-mobile.png" alt="" /> -->
                 </router-link>
             </h1>
 
-            <!-- <button
-                :class="['menu_btn', menuShow ? 'open' : false]"
-                @click="btnHandler"
-            >
-                <span></span>
-            </button> -->
             <ul class="menu_group">
                 <li
                     @click="change('home')"

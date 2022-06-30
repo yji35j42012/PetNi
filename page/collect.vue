@@ -2,8 +2,8 @@
 
 <template>
     <div class="container">
-        <div class="collect_head showPAD">寵物名單</div>
-        <div class="scroll_y">
+        <div class="collect_head showPAD" style="display:none;">寵物名單</div>
+        <div class="scroll_y" style="display:none;">
             <ul class="collect_group">
                 <li
                     class="collect_item"
@@ -24,7 +24,7 @@
             </ul>
         </div>
 
-        <confirm style="display:none;"></confirm>
+        <confirm style="display:none;" style="display:none;"></confirm>
     </div>
 </template>
 

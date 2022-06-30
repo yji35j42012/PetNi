@@ -2,7 +2,7 @@
 
 <template>
 	<div id="container" class="container">
-		<div class="func">
+		<div class="func" >
 			<div class="func_box">
 				<h2>我想尋找</h2>
 				<ul class="func_ul">
@@ -137,7 +137,7 @@
 			</div>
 			<button class="btn">套用</button>
 		</div>
-		<div class="headFunc">
+		<div class="headFunc" >
 			<button class="backCard" @click="backCard">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46">
 					<path :d="icon_all.back" />
@@ -152,7 +152,7 @@
 				</svg>
 			</button>
 		</div>
-		<div class="info">
+		<div class="info" >
 			<div class="slip">
 				<div class="slip_item _noData">
 					<span>

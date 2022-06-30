@@ -14,14 +14,13 @@
 <body>
 	<div id="app" class="wrap">
 		<htitle></htitle>
-		<!-- <div class="homeAni" style="display: none">
+		<div :class="['content' , nowPage]">
+			<router-view></router-view>
+		</div>
+		<div class="homeAni" style="display: none">
 			<img src="./images/petnilogo.gif" alt="" />
 			<p>PetNi © Code: Alex Han / Design: K.T</p>
 		</div>
-		
-		<div :class="['content' , nowPage]">
-			<router-view></router-view>
-		</div> -->
 	</div>
 
 	<script src="./js/libs/axios.js"></script>
