@@ -271,124 +271,124 @@
 // 	font-weight: 500;
 // 	line-height: 24px;
 // }
-// svg {
-// 	width: 100%;
-// 	height: 100%;
-// }
-// .female {
-// 	fill: #fdaaa2;
-// }
-// .gender {
-// 	display: block;
-// 	width: 24px;
-// 	height: 24px;
-// }
-// .male {
-// 	fill: #70d4f4;
-// }
-// .like_btn {
-// 	padding: 9px;
-// 	fill: #fdaaa2;
-// }
-// .unlike_btn,
-// .like_btn {
-// 	flex: none;
-// 	width: 50px;
-// 	height: 50px;
-// 	background-color: #fff;
-// 	box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-// 	border-radius: 100%;
-// 	@extend %hand;
-// }
-// .unlike_btn {
-// 	padding: 13px;
-// }
-// .close_btn {
-// 	position: absolute;
-// 	top: 10px;
-// 	right: 60px;
-// 	width: 56px;
-// 	height: 56px;
-// 	padding: 16px;
-// 	background-color: #000;
-// 	fill: #fff;
-// 	border-radius: 50px;
-// }
-// .switch {
-// 	position: relative;
-// 	display: block;
-// 	width: 52px;
-// 	height: 28px;
-// 	@extend %hand;
-// 	// background-color: #dedede;
-// 	&_ball {
-// 		position: relative;
-// 		display: block;
-// 		width: 100%;
-// 		height: 100%;
-// 		background-color: #dedede;
-// 		border-radius: 50px;
-// 		@extend %transition;
+svg {
+	width: 100%;
+	height: 100%;
+}
+.female {
+	fill: #fdaaa2;
+}
+.gender {
+	display: block;
+	width: 24px;
+	height: 24px;
+}
+.male {
+	fill: #70d4f4;
+}
+.like_btn {
+	padding: 9px;
+	fill: #fdaaa2;
+}
+.unlike_btn,
+.like_btn {
+	flex: none;
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+	box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+	border-radius: 100%;
+	@extend %hand;
+}
+.unlike_btn {
+	padding: 13px;
+}
+.close_btn {
+	position: absolute;
+	top: 10px;
+	right: 60px;
+	width: 56px;
+	height: 56px;
+	padding: 16px;
+	background-color: #000;
+	fill: #fff;
+	border-radius: 50px;
+}
+.switch {
+	position: relative;
+	display: block;
+	width: 52px;
+	height: 28px;
+	@extend %hand;
+	// background-color: #dedede;
+	&_ball {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-color: #dedede;
+		border-radius: 50px;
+		@extend %transition;
 
-// 		// display: block;
-// 		// width: 22px;
-// 		// height: 22px;
-// 		// margin: auto;
+		// display: block;
+		// width: 22px;
+		// height: 22px;
+		// margin: auto;
 
-// 		&::after {
-// 			content: "";
-// 			position: absolute;
-// 			top: 0;
-// 			bottom: 0;
-// 			left: 4px;
-// 			display: block;
-// 			width: 22px;
-// 			height: 22px;
-// 			margin: auto;
-// 			background-color: #fff;
-// 			border-radius: 100%;
-// 			@extend %transition;
-// 		}
-// 	}
-// 	input {
-// 		position: absolute;
-// 		opacity: 0;
-// 		display: none;
-// 	}
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 4px;
+			display: block;
+			width: 22px;
+			height: 22px;
+			margin: auto;
+			background-color: #fff;
+			border-radius: 100%;
+			@extend %transition;
+		}
+	}
+	input {
+		position: absolute;
+		opacity: 0;
+		display: none;
+	}
 
-// 	input:checked ~ &_ball {
-// 		background-color: #fdaaa2;
-// 	}
-// 	input:checked ~ &_ball::after {
-// 		left: 26px;
-// 	}
-// }
-// .searchBox {
-// 	@include d_f(flex, center, center);
-// 	width: 195px;
-// 	height: 45px;
-// 	background: #ffffff;
-// 	box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-// 	border-radius: 16px;
-// 	@include mw(M) {
-// 		margin: auto;
-// 	}
-// 	input {
-// 		text-align: center;
-// 		font-size: 16px;
-// 		line-height: 24px;
-// 	}
-// 	// .searchBox_icon
-// 	&_icon {
-// 		flex: none;
-// 		width: 37px;
-// 		height: 37px;
-// 		padding: 9px;
-// 		background: #262626;
-// 		border-radius: 16px;
-// 		fill: #fff;
-// 	}
-// }
+	input:checked ~ &_ball {
+		background-color: #fdaaa2;
+	}
+	input:checked ~ &_ball::after {
+		left: 26px;
+	}
+}
+.searchBox {
+	@include d_f(flex, center, center);
+	width: 195px;
+	height: 45px;
+	background: #ffffff;
+	box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+	border-radius: 16px;
+	@include mw(M) {
+		margin: auto;
+	}
+	input {
+		text-align: center;
+		font-size: 16px;
+		line-height: 24px;
+	}
+	// .searchBox_icon
+	&_icon {
+		flex: none;
+		width: 37px;
+		height: 37px;
+		padding: 9px;
+		background: #262626;
+		border-radius: 16px;
+		fill: #fff;
+	}
+}
 // .homeAni {
 // 	position: absolute;
 // 	top: 0;
@@ -850,53 +850,53 @@
 		}
 	}
 }
-// .recommend {
-// 	@include d_f(flex, center, space-between);
-// 	margin-top: 65px;
-// 	@extend %transition;
-// 	@at-root .detail & {
-// 		opacity: 0;
-// 	}
-// 	@include mw(M) {
-// 		display: none;
-// 	}
-// 	li {
-// 		@include d_f(flex, center);
-// 		width: 247px;
-// 		height: 70px;
-// 		padding: 0 12px;
-// 		background: #ffffff;
-// 		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-// 		border-radius: 23px;
-// 	}
-// 	&_pic {
-// 		width: 50px;
-// 		height: 50px;
-// 		background-color: #ccc;
-// 		margin-right: 12px;
-// 		border-radius: 100%;
-// 	}
-// 	.name {
-// 		@include d_f(flex, center);
-// 		color: #262626;
-// 		font-size: 16px;
-// 		font-weight: bold;
-// 	}
-// 	.address {
-// 		color: #878787;
-// 		font-size: 12px;
-// 	}
-// 	.gender {
-// 		flex: none;
-// 		@include d_f(flex, center, center);
-// 		margin-left: 4px;
-// 		padding: 1px 4px;
-// 	}
+.recommend {
+	@include d_f(flex, center, space-between);
+	margin-top: 65px;
+	@extend %transition;
+	@at-root .detail & {
+		opacity: 0;
+	}
+	@include mw(M) {
+		display: none;
+	}
+	li {
+		@include d_f(flex, center);
+		width: 247px;
+		height: 70px;
+		padding: 0 12px;
+		background: #ffffff;
+		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+		border-radius: 23px;
+	}
+	&_pic {
+		width: 50px;
+		height: 50px;
+		background-color: #ccc;
+		margin-right: 12px;
+		border-radius: 100%;
+	}
+	.name {
+		@include d_f(flex, center);
+		color: #262626;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.address {
+		color: #878787;
+		font-size: 12px;
+	}
+	.gender {
+		flex: none;
+		@include d_f(flex, center, center);
+		margin-left: 4px;
+		padding: 1px 4px;
+	}
 
-// 	@include mw(XS) {
-// 		display: none;
-// 	}
-// }
+	@include mw(XS) {
+		display: none;
+	}
+}
 // .basic {
 // 	width: 100%;
 // 	max-width: 425px;
