@@ -2,7 +2,7 @@
 
 <template>
     <div class="container">
-        <div class="info" style="display:none;">
+        <div class="info">
             <div class="slip">
                 <div class="slip_item">
                     <div class="slip_item_box">
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="basic" style="display:none;">
+        <div class="basic">
             <div class="basic_info">
                 <span>
                     <p class="name female">157763</p>
@@ -109,7 +109,7 @@
             </ul>
         </div>
 
-        <button class="close_btn" @click="close" style="display:none;">
+        <button class="close_btn" @click="close">
             <svg
                 class="showPC"
                 xmlns="http://www.w3.org/2000/svg"

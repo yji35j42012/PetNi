@@ -2,7 +2,7 @@
 
 <template>
     <div class="container">
-        <div class="theme_head" style="display:none;">
+        <div class="theme_head">
             <div :class="['theme_switch', themeSwitch]">
                 <button class="cat_btn" @click="themeSwitchHandler('cat')">
                     喵星人
@@ -12,7 +12,7 @@
                 </button>
             </div>
         </div>
-        <div class="theme_group" style="display:none;">
+        <div class="theme_group">
             <div class="theme_item">
                 <div
                     class="theme_txt"
