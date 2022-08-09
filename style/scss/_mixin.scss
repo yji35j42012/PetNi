@@ -18,22 +18,32 @@
 }
 
 // juc 預設值 flex-start 、 align-items 預設值 stretch
-@mixin d_f($flex, $ai: stretch, $jc: flex-start) {
+@mixin d_f($flex, $jc: flex-start, $ai: stretch) {
     display: $flex;
-    align-items: $ai;
-    justify-content: $jc;
+    @if($jc != none){
+        justify-content: $jc;
+    }
+    @if($ai != none){
+        align-items: $ai;
+    }
 }
 
 // RWD相關
 $breakpoints: (
-	XL: 1259px,
-	L: 1023px,
-	M: 995px,
-	S: 767px,
-	XS: 599px
+    XL: 1259px,
+    L: 1023px,
+    M: 995px,
+    S: 767px,
+    XS: 599px,
 );
-@mixin mw($size){
+@mixin mw($size) {
     @media screen and (max-width: map-get($breakpoints, $size)) {
-		@content;
-	}
+        @content;
+    }
+}
+
+@mixin overflow($x, $y) {
+    overflow-x: $x;
+    overflow-y: $y;
+    -webkit-overflow-scrolling: auto;
 }

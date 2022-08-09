@@ -192,6 +192,7 @@ body {
 .content {
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: auto;
 }
 
 h2 {
@@ -750,7 +751,6 @@ input:checked ~ .switch_ball::after {
 .func .btn {
   width: 100%;
   height: 50px;
-  margin-top: 27px;
   background-color: #262626;
   color: #fff;
   border-radius: 16px;

@@ -13,14 +13,15 @@
 
 <body>
 	<div id="app" class="wrap">
-		<div class="homeAni" style="display: none">
+		<menubar></menubar>
+		<!-- <div class="homeAni" style="display: none">
 			<img src="./images/petnilogo.gif" alt="" />
 			<p>PetNi © Code: Alex Han / Design: K.T</p>
 		</div>
 		<htitle></htitle>
 		<div :class="['content' , nowPage]">
 			<router-view></router-view>
-		</div>
+		</div> -->
 		<!-- <loading></loading> -->
 	</div>
 
@@ -71,45 +72,6 @@
 				path: "/test",
 				component: httpVueLoader("./page/test.vue"),
 			},
-			// {
-			// 	path: "/",
-			// 	component: httpVueLoader("./page/test.vue"),
-			// },
-			// {
-			// 	path: "/test",
-			// 	component: httpVueLoader("./page/test.vue"),
-			// },
-
-			// {
-			// 	path: "/attractions",
-			// 	component: httpVueLoader("./page/attractions.vue"),
-			// 	children: [
-			// 		{
-			// 			path: "",
-			// 			component: httpVueLoader(
-			// 				"./components/ClassType.vue"
-			// 			),
-			// 		},
-			// 		{
-			// 			path: ":class",
-			// 			component: httpVueLoader(
-			// 				"./components/SearchGroup.vue"
-			// 			),
-			// 		},
-			// 		{
-			// 			path: ":city/:search",
-			// 			component: httpVueLoader(
-			// 				"./components/SearchGroup.vue"
-			// 			),
-			// 		},
-			// 		{
-			// 			path: ":city/:search/:id",
-			// 			component: httpVueLoader(
-			// 				"./components/ShowDetail.vue"
-			// 			),
-			// 		},
-			// 	],
-			// },
 		];
 		const router = new VueRouter({
 			// mode: 'history',
@@ -124,7 +86,7 @@
 				};
 			},
 			components: {
-				htitle: httpVueLoader("./components/Header.vue"),
+				menubar: httpVueLoader("./components/Menu.vue"),
 				loading: httpVueLoader("./components/Loading.vue"),
 			},
 			router,
