@@ -137,7 +137,7 @@
 			</div>
 			<button class="btn">套用</button>
 		</div>
-		<div class="headFunc">
+		<div class="headFunc" style="display:none;">
 			<button class="backCard" @click="backCard">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46">
 					<path :d="icon_all.back" />
@@ -152,7 +152,7 @@
 				</svg>
 			</button>
 		</div>
-		<div class="info">
+		<div class="info" style="display:none;">
 			<div class="slip">
 				<div class="slip_item _noData">
 					<span>

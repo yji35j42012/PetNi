@@ -136,9 +136,34 @@ select {
   }
 }
 
-.menu_item span {
+.menu_item span, .switch_ball, .switch_ball::after, .func {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+}
+
+.switch, .func_ul li, .func .btn {
+  cursor: pointer;
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 995px) {
+  .wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
 }
 
 .container {
@@ -150,10 +175,20 @@ select {
 }
 
 .menu {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
   width: 100%;
   height: 75px;
   -webkit-box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
           box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
+}
+
+@media screen and (max-width: 995px) {
+  .menu {
+    height: 55px;
+  }
 }
 
 .menu .container {
@@ -168,13 +203,23 @@ select {
           align-items: center;
 }
 
+@media screen and (max-width: 995px) {
+  .menu .container {
+    padding: 0;
+  }
+}
+
 .menu_group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
   height: 50px;
 }
 
@@ -194,6 +239,12 @@ select {
   fill: #dedede;
 }
 
+@media screen and (max-width: 995px) {
+  .menu_item {
+    width: 20%;
+  }
+}
+
 .menu_item i {
   -webkit-box-flex: 0;
       -ms-flex: none;
@@ -201,11 +252,6 @@ select {
   display: block;
   width: 24px;
   height: 24px;
-}
-
-.menu_item i svg {
-  width: 100%;
-  height: 100%;
 }
 
 .menu_item span {
@@ -225,7 +271,16 @@ select {
   margin-left: 12px;
 }
 
+@media screen and (max-width: 995px) {
+  .menu_item.router-link-exact-active span {
+    display: none;
+  }
+}
+
 .logo {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
   width: 118px;
   height: 53px;
 }
@@ -233,5 +288,257 @@ select {
 .logo img {
   width: 100%;
   height: 100%;
+}
+
+@media screen and (max-width: 995px) {
+  .logo {
+    display: none;
+  }
+}
+
+.content {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: auto;
+  width: 100%;
+  height: 100%;
+  background-color: #FAFAFA;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.female {
+  fill: #fdaaa2;
+}
+
+.gender {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.male {
+  fill: #70d4f4;
+}
+
+.close_btn {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  width: 56px;
+  height: 56px;
+  padding: 16px;
+  background-color: #000;
+  fill: #fff;
+  border-radius: 50px;
+}
+
+.switch {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 28px;
+}
+
+.switch_ball {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #dedede;
+  border-radius: 50px;
+}
+
+.switch_ball::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 100%;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  display: none;
+}
+
+input:checked ~ .switch_ball {
+  background-color: #fdaaa2;
+}
+
+input:checked ~ .switch_ball::after {
+  left: 26px;
+}
+
+.func {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 413px;
+  height: 100%;
+  padding: 27px 35px 47px 0;
+  background: #fafafa;
+  -webkit-box-shadow: 7px 0px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 7px 0px 7px rgba(10, 10, 10, 0.07);
+}
+
+@media screen and (max-width: 995px) {
+  .func {
+    display: none;
+  }
+}
+
+.func_ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.func_ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+  background-color: #fff;
+  color: #262626;
+  fill: #262626;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+}
+
+.func_ul li:not(.square) {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 90px;
+  height: 40px;
+  border-radius: 14px;
+}
+
+.func_ul li.square {
+  width: 90px;
+  height: 90px;
+  border-radius: 24px;
+}
+
+.func_ul li .animal {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+.func_ul li .gender {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.func_ul li.female {
+  fill: #fdaaa2;
+}
+
+.func_ul li.male {
+  fill: #70d4f4;
+}
+
+.func_ul li.on {
+  background-color: #262626;
+  color: #fff;
+  fill: #fff;
+}
+
+.func_ul li + li:not(:nth-child(3n + 1)) {
+  margin-left: 10px;
+}
+
+.func_switch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  margin-bottom: 10px;
+}
+
+.func .btn {
+  width: 100%;
+  height: 50px;
+  background-color: #262626;
+  color: #fff;
+  border-radius: 16px;
+}
+
+.headFunc {
+  display: none;
+  width: 100%;
+  height: 92px;
+  padding: 0 16px;
+  background-color: #f8f8f8;
+}
+
+@media screen and (max-width: 995px) {
+  .headFunc {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: space-between;
+        -ms-flex-align: space-between;
+            align-items: space-between;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .headFunc {
+    height: 62px;
+  }
+}
+
+.headFunc .backCard {
+  width: 46px;
+  height: 46px;
+}
+
+.headFunc .name {
+  color: #262626;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.headFunc .searchBtn {
+  width: 38px;
+  height: 38px;
 }
 /*# sourceMappingURL=all.css.map */

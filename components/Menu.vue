@@ -86,13 +86,11 @@
 					@click="change('adoption')"
 					:class="nowPage == 'adoption' ? 'on' : ''"
 				>
-				 
 				</li>
 				<li
 					@click="change('emergency')"
 					:class="nowPage == 'emergency' ? 'on' : ''"
 				>
-				  
 				</li> -->
 			</div>
 		</div>
