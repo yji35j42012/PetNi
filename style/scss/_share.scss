@@ -14,6 +14,17 @@
     height: 100%;
     margin: auto;
     padding: 0 50px 0 80px;
+	@include mw(M) {
+		padding: 0;
+	}
+    @at-root .home & {
+        @include d_f(flex);
+		padding: 0 0 0 80px;
+		@include mw(M) {
+			flex-direction: column-reverse;
+			padding: 0;
+		}
+    }
 }
 .menu {
     position: relative;
@@ -25,15 +36,15 @@
         height: 55px;
     }
     .container {
-		@include d_f(flex, space-between, center);
-		@include mw(M) {
-			padding: 0;
-		}
+        @include d_f(flex, space-between, center);
+        @include mw(M) {
+            padding: 0;
+        }
     }
     // .menu_group
     &_group {
-		@include d_f(flex, flex-end, center);
-		width: 100%;
+        @include d_f(flex, flex-end, center);
+        width: 100%;
         height: 50px;
     }
     // .menu_item
@@ -42,10 +53,10 @@
         width: 95px;
         height: 100%;
         color: #dedede;
-		fill: #dedede;
-		@include mw(M) {
-			width: 20%;
-		}
+        fill: #dedede;
+        @include mw(M) {
+            width: 20%;
+        }
         i {
             flex: none;
             display: block;
@@ -64,16 +75,16 @@
             fill: #fdaaa2;
             span {
                 width: 100%;
-				margin-left: 12px;
-				@include mw(M) {
-					display: none;
-				}
+                margin-left: 12px;
+                @include mw(M) {
+                    display: none;
+                }
             }
         }
     }
 }
 .logo {
-	flex: none;
+    flex: none;
     width: 118px;
     height: 53px;
     img {
@@ -87,8 +98,8 @@
 .content {
     @include overflow(hidden, auto);
     width: 100%;
-	height: 100%;
-	background-color: #FAFAFA;
+    height: 100%;
+    background-color: #fafafa;
 }
 // html,
 // body {
@@ -145,23 +156,23 @@ svg {
 .male {
     fill: #70d4f4;
 }
-// .like_btn {
-//     padding: 9px;
-//     fill: #fdaaa2;
-// }
-// .unlike_btn,
-// .like_btn {
-//     flex: none;
-//     width: 50px;
-//     height: 50px;
-//     background-color: #fff;
-//     box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-//     border-radius: 100%;
-//     @extend %hand;
-// }
-// .unlike_btn {
-//     padding: 13px;
-// }
+.like_btn {
+    padding: 9px;
+    fill: #fdaaa2;
+}
+.unlike_btn,
+.like_btn {
+    flex: none;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+    border-radius: 100%;
+    @extend %hand;
+}
+.unlike_btn {
+    padding: 13px;
+}
 .close_btn {
     position: absolute;
     top: 10px;
@@ -439,9 +450,9 @@ svg {
 //     }
 // }
 .func {
-    position: relative;
     flex: none;
-    width: 413px;
+    position: relative;
+    width: calc(413px - 80px);
     height: 100%;
     padding: 27px 35px 47px 0;
     background: #fafafa;
@@ -507,7 +518,7 @@ svg {
     }
     // .func_switch
     &_switch {
-        @include d_f(flex, center, space-between);
+        @include d_f(flex, space-between, center);
         margin-bottom: 10px;
     }
     .btn {
@@ -526,7 +537,7 @@ svg {
     padding: 0 16px;
     background-color: #f8f8f8;
     @include mw(M) {
-        @include d_f(flex, center, space-between);
+        @include d_f(flex, space-between, center);
     }
     @include mw(S) {
         height: 62px;
@@ -545,286 +556,291 @@ svg {
         height: 38px;
     }
 }
-// .info {
-//     overflow: hidden;
-//     width: calc(100% - 413px);
-//     height: 100%;
-//     padding: 64px 20px 0;
-//     background-color: #f8f8f8;
+.info {
+    overflow: hidden;
+    @include d_f(flex);
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 64px 20px 30px;
+    background-color: #f8f8f8;
 
-//     @include mw(M) {
-//         @include d_f(flex, center, center);
-//         width: 100%;
-//         height: calc(100% - 92px);
-//         padding: 44px 20px 0;
-//     }
-//     @include mw(S) {
-//         height: calc(100% - 62px);
-//     }
-//     @include mw(XS) {
-//         padding: 21px 10px 0;
-//     }
-//     @at-root .detail & {
-//         width: auto;
-//         height: auto;
-//         padding: 53px 26px 90px;
-//         @include mw(M) {
-//             padding: 0;
-//         }
-//     }
-// }
-// .slip {
-//     position: relative;
-//     @include d_f(flex, flex-start, center);
-//     width: 100%;
-//     height: 100%;
-//     &::before {
-//         position: absolute;
-//         right: 0;
-//         content: "";
-//         display: block;
-//         margin: auto;
-//         background-color: #fff;
-//         border: 12px solid #ffffff;
-//         border-radius: 32px;
-//         box-sizing: border-box;
-//         @extend %transition;
-//         @at-root .detail & {
-//             opacity: 0;
-//         }
-//     }
-//     &::before {
-//         top: 50px;
-//         left: 35px;
-//         width: 231px;
-//         height: 402px;
-//         box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
-//         transform: rotate(20deg);
-//         @include mw(XS) {
-//             top: 70px;
-//             left: 25px;
-//             width: 210px;
-//             height: 365px;
-//         }
-//     }
-//     @at-root .detail & {
-//         @include mw(M) {
-//             width: 100%;
-//             height: 545px;
-//         }
-//         @include mw(XS) {
-//             height: 274px;
-//         }
-//     }
-//     // .slip_item
-//     &_item {
-//         overflow: hidden;
-//         position: absolute;
-//         @include d_f(flex, flex-end, space-between);
-//         width: 287px;
-//         height: 461px;
-//         background-color: #fff;
-//         will-change: transform;
-//         border: 12px solid #ffffff;
-//         border-radius: 32px;
+    @include mw(M) {
+        @include d_f(flex, center, center);
+        width: 100%;
+        height: calc(100% - 92px);
+        padding: 44px 20px 0;
+    }
+    @include mw(S) {
+        height: calc(100% - 62px);
+    }
+    @include mw(XS) {
+        padding: 21px 10px 0;
+    }
+    @at-root .detail & {
+        width: auto;
+        height: auto;
+        padding: 53px 26px 90px;
+        @include mw(M) {
+            padding: 0;
+        }
+    }
+}
+.slip {
+    position: relative;
+    @include d_f(flex, center, flex-start);
+    width: 100%;
+    height: 100%;
+    &::before {
+        position: absolute;
+        right: 0;
+        content: "";
+        display: block;
+        margin: auto;
+        background-color: #fff;
+        border: 12px solid #ffffff;
+        border-radius: 32px;
+        box-sizing: border-box;
+        @extend %transition;
+        @at-root .detail & {
+            opacity: 0;
+        }
+    }
+    &::before {
+        top: 50px;
+        left: 35px;
+        width: 231px;
+        height: 402px;
+        box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
+        transform: rotate(20deg);
+        @include mw(XS) {
+            top: 70px;
+            left: 25px;
+            width: 210px;
+            height: 365px;
+        }
+    }
+    @at-root .detail & {
+        @include mw(M) {
+            width: 100%;
+            height: 545px;
+        }
+        @include mw(XS) {
+            height: 274px;
+        }
+    }
+    // .slip_item
+    &_item {
+        overflow: hidden;
+        position: absolute;
+        @include d_f(flex, space-between, flex-end);
+        width: 287px;
+        height: 461px;
+        background-color: #fff;
+        will-change: transform;
+        border: 12px solid #ffffff;
+        border-radius: 32px;
 
-//         z-index: 2;
-//         transform: rotate(-3deg);
-//         @extend %transition;
-//         &:not(.like):not(.unlike):last-child,
-//         &:not(.like):not(.unlike):nth-last-child(2) {
-//             box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
-//         }
+        z-index: 2;
+        transform: rotate(-3deg);
+        @extend %transition;
+        &:not(.like):not(.unlike):last-child,
+        &:not(.like):not(.unlike):nth-last-child(2) {
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+        }
 
-//         &:not(._noData)::before {
-//             content: "";
-//             display: block;
-//             position: absolute;
-//             left: 0;
-//             top: 0;
-//             width: 100%;
-//             height: 100%;
-//             background: linear-gradient(
-//                 180.01deg,
-//                 rgba(0, 0, 0, 0) 48.59%,
-//                 rgba(0, 0, 0, 0) 70.09%,
-//                 rgba(0, 0, 0, 0.4) 90.71%
-//             );
-//         }
-//         img {
-//             position: absolute;
-//             top: 0;
-//             bottom: 0;
-//             right: 0;
-//             left: 0;
-//             width: 100%;
-//             margin: auto;
-//             pointer-events: none;
-//         }
-//         &.like {
-//             transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
-//             transition-duration: 1s !important;
-//             @include mw(S) {
-//                 transform: translate3d(1000px, 0, 0) rotate(30deg) !important;
-//             }
-//         }
-//         &.unlike {
-//             transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
-//             transition-duration: 1s !important;
-//             @include mw(S) {
-//                 transform: translate3d(-1000px, 0, 0) rotate(-30deg) !important;
-//             }
-//         }
-//         box-sizing: content-box;
-//         // @extend %transition;
-//         @at-root .detail & {
-//             width: 390px;
-//             height: 542px;
-//             transform: rotate(0deg);
-//             @include mw(M) {
-//                 width: 100%;
-//                 height: 100%;
-//                 border: none;
-//                 border-radius: 0;
-//             }
-//         }
+        &:not(._noData)::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180.01deg,
+                rgba(0, 0, 0, 0) 48.59%,
+                rgba(0, 0, 0, 0) 70.09%,
+                rgba(0, 0, 0, 0.4) 90.71%
+            );
+        }
+        img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            margin: auto;
+            pointer-events: none;
+        }
+        &.like {
+            transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
+            transition-duration: 1s !important;
+            @include mw(S) {
+                transform: translate3d(1000px, 0, 0) rotate(30deg) !important;
+            }
+        }
+        &.unlike {
+            transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
+            transition-duration: 1s !important;
+            @include mw(S) {
+                transform: translate3d(-1000px, 0, 0) rotate(-30deg) !important;
+            }
+        }
+        box-sizing: content-box;
+        // @extend %transition;
+        @at-root .detail & {
+            width: 390px;
+            height: 542px;
+            transform: rotate(0deg);
+            @include mw(M) {
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 0;
+            }
+        }
 
-//         @include mw(XS) {
-//             width: 261px;
-//             height: 419px;
-//         }
+        @include mw(XS) {
+            width: 261px;
+            height: 419px;
+        }
 
-//         &_detail {
-//             position: absolute;
-//             top: 10px;
-//             right: 10px;
-//             width: 50px;
-//             height: 50px;
-//             fill: #ffffff;
-//             transform: rotate(3deg);
-//             @at-root .detail & {
-//                 transform: rotate(0deg);
-//             }
-//         }
+        &_detail {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            fill: #ffffff;
+            transform: rotate(3deg);
+            @at-root .detail & {
+                transform: rotate(0deg);
+            }
+        }
 
-//         // .slip_item_box
-//         &_box {
-//             @include d_f(flex, center, space-between);
-//             width: 100%;
-//             padding: 0 15px 20px;
-//             transform: rotate(3deg);
-//             @at-root .detail & {
-//                 display: none;
-//                 transform: rotate(0deg);
-//                 @include mw(M) {
-//                     display: flex;
-//                 }
-//             }
-//         }
-//         // .slip_item_info
-//         &_info {
-//             padding: 0 5px;
-//             color: #fff;
-//             span {
-//                 margin-right: 10px;
-//                 font-size: 18px;
-//                 line-height: 27px;
-//             }
-//             .name {
-//                 @include d_f(flex, center, center);
-//             }
-//             .address {
-//                 font-size: 14px;
-//                 line-height: 21px;
-//             }
-//             .gender {
-//                 display: block;
-//                 width: 24px;
-//                 height: 24px;
-//             }
-//         }
-//     }
-//     &_item._noData {
-//         position: absolute;
-//         top: 0;
-//         left: 0;
-//         right: 0;
-//         @include d_f(flex, center, center);
-//         width: 253px;
-//         height: 430px;
-//         margin: auto;
-//         background-color: #fff;
-//         color: #fdaaa2;
-//         border: 12px solid #ffffff;
-//         border-radius: 32px;
-//         box-sizing: border-box;
-//         filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
-//         transform: rotate(15deg);
-//         text-align: center;
-//         @include mw(XS) {
-//             left: 0;
-//             width: 230px;
-//             height: 390px;
-//         }
-//         @extend %transition;
-//         @at-root .detail & {
-//             opacity: 0;
-//         }
+        // .slip_item_box
+        &_box {
+            @include d_f(flex, center, space-between);
+            width: 100%;
+            padding: 0 15px 20px;
+            transform: rotate(3deg);
+            @at-root .detail & {
+                display: none;
+                transform: rotate(0deg);
+                @include mw(M) {
+                    display: flex;
+                }
+            }
+        }
+        // .slip_item_info
+        &_info {
+            padding: 0 5px;
+            color: #fff;
+            span {
+                margin-right: 10px;
+                font-size: 18px;
+                line-height: 27px;
+            }
+            .name {
+                @include d_f(flex, center, center);
+            }
+            .address {
+                font-size: 14px;
+                line-height: 21px;
+            }
+            .gender {
+                display: block;
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+    &_item._noData {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        @include d_f(flex, center, center);
+        width: 253px;
+        height: 430px;
+        margin: auto;
+        background-color: #fff;
+        color: #fdaaa2;
+        border: 12px solid #ffffff;
+        border-radius: 32px;
+        box-sizing: border-box;
+        filter: drop-shadow(-6px 9px 11px rgba(0, 0, 0, 0.25));
+        transform: rotate(15deg);
+        text-align: center;
+        @include mw(XS) {
+            left: 0;
+            width: 230px;
+            height: 390px;
+        }
+        @extend %transition;
+        @at-root .detail & {
+            opacity: 0;
+        }
 
-//         span {
-//             font-size: 16px;
-//             line-height: 24px;
-//             transform: rotate(-15deg);
-//         }
-//     }
-// }
-// .recommend {
-//     @include d_f(flex, center, space-between);
-//     margin-top: 65px;
-//     @extend %transition;
-//     @at-root .detail & {
-//         opacity: 0;
-//     }
-//     @include mw(M) {
-//         display: none;
-//     }
-//     li {
-//         @include d_f(flex, center);
-//         width: 247px;
-//         height: 70px;
-//         padding: 0 12px;
-//         background: #ffffff;
-//         box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-//         border-radius: 23px;
-//     }
-//     &_pic {
-//         width: 50px;
-//         height: 50px;
-//         background-color: #ccc;
-//         margin-right: 12px;
-//         border-radius: 100%;
-//     }
-//     .name {
-//         @include d_f(flex, center);
-//         color: #262626;
-//         font-size: 16px;
-//         font-weight: bold;
-//     }
-//     .address {
-//         color: #878787;
-//         font-size: 12px;
-//     }
-//     .gender {
-//         flex: none;
-//         @include d_f(flex, center, center);
-//         margin-left: 4px;
-//         padding: 1px 4px;
-//     }
+        span {
+            font-size: 16px;
+            line-height: 24px;
+            transform: rotate(-15deg);
+        }
+    }
+}
+.recommend {
+    position: relative;
+    @include d_f(flex, space-between, center);
+    margin-top: 65px;
+    background-color: #fafafa;
+    z-index: 3;
+    @extend %transition;
+    @at-root .detail & {
+        opacity: 0;
+    }
+    @include mw(M) {
+        display: none;
+    }
+    li {
+        @include d_f(flex, none, center);
+        width: 247px;
+        height: 70px;
+        padding: 0 12px;
+        background: #ffffff;
+        box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+        border-radius: 23px;
+    }
+    &_pic {
+        width: 50px;
+        height: 50px;
+        background-color: #ccc;
+        margin-right: 12px;
+        border-radius: 100%;
+    }
+    .name {
+        @include d_f(flex, center);
+        color: #262626;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .address {
+        color: #878787;
+        font-size: 12px;
+    }
+    .gender {
+        flex: none;
+        @include d_f(flex, center, center);
+        margin-left: 4px;
+        padding: 1px 4px;
+    }
 
-//     @include mw(XS) {
-//         display: none;
-//     }
-// }
+    @include mw(XS) {
+        display: none;
+    }
+}
 // .basic {
 //     width: 100%;
 //     max-width: 425px;
@@ -1100,21 +1116,21 @@ svg {
 //         }
 //     }
 // }
-// .petInfoTxt {
-//     &_name {
-//         @include d_f(flex, center, space-between);
-//         color: #262626;
-//         font-weight: 700;
-//         font-size: 16px;
-//         line-height: 24px;
-//     }
-//     &_address {
-//         color: #878787;
-//         font-weight: 700;
-//         font-size: 12px;
-//         line-height: 21px;
-//     }
-// }
+.petInfoTxt {
+    &_name {
+        @include d_f(flex, space-between, center);
+        color: #262626;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    &_address {
+        color: #878787;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 21px;
+    }
+}
 // .confirm {
 //     position: fixed;
 //     top: 0;

@@ -14,7 +14,7 @@
 <body>
 	<div id="app" class="wrap">
 		<menubar></menubar>
-		<div class="content">
+		<div :class="['content' , nowPage]">
 			<router-view></router-view>
 		</div>
 		<!-- <div class="homeAni" style="display: none">
