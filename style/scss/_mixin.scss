@@ -35,6 +35,7 @@ $breakpoints: (
 	M: 995px,
 	S: 767px,
 	XS: 599px,
+	XXS: 360px,
 );
 @mixin mw($size) {
 	@media screen and (max-width: map-get($breakpoints, $size)) {
