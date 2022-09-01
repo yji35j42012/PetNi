@@ -2,13 +2,36 @@
 
 <template>
     <div class="container">
+        <div style="display:none">
+            {{ showLists }}
+        </div>
         <div class="emergency_head">
             <div class="name showPAD" data-txt="急診">24H</div>
             <ul class="tab">
-                <li class="on">北部</li>
-                <li>中部</li>
-                <li>南部</li>
-                <li>東部</li>
+                <li
+                    @click="emergency_area('N')"
+                    :class="area == 'N' ? 'on' : ''"
+                >
+                    北部
+                </li>
+                <li
+                    @click="emergency_area('W')"
+                    :class="area == 'W' ? 'on' : ''"
+                >
+                    中部
+                </li>
+                <li
+                    @click="emergency_area('S')"
+                    :class="area == 'S' ? 'on' : ''"
+                >
+                    南部
+                </li>
+                <li
+                    @click="emergency_area('E')"
+                    :class="area == 'E' ? 'on' : ''"
+                >
+                    東部
+                </li>
             </ul>
             <span>*資訊僅供參考，建議先電話聯絡再前往。</span>
         </div>
@@ -53,13 +76,39 @@ module.exports = {
     data() {
         return {
             icon_all: icon_all,
+            // lists: null,
+            areaData: area,
+            area: "N",
         };
     },
     components: {},
     mounted() {
         // console.log(store.state.nowPage);
+        // this.lists = this.areaData;
     },
-    computed: {},
-    methods: {},
+    computed: {
+        showLists() {
+            if (this.areaData == null) return;
+            // var list_obj = [];
+            console.log("areaData", this.areaData[this.area]);
+
+            // console.log("list_obj", list_obj);
+
+            // this.lists.forEach((item) => {
+            //     console.log("list_obj item", item);
+            // });
+            // console.log("list_obj", list_obj);
+
+            return this.areaData[this.area];
+        },
+    },
+    methods: {
+        emergency_area(str) {
+            if (this.area !== str) {
+                this.area = str;
+                console.log(str);
+            }
+        },
+    },
 };
 </script>
