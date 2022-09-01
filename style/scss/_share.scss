@@ -176,9 +176,7 @@ svg {
     padding: 13px;
 }
 .close_btn {
-    position: absolute;
-    top: 10px;
-    right: 60px;
+    @include pos_a(10px, 60px, n, n);
     width: 56px;
     height: 56px;
     padding: 16px;
@@ -201,15 +199,9 @@ svg {
         background-color: #dedede;
         border-radius: 50px;
         @extend %transition;
-        // width: 22px;
-        // height: 22px;
-        // margin: auto;
         &::after {
             content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 4px;
+            @include pos_a(0, n, 0, 4px);
             display: block;
             width: 22px;
             height: 22px;
@@ -259,17 +251,12 @@ svg {
     }
 }
 .homeAni {
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include pos_a(0, n, n, 0);
     width: 100%;
     height: 100%;
     background-color: #f8f8f8;
     img {
-        position: absolute;
-        top: 268px;
-        left: 0;
-        right: 0;
+        @include pos_a(268px, 0, n, 0);
         width: 186px;
         height: 263px;
         margin: 0 auto;
@@ -280,10 +267,7 @@ svg {
         }
     }
     p {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 20px;
+        @include pos_a(n, 0, 20px, 0);
         color: #262626;
         font-size: 14px;
         text-align: center;
@@ -578,8 +562,7 @@ svg {
     width: 100%;
     height: 100%;
     &::before {
-        position: absolute;
-        right: 0;
+        @include pos_a(n, 0, n, n);
         content: "";
         display: block;
         margin: auto;
@@ -635,9 +618,7 @@ svg {
         }
         &:not(._noData)::before {
             content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
+            @include pos_a(0, n, n, 0);
             display: block;
             width: 100%;
             height: 100%;
@@ -649,11 +630,7 @@ svg {
             );
         }
         img {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
+            @include pos_a(0, 0, 0, 0);
             width: 100%;
             margin: auto;
             pointer-events: none;
@@ -689,10 +666,9 @@ svg {
             width: 261px;
             height: 419px;
         }
+        // .slip_item_detail
         &_detail {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+            @include pos_a(10px, 10px, n, n);
             width: 50px;
             height: 50px;
             fill: #ffffff;
@@ -739,10 +715,7 @@ svg {
         }
     }
     &_item._noData {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        @include pos_a(0, 0, n, 0);
         @include d_f(flex, center, center);
         width: 253px;
         height: 430px;
@@ -1076,13 +1049,9 @@ svg {
             fill: #262626;
             box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
             svg {
-                position: absolute;
+                @include pos_a(0, 0, 0, 0);
                 width: 6px;
                 height: 6px;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
                 margin: auto;
             }
         }
@@ -1122,17 +1091,14 @@ svg {
     background: rgba(248, 248, 248, 0.66);
     backdrop-filter: blur(14px);
     z-index: 2;
-
     &_box {
-        position: absolute;
-        top: 168px;
+        @include pos_a(168px, n, n, n);
         width: 472px;
         min-height: 156px;
         padding: 40px 18px 33px;
         background: #ffffff;
         box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
         border-radius: 24px;
-
         @include mw(XS) {
             width: 280px;
         }
@@ -1172,15 +1138,13 @@ svg {
     backdrop-filter: blur(14px);
     z-index: 2;
     &_box {
-        position: absolute;
-        top: 168px;
+        @include pos_a(168px, n, n, n);
         width: 472px;
         min-height: 156px;
         padding: 40px 18px 33px;
         background: #ffffff;
         box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
         border-radius: 24px;
-
         @include mw(XS) {
             width: 280px;
         }
@@ -1196,8 +1160,6 @@ svg {
     &_btnBox {
         @include d_f(flex, center, center);
         flex-wrap: wrap;
-        // height: 42px;
-
         button {
             width: 100%;
             max-width: 236px;
@@ -1220,14 +1182,12 @@ svg {
 }
 .showPC {
     display: block;
-
     @include mw(M) {
         display: none;
     }
 }
 .showPAD {
     display: none;
-
     @include mw(M) {
         display: block;
         @at-root &.collect_head {
@@ -1273,7 +1233,6 @@ svg {
             color: #878787;
             font-weight: 400px;
             line-height: 27px;
-
             @include mw(M) {
                 max-width: 370px;
             }
@@ -1288,10 +1247,7 @@ svg {
     }
     // .theme_head
     &_head {
-        position: absolute;
-        top: 40px;
-        right: 118px;
-
+        @include pos_a(40px, 118px, n, n);
         @include mw(M) {
             position: relative;
             top: 0;
@@ -1315,12 +1271,9 @@ svg {
         box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
         border-radius: 10px;
         font-size: 0;
-
         &::before {
             content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
+            @include pos_a(0, n, 0, n);
             display: block;
             margin: auto 0;
             width: calc(50% - 4px);
@@ -1354,12 +1307,9 @@ svg {
             }
         }
     }
-
     // .theme_btn
     &_btn {
-        position: absolute;
-        right: 118px;
-        bottom: 49px;
+        @include pos_a(n, 118px, 49px, n);
         @include d_f(inline-flex);
         @include mw(M) {
             top: 0;
@@ -1381,7 +1331,6 @@ svg {
             fill: #262626;
             box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
             border-radius: 14px;
-
             & + & {
                 margin-left: 24px;
             }
@@ -1396,7 +1345,6 @@ svg {
         @include mw(L) {
             flex-wrap: wrap;
         }
-
         // .adoption_info_pic
         &_pic {
             width: 237px;
@@ -1470,7 +1418,6 @@ svg {
                 @include d_f(flex, center);
                 width: 100%;
             }
-
             li:not(.square) {
                 @include d_f(flex, center, center);
                 width: 100%;
@@ -1549,9 +1496,7 @@ svg {
         margin-left: 8px;
     }
     ul {
-        position: absolute;
-        top: calc(100% + 5px);
-        left: 0;
+        @include pos_a(calc(100% + 5px), n, n, 0);
         display: none;
         background: #f8f8f8;
         border-radius: 14px;
@@ -1620,15 +1565,12 @@ svg {
             margin-top: 0;
             padding: 0 24px;
             background-color: #fff;
-
             .tab {
                 width: auto;
                 margin-bottom: 0;
             }
             span {
-                position: absolute;
-                top: calc(100% + 20px);
-                right: 16px;
+                @include pos_a(calc(100% + 20px), 16px, n, n);
                 width: 100%;
             }
         }
@@ -1636,12 +1578,11 @@ svg {
             height: 62px;
             padding: 0 16px;
         }
-        ． .name {
+        .name {
             font-weight: 700;
             font-size: 20px;
             &::after {
                 content: attr(data-txt);
-
                 @include mw(XS) {
                     display: none;
                 }
@@ -1667,7 +1608,6 @@ svg {
             font-size: 20px;
             line-height: 27px;
             fill: #fdaaa2;
-
             i {
                 display: block;
                 width: 24px;
@@ -1746,7 +1686,6 @@ svg {
         }
     }
 }
-
 .scroll_y {
     overflow-x: hidden;
     overflow-y: auto;
