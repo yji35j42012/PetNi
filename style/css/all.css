@@ -136,7 +136,7 @@ select {
   }
 }
 
-.menu_item span, .switch_ball, .switch_ball::after, .menu_group span, .func, .slip::before, .slip_item, .slip_item._noData, .recommend, .tab li {
+.menu_item span, .switch_ball, .switch_ball::after, .func, .slip::before, .slip_item, .slip_item._noData, .recommend, .tab li {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
 }
@@ -206,6 +206,10 @@ select {
             flex-direction: column-reverse;
     padding: 0;
   }
+}
+
+.emergency .container {
+  text-align: center;
 }
 
 .menu {
@@ -522,85 +526,6 @@ input:checked ~ .switch_ball::after {
   }
 }
 
-.container {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 1280px;
-  height: 100%;
-  min-height: 100%;
-  padding: 0 88px;
-  margin: auto;
-}
-
-@media screen and (max-width: 995px) {
-  .container {
-    padding: 0;
-  }
-}
-
-.home .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  padding: 0;
-}
-
-@media screen and (max-width: 995px) {
-  .home .container {
-    display: block;
-    max-width: 768px;
-  }
-}
-
-.detail .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-@media screen and (max-width: 995px) {
-  .detail .container {
-    display: block;
-    max-width: 768px;
-    height: auto;
-  }
-}
-
-@media screen and (max-width: 1259px) {
-  .adoption .container {
-    padding: 0 15px;
-  }
-}
-
-.emergency .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-}
-
 .content {
   width: 100%;
   height: calc(100% - 77px);
@@ -662,117 +587,6 @@ input:checked ~ .switch_ball::after {
   .logo {
     display: none;
   }
-}
-
-.menu_group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-@media screen and (max-width: 995px) {
-  .menu_group {
-    width: 100%;
-    margin: auto;
-  }
-}
-
-.menu_group li {
-  width: 94px;
-}
-
-@media screen and (max-width: 995px) {
-  .menu_group li {
-    width: 20%;
-  }
-}
-
-.menu_group li a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #dedede;
-  fill: #dedede;
-}
-
-@media (pointer: fine) and (-webkit-max-device-pixel-ratio: 2), (pointer: fine) and (max-resolution: 2dppx), screen and (pointer: fine) and (-webkit-max-device-pixel-ratio: 2), (-moz-touch-enabled: 0) {
-  .menu_group li:hover span {
-    width: 100%;
-    opacity: 1;
-  }
-  .menu_group li:hover i {
-    margin-right: 14px;
-  }
-}
-
-.menu_group li:active span {
-  width: 100%;
-  opacity: 1;
-}
-
-.menu_group li:active i {
-  margin-right: 14px;
-}
-
-.menu_group li.on a {
-  color: #fdaaa2;
-  fill: #fdaaa2;
-}
-
-.menu_group li.on span {
-  width: 100%;
-  opacity: 1;
-}
-
-.menu_group li.on i {
-  margin-right: 14px;
-}
-
-@media screen and (max-width: 995px) {
-  .menu_group li.on i {
-    margin-right: 0;
-  }
-}
-
-.menu_group i {
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-  display: block;
-  width: 24px;
-  height: 24px;
-  -webkit-transition-duration: 0.1s;
-          transition-duration: 0.1s;
-}
-
-.menu_group span {
-  overflow: hidden;
-  width: 0;
-  white-space: nowrap;
-  opacity: 0;
-}
-
-@media screen and (max-width: 995px) {
-  .menu_group span {
-    display: none;
-  }
-}
-
-.menu_group svg {
-  width: 100%;
-  height: 100%;
 }
 
 .func {
@@ -2320,6 +2134,7 @@ input:checked ~ .switch_ball::after {
       flex-wrap: wrap;
   width: 100%;
   margin-top: 48px;
+  text-align: left;
 }
 
 @media screen and (max-width: 995px) {
