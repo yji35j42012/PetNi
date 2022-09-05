@@ -182,7 +182,22 @@ select {
 }
 
 .menu .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
+}
+
+@media screen and (max-width: 995px) {
+  .menu .container {
+    padding: 0;
+  }
 }
 
 .home .container {
@@ -226,24 +241,6 @@ select {
 @media screen and (max-width: 995px) {
   .menu {
     height: 55px;
-  }
-}
-
-.menu .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-@media screen and (max-width: 995px) {
-  .menu .container {
-    padding: 0;
   }
 }
 
@@ -341,6 +338,10 @@ select {
   width: 100%;
   height: 100%;
   background-color: #fafafa;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 svg {
@@ -514,10 +515,10 @@ input:checked ~ .switch_ball::after {
   bottom: 20px;
   right: 0;
   left: 0;
+  margin: 0 auto;
   color: #262626;
   font-size: 14px;
   text-align: center;
-  margin: 0 auto;
 }
 
 @media screen and (max-width: 599px) {
@@ -535,46 +536,6 @@ input:checked ~ .switch_ball::after {
 @media screen and (max-width: 995px) {
   .content {
     height: calc(100% - 56px);
-  }
-}
-
-.header {
-  position: relative;
-  width: 100%;
-  height: 77px;
-  z-index: 2;
-}
-
-.header .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: space-between;
-      -ms-flex-align: space-between;
-          align-items: space-between;
-  height: 100%;
-  background-color: #fff;
-  -webkit-box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
-          box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
-}
-
-@media screen and (max-width: 995px) {
-  .header .container {
-    padding: 0 16px;
-    -webkit-box-shadow: 0px -3.6px 8px rgba(38, 38, 38, 0.05);
-            box-shadow: 0px -3.6px 8px rgba(38, 38, 38, 0.05);
-  }
-}
-
-@media screen and (max-width: 995px) {
-  .header {
-    -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-            order: 2;
-    height: 56px;
   }
 }
 
@@ -989,6 +950,10 @@ input:checked ~ .switch_ball::after {
   fill: #ffffff;
   -webkit-transform: rotate(3deg);
           transform: rotate(3deg);
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 100%;
+  cursor: pointer;
 }
 
 .detail .slip_item_detail {
@@ -1154,8 +1119,8 @@ input:checked ~ .switch_ball::after {
 .recommend_pic {
   width: 50px;
   height: 50px;
-  background-color: #ccc;
   margin-right: 12px;
+  background-color: #ccc;
   border-radius: 100%;
 }
 
@@ -1200,6 +1165,117 @@ input:checked ~ .switch_ball::after {
   .recommend {
     display: none;
   }
+}
+
+.petCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 42px 0;
+}
+
+@media screen and (max-width: 995px) {
+  .petCard {
+    width: 100%;
+    max-width: 768px;
+    padding: 42px 5px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .petCard {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .petCard {
+    max-width: 360px;
+  }
+}
+
+.petCard_item {
+  position: relative;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 28px;
+}
+
+@media screen and (max-width: 995px) {
+  .petCard_item {
+    width: calc(100% / 4 - 20px);
+    margin: 0 10px 12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .petCard_item {
+    width: calc(100% / 3 - 20px);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .petCard_item {
+    width: calc(100% / 2 - 20px);
+  }
+}
+
+.petCard_item._new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 162px;
+  height: 209px;
+}
+
+.petCard_item_add {
+  width: 68px;
+  height: 68px;
+  fill: #fdaaa2;
+}
+
+.petCard_item .petInfoTxt {
+  margin-top: 8px;
+}
+
+.petCard_item .close_btn {
+  top: 20px;
+  right: 22px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: #ffffff;
+  fill: #262626;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+}
+
+.petCard_item .close_btn svg {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .collect_head {
@@ -1414,12 +1490,12 @@ input:checked ~ .switch_ball::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 100vw;
   height: 100vh;
   background: rgba(248, 248, 248, 0.66);
@@ -2172,12 +2248,12 @@ input:checked ~ .switch_ball::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -webkit-box-align: space-between;
-      -ms-flex-align: space-between;
-          align-items: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   width: calc(100% / 3 - 5.5px);
   margin-right: 8px;
   margin-bottom: 8px;

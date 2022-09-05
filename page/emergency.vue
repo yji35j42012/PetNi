@@ -36,27 +36,35 @@
             <span>*資訊僅供參考，建議先電話聯絡再前往。</span>
         </div>
 
-        <ul class="emergency_group">
+        <ul
+            class="emergency_group"
+            v-for="(outItem, outIndex) in showLists.city_map"
+            :key="outIndex"
+        >
             <li class="emergency_group_title">
                 <i>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 23">
                         <path :d="icon_all.address" />
                     </svg>
                 </i>
-                台北市
+                {{ showLists.city_map[outIndex] }}
             </li>
             <li
                 class="emergency_group_card"
-                v-for="(item, index) in 7"
-                :key="index"
+                v-for="(insideItem, insideIndex) in showLists.list_obj[
+                    showLists.city_map[outIndex]
+                ]"
+                :key="insideIndex"
             >
                 <div class="detail">
-                    <p class="title">展望動物醫院</p>
-                    <p>02 2388 0122</p>
-                    <p>台北市萬華區中華路2段2號</p>
+                    <p class="title">{{ insideItem.name }}</p>
+                    <p>{{ insideItem.phone }}</p>
+                    <p>{{ insideItem.address }}</p>
                 </div>
                 <div class="state">
-                    <span>*疫情期間有開</span>
+                    <span :class="insideItem.epidemic ? '' : 'hide'"
+                        >*疫情期間有開</span
+                    >
                     <a href="">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -76,37 +84,38 @@ module.exports = {
     data() {
         return {
             icon_all: icon_all,
-            // lists: null,
             areaData: area,
             area: "N",
         };
     },
     components: {},
-    mounted() {
-        // console.log(store.state.nowPage);
-        // this.lists = this.areaData;
-    },
+    mounted() {},
     computed: {
         showLists() {
             if (this.areaData == null) return;
-            // var list_obj = [];
-            console.log("areaData", this.areaData[this.area]);
-
-            // console.log("list_obj", list_obj);
-
-            // this.lists.forEach((item) => {
-            //     console.log("list_obj item", item);
-            // });
-            // console.log("list_obj", list_obj);
-
-            return this.areaData[this.area];
+            var lists_obj = {
+                city_map: [],
+                list_obj: {},
+            };
+            this.areaData[this.area].forEach((item) => {
+                if (lists_obj.city_map.indexOf(item.city) == -1) {
+                    lists_obj.city_map.push(item.city);
+                    lists_obj.list_obj[item.city] = [];
+                }
+                lists_obj.list_obj[item.city].push({
+                    name: item.name,
+                    phone: item.phone,
+                    address: item.address,
+                    epidemic: item.epidemic,
+                });
+            });
+            return lists_obj;
         },
     },
     methods: {
         emergency_area(str) {
             if (this.area !== str) {
                 this.area = str;
-                console.log(str);
             }
         },
     },
