@@ -141,7 +141,9 @@
             <div class="slip">
                 <div class="slip_item _noData">
                     <span>
-                        很抱歉！<br />已沒有單身狗、單身貓了，<br />請嘗試修改篩選條件。
+                        很抱歉！<br />
+                        已沒有單身狗、單身貓了，<br />
+                        請嘗試修改篩選條件。
                     </span>
                 </div>
                 <div
@@ -295,12 +297,12 @@ module.exports = {
             let randomNumList = [];
             let maxItem = 10; //最多10筆
             var resetRandom = 0;
-            console.log("totalItem", this.totalItem);
+            // console.log("totalItem", this.totalItem);
             // Math.floor(Math.random() * x);
             for (let i = 0; i < maxItem + resetRandom; i++) {
                 var randomNum = Math.floor(Math.random() * this.totalItem);
-                console.log("randomNum", randomNum);
-                console.log("reset", randomNumList.indexOf(randomNum));
+                // console.log("randomNum", randomNum);
+                // console.log("reset", randomNumList.indexOf(randomNum));
                 if (randomNumList.indexOf(randomNum) == -1) {
                     randomNumList.push(randomNum);
                     showPet.push(this.oldpetData[randomNum]);
@@ -308,13 +310,6 @@ module.exports = {
                     resetRandom++;
                 }
             }
-            console.log("showPet", showPet);
-
-            // console.log("scolled", this.scolled);
-            // console.log(
-            //     "txt",
-            //     this.oldpetData[this.totalItem - this.scolled].animal_Variety
-            // );
             return showPet;
         },
     },
@@ -359,7 +354,7 @@ module.exports = {
                 this.addClassHandler(this.who, "unlike", 10);
                 this.scolled++;
             } else {
-                console.log("回赴", itemCenter, this.newL, boxWMax);
+                // console.log("恢復", itemCenter, this.newL, boxWMax);
                 this.transformHandler(0, 0, -3, 0.5);
             }
         },
@@ -438,8 +433,9 @@ module.exports = {
             scrollitem.style = `transform: translate3d(${x}px ,${y}px , 0) rotate(${rotate}deg); transition-duration: ${time}s;`;
         },
         unlikeHandler(str) {
-            console.log("unlikeHandler", str);
+            // console.log("unlikeHandler", str);
             this.addClassHandler(str, "unlike", 10);
+            this.recordUnLike();
             this.scolled++;
         },
         likeHandler(str) {
@@ -468,8 +464,13 @@ module.exports = {
             }
         },
         recordLike() {
-            console.log("index", this.who.split("slip")[1]);
-            console.log("index1", this.oldpetData[this.who.split("slip")[1]]);
+            // console.log("index", this.who.split("slip")[1]);
+            // console.log("index1", this.who.split("slip")[1]);
+            this.likeList.push(this.who.split("slip")[1]);
+            // console.log(this.likeList);
+        },
+        recordUnLike() {
+            this.unlikeList.push(this.who.split("slip")[1]);
         },
     },
 };

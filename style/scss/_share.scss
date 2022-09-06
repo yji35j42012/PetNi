@@ -848,13 +848,10 @@ svg {
             fill: #262626;
             box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
             svg {
+                @include pos_a(0, 0, 0, 0);
                 position: absolute;
                 width: 6px;
                 height: 6px;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
                 margin: auto;
             }
         }
@@ -989,7 +986,6 @@ svg {
     &_btnBox {
         @include d_f(flex, center, center);
         height: 42px;
-
         button {
             width: 117px;
             height: 100%;
