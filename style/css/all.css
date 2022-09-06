@@ -992,6 +992,7 @@ input:checked ~ .switch_ball::after {
 }
 
 .slip_item_info {
+  overflow: hidden;
   padding: 0 5px;
   color: #fff;
 }
@@ -1015,8 +1016,11 @@ input:checked ~ .switch_ball::after {
 }
 
 .slip_item_info .address {
+  overflow: hidden;
   font-size: 14px;
   line-height: 21px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .slip_item_info .gender {
@@ -2357,5 +2361,6 @@ input:checked ~ .switch_ball::after {
 .scroll_y {
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 /*# sourceMappingURL=all.css.map */

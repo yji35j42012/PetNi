@@ -565,6 +565,7 @@ svg {
         }
         // .slip_item_info
         &_info {
+            overflow: hidden;
             padding: 0 5px;
             color: #fff;
             span {
@@ -576,8 +577,11 @@ svg {
                 @include d_f(flex, center, center);
             }
             .address {
+                overflow: hidden;
                 font-size: 14px;
                 line-height: 21px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
             .gender {
                 display: block;
@@ -1560,4 +1564,5 @@ svg {
 .scroll_y {
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }

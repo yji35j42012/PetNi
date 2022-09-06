@@ -145,12 +145,12 @@
                     </span>
                 </div>
                 <div
-                    v-for="(item, index) in petItem"
-                    :key="index"
-                    :id="'slip' + index"
+                    v-for="item in petItem"
+                    :key="item.animal_id"
+                    :id="'slip' + item.animal_id"
                     class="slip_item"
-                    @mousedown="slipMouseDown('slip' + index)"
-                    @touchstart="slipMouseDown('slip' + index)"
+                    @mousedown="slipMouseDown('slip' + item.animal_id)"
+                    @touchstart="slipMouseDown('slip' + item.animal_id)"
                 >
                     <img class="hide" :src="item.album_file" alt="" />
                     <button
@@ -167,7 +167,7 @@
                     <div class="slip_item_box">
                         <button
                             class="unlike_btn"
-                            @click="unlikeHandler('slip' + index)"
+                            @click="unlikeHandler('slip' + item.animal_id)"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +192,7 @@
                         </div>
                         <button
                             class="like_btn"
-                            @click="likeHandler('slip' + index)"
+                            @click="likeHandler('slip' + item.animal_id)"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -225,9 +225,7 @@
                     <path :d="icon_all.back" />
                 </svg>
             </button>
-            <span class="name">
-                {{ showTitle }}
-            </span>
+            <span class="name">{{ showTitle }}</span>
             <button class="searchBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
                     <path :d="icon_all.filter" />
@@ -247,18 +245,22 @@ module.exports = {
                 age: "all",
             },
             icon_all: icon_all,
+            oldpetData: pet,
             who: "",
-            startX: "",
-            startY: "",
+            move: {
+                startX: "",
+                startY: "",
+            },
             cardL: "",
             cardT: "",
             moveRotateRight: 0, //移動兼具＋
-            oldpetData: pet,
             rotateNum: 30,
             rotateMaxNum: 45,
             newL: 0,
-            totalItem: 0,
+            totalItem: null,
             scolled: 0,
+            likeList: [],
+            unlikeList: [],
         };
     },
     components: {
@@ -277,6 +279,7 @@ module.exports = {
     },
     computed: {
         showTitle() {
+            if (this.totalItem == null) return;
             let show = "";
             if (this.totalItem !== 0 && this.totalItem !== this.scolled) {
                 show = this.oldpetData[this.totalItem - this.scolled - 1]
@@ -287,13 +290,32 @@ module.exports = {
             return show;
         },
         petItem() {
-            // console.log("totalItem", this.totalItem);
+            if (this.totalItem == null) return;
+            let showPet = [];
+            let randomNumList = [];
+            let maxItem = 10; //最多10筆
+            var resetRandom = 0;
+            console.log("totalItem", this.totalItem);
+            // Math.floor(Math.random() * x);
+            for (let i = 0; i < maxItem + resetRandom; i++) {
+                var randomNum = Math.floor(Math.random() * this.totalItem);
+                console.log("randomNum", randomNum);
+                console.log("reset", randomNumList.indexOf(randomNum));
+                if (randomNumList.indexOf(randomNum) == -1) {
+                    randomNumList.push(randomNum);
+                    showPet.push(this.oldpetData[randomNum]);
+                } else {
+                    resetRandom++;
+                }
+            }
+            console.log("showPet", showPet);
+
             // console.log("scolled", this.scolled);
             // console.log(
             //     "txt",
             //     this.oldpetData[this.totalItem - this.scolled].animal_Variety
             // );
-            return this.oldpetData;
+            return showPet;
         },
     },
     methods: {
@@ -355,10 +377,9 @@ module.exports = {
                 var nx = event.touches[0].pageX;
                 var ny = event.touches[0].pageY;
             }
-
-            let newl = nx - this.startX;
+            let newl = nx - this.move.startX;
             this.newL = newl;
-            let newt = ny - this.startY;
+            let newt = ny - this.move.startY;
             // 程式碼關鍵處
             let boxW = document.getElementById("container");
             let boxWMin = boxW.offsetWidth * (1 / 5);
@@ -377,18 +398,18 @@ module.exports = {
         },
         // 按下卡片
         slipMouseDown(str, $event) {
-            console.log("按下卡片");
+            console.log("按下卡片", str);
             this.who = str;
-            this.startX = event.clientX;
+            this.move.startX = event.clientX;
             // 點擊位置
             if (!event.touches) {
                 //相容移動端
-                this.startX = event.clientX;
-                this.startY = event.clientY;
+                this.move.startX = event.clientX;
+                this.move.startY = event.clientY;
             } else {
                 //相容PC端
-                this.startX = event.touches[0].pageX;
-                this.startY = event.touches[0].pageY;
+                this.move.startX = event.touches[0].pageX;
+                this.move.startY = event.touches[0].pageY;
             }
             let scrollitem = document.getElementById(str);
             let boxW = document.getElementById("container");
@@ -423,6 +444,7 @@ module.exports = {
         },
         likeHandler(str) {
             this.addClassHandler(str, "like", 10);
+            this.recordLike();
             this.scolled++;
         },
         addClassHandler(who, what, when) {
@@ -434,7 +456,6 @@ module.exports = {
         backCard() {
             let returnId = this.totalItem - this.scolled;
             if (this.scolled == 0) return;
-
             let removeObj = document.getElementById("slip" + returnId);
             if (removeObj.classList.contains("like")) {
                 removeObj.classList.remove("like");
@@ -445,6 +466,10 @@ module.exports = {
             } else {
                 console.log("來亂？");
             }
+        },
+        recordLike() {
+            console.log("index", this.who.split("slip")[1]);
+            console.log("index1", this.oldpetData[this.who.split("slip")[1]]);
         },
     },
 };
