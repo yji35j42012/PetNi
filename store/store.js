@@ -1,72 +1,26 @@
 const store = new Vuex.Store({
 	state: {
 		nowPage: "",
-		// city: [],
-		// restaurant: {
-		// 	class: [],
-		// 	info: [],
-		// },
-		// activity: {
-		// 	class: [],
-		// 	info: [],
-		// },
-		// attractions: {
-		// 	class: [],
-		// 	info: [],
-		// },
-		// breadcrumbs: [],
-		// searchItem: {
-		// 	typeSearch: "",
-		// 	funcSearch_city: "",
-		// 	funcSearch_cityName: "",
-		// 	funcSearch_info: "",
-		// },
-		// showSearch: [],
-		// loadingShow: true,
+		petData: "",
 	},
 	getters: {},
 	mutations: {
 		SET_PAGE(state, str) {
-			state.nowPage = str
+			state.nowPage = str;
+		},
+		SET_PETDATA(state, obj) {
+			state.petData = obj;
 		},
 		// SET_CITY(state, str) {
 		// 	state.city = str
 		// },
-		// SET_RESTAURANT(state, str) {
-		// 	state.restaurant.class = str.class_obj
-		// 	state.restaurant.info = str.info_obj
-		// },
-		// SET_ACTIVITY(state, str) {
-		// 	state.activity.class = str.class_obj
-		// 	state.activity.info = str.info_obj
-		// },
-		// SET_ATTRACTIONS(state, str) {
-		// 	state.attractions.class = str.class_obj
-		// 	state.attractions.info = str.info_obj
-		// },
-		// SET_BREADCRUMBS(state, str) {
-		// 	state.breadcrumbs.push(str)
-		// },
-		// DEL_BREADCRUMBS(state) {
-		// 	state.breadcrumbs.splice(-1, 1)
-		// },
-		// CLEAR_BREADCRUMBS(state) {
-		// 	state.breadcrumbs = []
-		// },
-		// SET_SEARCHITEM(state, searchObj) {
-		// 	state.searchItem = []
-		// 	state.searchItem = searchObj
-		// },
-		// SET_SHOWSEARCH(state, obj) {
-		// 	state.showSearch = obj
-		// },
-		// SET_LOADING(state, boo) {
-		// 	state.loadingShow = boo
-		// },
 	},
 	actions: {
 		PAGE({ commit }, str) {
-			commit("SET_PAGE", str)
+			commit("SET_PAGE", str);
+		},
+		SET_PETDATA_ACTION({ commit }, petObj) {
+			commit("SET_PETDATA", petObj);
 		},
 		// READ_CITY({ commit }) {
 		// 	axios
@@ -224,4 +178,4 @@ const store = new Vuex.Store({
 		// 	}, 1000)
 		// },
 	},
-})
+});

@@ -28,8 +28,8 @@ var pet = [
 		"cDate": "2022/03/30",
 		"shelter_address": "高雄市燕巢區師大路98號",
 		"shelter_tel": "07-6051002"
-	  },
-	  {
+	},
+	{
 		"animal_id": 248494,
 		"animal_subid": "JAAAG1110329003",
 		"animal_area_pkid": 14,
@@ -58,8 +58,8 @@ var pet = [
 		"cDate": "2022/03/29",
 		"shelter_address": "嘉義縣大林鎮中坑里中興2-6號",
 		"shelter_tel": "05-2950053"
-	  },
-	  {
+	},
+	{
 		"animal_id": 248438,
 		"animal_subid": "S110328-13",
 		"animal_area_pkid": 16,
@@ -88,8 +88,8 @@ var pet = [
 		"cDate": "2022/03/29",
 		"shelter_address": "臺南市善化區昌隆里東勢寮1~19號",
 		"shelter_tel": "06-5832399"
-	  },
-	  {
+	},
+	{
 		"animal_id": 248383,
 		"animal_subid": "1110324D01",
 		"animal_area_pkid": 22,
@@ -118,8 +118,8 @@ var pet = [
 		"cDate": "2022/03/28",
 		"shelter_address": "金門縣金湖鎮裕民農莊20號",
 		"shelter_tel": "082-336625"
-	  },
-	  {
+	},
+	{
 		"animal_id": 248380,
 		"animal_subid": "1110324D02",
 		"animal_area_pkid": 22,
@@ -148,8 +148,8 @@ var pet = [
 		"cDate": "2022/03/28",
 		"shelter_address": "金門縣金湖鎮裕民農莊20號",
 		"shelter_tel": "082-336625"
-	  },
-	  {
+	},
+	{
 		"animal_id": 213433,
 		"animal_subid": "PAAAG1100709016",
 		"animal_area_pkid": 21,
@@ -178,8 +178,8 @@ var pet = [
 		"cDate": "2022/03/28",
 		"shelter_address": "澎湖縣馬公市烏崁里260、261號",
 		"shelter_tel": "06-9213559"
-	  },
-	  {
+	},
+	{
 		"animal_id": 226305,
 		"animal_subid": "PAAAG1101010013",
 		"animal_area_pkid": 21,
@@ -208,8 +208,8 @@ var pet = [
 		"cDate": "2022/03/28",
 		"shelter_address": "澎湖縣馬公市烏崁里260、261號",
 		"shelter_tel": "06-9213559"
-	  },
-	  {
+	},
+	{
 		"animal_id": 248344,
 		"animal_subid": "AAAEG1110328001",
 		"animal_area_pkid": 3,

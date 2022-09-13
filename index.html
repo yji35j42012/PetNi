@@ -52,7 +52,7 @@
 				component: httpVueLoader("./page/home.vue"),
 			},
 			{
-				path: "/detail",
+				path: "/home/:id",
 				component: httpVueLoader("./page/detail.vue"),
 			},
 			{
@@ -86,6 +86,7 @@
 			data() {
 				return {
 					nowPage: "",
+					oldpetData: pet,
 				};
 			},
 			components: {
@@ -93,12 +94,18 @@
 				loading: httpVueLoader("./components/Loading.vue"),
 			},
 			router,
-			mounted() { },
+			mounted() {
+				console.log('index');
+				store.dispatch("SET_PETDATA_ACTION", this.oldpetData)
+			},
 			computed: {},
 			watch: {
 				$route(to, from) {
 					var now = this.$route.path;
-					if (this.$route.path == "/") {
+					if (now.split('home').length == 2) {
+						this.nowPage = "home detail";
+						store.dispatch("PAGE", "home detail");
+					} else if (now == "/" || now == 'home') {
 						this.nowPage = "home";
 						store.dispatch("PAGE", "home");
 					} else {

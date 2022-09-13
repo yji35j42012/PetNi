@@ -9,90 +9,88 @@
 					<!-- <img src="./images/logo-mobile.png" alt="" /> -->
 				</router-link>
 			</h1>
-			<div class="menu_group">
-				<router-link to="/" class="menu_item">
-					<i>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 25 21"
-						>
-							<path :d="icon_all.pair" />
-						</svg>
-					</i>
-					<span>配對</span>
-				</router-link>
-				<router-link to="/collect" class="menu_item">
-					<i>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 25"
-						>
-							<path :d="icon_all.favorites" />
-						</svg>
-					</i>
-					<span>收藏</span>
-				</router-link>
-				<router-link to="/theme" class="menu_item">
-					<i>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 25"
-						>
-							<path :d="icon_all.theme" />
-						</svg>
-					</i>
-					<span>主題館</span>
-				</router-link>
-				<router-link to="/adoption" class="menu_item">
-					<i>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 26 25"
-						>
-							<path :d="icon_all.collar" />
-						</svg>
-					</i>
-					<span>送養</span>
-				</router-link>
-				<router-link to="/emergency" class="menu_item">
-					<i>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 25"
-						>
-							<path :d="icon_all.hospital" />
-						</svg>
-					</i>
-					<span>急診</span>
-				</router-link>
-				<!-- <li
+			<ul class="menu_group">
+				<li
 					@click="change('home')"
-					:class="nowPage == 'home' ? 'on' : ''"
+					:class="['menu_item', nowPage == 'home' ? 'on' : '']"
 				>
-					
+					<router-link to="/">
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 25 21"
+							>
+								<path :d="icon_all.pair" />
+							</svg>
+						</i>
+						<span>配對</span>
+					</router-link>
 				</li>
 				<li
 					@click="change('collect')"
-					:class="nowPage == 'collect' ? 'on' : ''"
+					:class="['menu_item', nowPage == 'collect' ? 'on' : '']"
 				>
-					
+					<router-link to="/collect">
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 25"
+							>
+								<path :d="icon_all.favorites" />
+							</svg>
+						</i>
+						<span>收藏</span>
+					</router-link>
 				</li>
 				<li
 					@click="change('theme')"
-					:class="nowPage == 'theme' ? 'on' : ''"
+					:class="['menu_item', nowPage == 'theme' ? 'on' : '']"
 				>
+					<router-link to="/theme">
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 25"
+							>
+								<path :d="icon_all.theme" />
+							</svg>
+						</i>
+						<span>主題館</span>
+					</router-link>
 				</li>
 				<li
 					@click="change('adoption')"
-					:class="nowPage == 'adoption' ? 'on' : ''"
+					:class="['menu_item', nowPage == 'adoption' ? 'on' : '']"
 				>
+					<router-link to="/adoption">
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 26 25"
+							>
+								<path :d="icon_all.collar" />
+							</svg>
+						</i>
+						<span>送養</span>
+					</router-link>
 				</li>
 				<li
 					@click="change('emergency')"
-					:class="nowPage == 'emergency' ? 'on' : ''"
+					:class="['menu_item', nowPage == 'emergency' ? 'on' : '']"
 				>
-				</li> -->
-			</div>
+					<router-link to="/emergency">
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 25"
+							>
+								<path :d="icon_all.hospital" />
+							</svg>
+						</i>
+						<span>急診</span>
+					</router-link>
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
