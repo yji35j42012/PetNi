@@ -100,12 +100,8 @@
             </ul>
             <ul class="basic_detail">
                 <li class="basic_detail_phone">{{ tel }}</li>
-                <li class="basic_detail_address">
-                    {{ address }}
-                </li>
-                <li class="basic_detail_txt">
-                    本站動物皆採現場互動面談後評估能否認養，不接受系統上的預約。
-                </li>
+                <li class="basic_detail_address">{{ address }}</li>
+                <li class="basic_detail_txt">{{ remark }}</li>
             </ul>
         </div>
 
@@ -137,6 +133,7 @@ module.exports = {
             subid: null,
             tel: null,
             address: null,
+            remark: null,
         };
     },
     components: {},
@@ -149,6 +146,7 @@ module.exports = {
                 this.subid = item.animal_subid;
                 this.tel = item.shelter_tel;
                 this.address = item.shelter_address;
+                this.remark = item.animal_remark;
                 console.log("detailId item", item);
             }
         });

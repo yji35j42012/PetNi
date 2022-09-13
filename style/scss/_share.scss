@@ -540,7 +540,6 @@ svg {
             }
         }
         box-sizing: content-box;
-        // @extend %transition;
         // .detail .slip_item
         @at-root .detail & {
             position: relative;
@@ -704,7 +703,6 @@ svg {
     // .basic_info
     &_info {
         @include d_f(flex, space-between, center);
-
         .gender {
             display: block;
             width: 24px;
@@ -800,6 +798,7 @@ svg {
 .detail {
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     @include mw(M) {
         .close_btn {
