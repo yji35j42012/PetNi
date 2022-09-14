@@ -12,7 +12,7 @@
                 </button>
             </div>
         </div>
-        <div class="theme_group">
+        <div id="theme_group" class="theme_group">
             <div
                 class="theme_item"
                 v-for="(item, index) in showThemes"
@@ -42,19 +42,19 @@
                     <img :src="item.src" alt="" />
                 </div>
             </div>
+        </div>
 
-            <div class="theme_btn">
-                <button class="theme_btn_page">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path :d="icon_all.arrowLeft" />
-                    </svg>
-                </button>
-                <button class="theme_btn_page">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path :d="icon_all.arrowRight" />
-                    </svg>
-                </button>
-            </div>
+        <div class="theme_btn">
+            <button class="theme_btn_page" @click="themePageHandler(-1)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path :d="icon_all.arrowLeft" />
+                </svg>
+            </button>
+            <button class="theme_btn_page" @click="themePageHandler(1)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path :d="icon_all.arrowRight" />
+                </svg>
+            </button>
         </div>
     </div>
 </template>
@@ -169,6 +169,7 @@ module.exports = {
                 ],
             },
             themeSwitch: "cat",
+            themePage: 0,
         };
     },
     components: {},
@@ -185,6 +186,22 @@ module.exports = {
     methods: {
         themeSwitchHandler(str) {
             this.themeSwitch = str;
+            this.themePage = 0;
+        },
+        themePageHandler(num) {
+            console.log("num", num);
+            if (this.themePage + num < 0) {
+                this.themePage = 0;
+            } else if (
+                this.themePage + num >
+                this.themes[this.themeSwitch].length
+            ) {
+                this.themePage = this.themes[this.themeSwitch].length;
+            } else {
+                var theme_group = document.querySelector("#theme_group");
+                this.themePage = this.themePage + num;
+            }
+            console.log(this.themePage);
         },
     },
 };

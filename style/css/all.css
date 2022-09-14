@@ -142,7 +142,7 @@ select {
 }
 
 .menu_item, .unlike_btn,
-.like_btn, .switch, .func_ul li, .func .btn, .sel, .tab li {
+.like_btn, .switch, .func_ul li, .func .btn, .theme_btn_page, .sel, .tab li {
   cursor: pointer;
 }
 
