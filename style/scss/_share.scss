@@ -40,6 +40,9 @@
         @include d_f(flex, center);
         padding: 0;
     }
+    @at-root .theme & {
+        overflow: hidden;
+    }
 }
 .menu {
     position: relative;
@@ -1087,8 +1090,8 @@ svg {
     // .theme_group
     &_group {
         @include d_f(flex);
+        @extend %transition;
         @include mw(M) {
-            overflow-x: hidden;
             overflow-y: auto;
             height: calc(100% - 92px);
             padding: 25px 0 45px 0;

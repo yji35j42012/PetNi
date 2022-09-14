@@ -136,7 +136,7 @@ select {
   }
 }
 
-.menu_item span, .switch_ball, .switch_ball::after, .func, .slip::before, .slip_item, .slip_item._noData, .recommend, .tab li {
+.menu_item span, .switch_ball, .switch_ball::after, .func, .slip::before, .slip_item, .slip_item._noData, .recommend, .theme_group, .tab li {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
 }
@@ -239,6 +239,10 @@ select {
       -ms-flex-align: stretch;
           align-items: stretch;
   padding: 0;
+}
+
+.theme .container {
+  overflow: hidden;
 }
 
 .menu {
@@ -1832,7 +1836,6 @@ input:checked ~ .switch_ball::after {
 
 @media screen and (max-width: 995px) {
   .theme_group {
-    overflow-x: hidden;
     overflow-y: auto;
     height: calc(100% - 92px);
     padding: 25px 0 45px 0;

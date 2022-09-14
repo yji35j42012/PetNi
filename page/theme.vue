@@ -2,17 +2,12 @@
 
 <template>
     <div class="container">
-        <div class="theme_head">
-            <div :class="['theme_switch', themeSwitch]">
-                <button class="cat_btn" @click="themeSwitchHandler('cat')">
-                    喵星人
-                </button>
-                <button class="dog_btn" @click="themeSwitchHandler('dog')">
-                    汪星人
-                </button>
-            </div>
-        </div>
-        <div id="theme_group" class="theme_group">
+        <div
+            id="theme_group"
+            class="theme_group"
+            @mousedown="slipMouseDown"
+            @touchstart="slipMouseDown"
+        >
             <div
                 class="theme_item"
                 v-for="(item, index) in showThemes"
@@ -39,8 +34,18 @@
                 </div>
                 <div class="theme_pic">
                     <!-- <img src="../images/theme/orange_cat.png" alt="" /> -->
-                    <img :src="item.src" alt="" />
+                    <img :src="item.src" alt="" style="opacity:0;" />
                 </div>
+            </div>
+        </div>
+        <div class="theme_head">
+            <div :class="['theme_switch', themeSwitch]">
+                <button class="cat_btn" @click="themeSwitchHandler('cat')">
+                    喵星人
+                </button>
+                <button class="dog_btn" @click="themeSwitchHandler('dog')">
+                    汪星人
+                </button>
             </div>
         </div>
 
@@ -194,14 +199,23 @@ module.exports = {
                 this.themePage = 0;
             } else if (
                 this.themePage + num >
-                this.themes[this.themeSwitch].length
+                this.themes[this.themeSwitch].length - 1
             ) {
                 this.themePage = this.themes[this.themeSwitch].length;
             } else {
                 var theme_group = document.querySelector("#theme_group");
                 this.themePage = this.themePage + num;
+                var move = this.themePage * 100;
+                console.log("ttt", `transform:translate3d(- ${move}% ,0,0)`);
+
+                theme_group.style = `transform:translateX(-${move}%)`;
             }
             console.log(this.themePage);
+            // let scrollitem = document.getElementById(this.who);
+            // scrollitem.style = `transform: translate3d(${x}px ,${y}px , 0) rotate(${rotate}deg); transition-duration: ${time}s;`;
+        },
+        slipMouseDown($event) {
+            console.log("按下");
         },
     },
 };
