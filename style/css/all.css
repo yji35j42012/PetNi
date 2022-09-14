@@ -168,6 +168,7 @@ select {
 }
 
 .container {
+  position: relative;
   width: 100%;
   max-width: 1280px;
   margin: auto;
@@ -573,18 +574,6 @@ input:checked ~ .switch_ball::after {
 @media screen and (max-width: 599px) {
   .homeAni p {
     font-size: 12px;
-  }
-}
-
-.content {
-  width: 100%;
-  height: calc(100% - 77px);
-  background-color: #f8f8f8;
-}
-
-@media screen and (max-width: 995px) {
-  .content {
-    height: calc(100% - 56px);
   }
 }
 
@@ -1372,6 +1361,7 @@ input:checked ~ .switch_ball::after {
 .detail {
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media screen and (max-width: 995px) {
@@ -1829,10 +1819,30 @@ input:checked ~ .switch_ball::after {
 }
 
 .theme_group {
-  padding: 24px 15px 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+@media screen and (max-width: 995px) {
+  .theme_group {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100% - 92px);
+    padding: 25px 0 45px 0;
+  }
 }
 
 .theme_item {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1842,14 +1852,19 @@ input:checked ~ .switch_ball::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 
 @media screen and (max-width: 995px) {
   .theme_item {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    height: 100%;
   }
 }
 
@@ -1892,11 +1907,19 @@ input:checked ~ .switch_ball::after {
   }
 }
 
+.theme_pic {
+  height: calc(100vh - 75px);
+}
+
 @media screen and (max-width: 995px) {
   .theme_pic {
-    width: 480px;
-    height: 671px;
+    height: calc(100% - 163px);
   }
+}
+
+.theme_pic img {
+  width: auto;
+  height: 100%;
 }
 
 .theme_head {

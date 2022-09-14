@@ -8,6 +8,7 @@
     }
 }
 .container {
+    position: relative;
     width: 100%;
     max-width: 1280px;
     margin: auto;
@@ -300,14 +301,14 @@ svg {
         }
     }
 }
-.content {
-    width: 100%;
-    height: calc(100% - 77px);
-    background-color: #f8f8f8;
-    @include mw(M) {
-        height: calc(100% - 56px);
-    }
-}
+// .content {
+//     width: 100%;
+//     height: calc(100% - 77px);
+//     background-color: #f8f8f8;
+//     @include mw(M) {
+//         height: calc(100% - 56px);
+//     }
+// }
 .logo {
     width: 118px;
     height: 53px;
@@ -846,7 +847,6 @@ svg {
         @include mw(XS) {
             width: calc(100% / 2 - 20px);
         }
-
         &._new {
             @include d_f(flex, center, center);
             width: 162px;
@@ -1094,13 +1094,23 @@ svg {
 .theme {
     // .theme_group
     &_group {
-        padding: 24px 15px 45px;
+        @include d_f(flex);
+        @include mw(M) {
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: calc(100% - 92px);
+            padding: 25px 0 45px 0;
+        }
     }
     // .theme_item
     &_item {
+        flex: none;
         @include d_f(flex, center, center);
+        width: 100%;
         @include mw(M) {
+            justify-content: flex-start;
             flex-direction: column;
+            height: 100%;
         }
     }
     // .theme_txt
@@ -1133,9 +1143,15 @@ svg {
     }
     // .theme_pic
     &_pic {
+        height: calc(100vh - 75px);
         @include mw(M) {
-            width: 480px;
-            height: 671px;
+            height: calc(100% - 163px);
+            // width: 480px;
+            // height: 671px;
+        }
+        img {
+            width: auto;
+            height: 100%;
         }
     }
     // .theme_head
@@ -1540,7 +1556,6 @@ svg {
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 21px;
-
                 &.title {
                     font-weight: 500;
                     font-size: 16px;
