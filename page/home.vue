@@ -285,12 +285,10 @@ module.exports = {
         //     this.oldpetData = res.data;
         // });
         axios
-            .get(
-                "https://www.taifex.com.tw/data_gov/taifex_open_data.asp?data_name=DailyForeignExchangeRates"
-            )
+            .get("https://tw.rter.info/capi.php")
             .then(function(response) {
                 let data = response.data;
-                console.log("data", data);
+                console.log("data1111", data);
 
                 // console.log(arguments)
             })
