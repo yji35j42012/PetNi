@@ -14,12 +14,8 @@
                 :key="index"
             >
                 <div class="theme_txt">
-                    <div class="theme_txt_title">
-                        {{ item.title }}
-                    </div>
-                    <div class="theme_txt_p">
-                        {{ item.txt }}
-                    </div>
+                    <div class="theme_txt_title">{{ item.title }}</div>
+                    <div class="theme_txt_p">{{ item.txt }}</div>
                     <label class="searchBox">
                         <input type="text" :placeholder="item.searchTxt" />
                         <i class="searchBox_icon">
@@ -194,7 +190,6 @@ module.exports = {
             this.themePage = 0;
         },
         themePageHandler(num) {
-            console.log("num", num);
             if (this.themePage + num < 0) {
                 this.themePage = 0;
             } else if (
@@ -206,11 +201,8 @@ module.exports = {
                 var theme_group = document.querySelector("#theme_group");
                 this.themePage = this.themePage + num;
                 var move = this.themePage * 100;
-                console.log("ttt", `transform:translate3d(- ${move}% ,0,0)`);
-
                 theme_group.style = `transform:translateX(-${move}%)`;
             }
-            console.log(this.themePage);
             // let scrollitem = document.getElementById(this.who);
             // scrollitem.style = `transform: translate3d(${x}px ,${y}px , 0) rotate(${rotate}deg); transition-duration: ${time}s;`;
         },
