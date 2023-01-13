@@ -6,6 +6,7 @@
             <div class="login_txt">請登入帳號，才能發送養文</div>
             <div class="login_btnBox">
                 <button class="ok">
+                    <i v-html="icon_all.google"></i>
                     google登入
                 </button>
                 <button class="cancel" @click="close">取消</button>
@@ -23,9 +24,9 @@ module.exports = {
     },
     computes: {},
     methods: {
-        close(){
-            this.$emit("closelogin")
-        }
+        close() {
+            this.$emit("closelogin");
+        },
     },
 };
 </script>

@@ -1772,8 +1772,23 @@ input:checked ~ .switch_ball::after {
 }
 
 .login_btnBox .ok {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #262626;
   color: #ffffff;
+}
+
+.login_btnBox .icon_google {
+  display: block;
+  width: 17px;
+  height: 17px;
 }
 
 .login_btnBox .cancel {

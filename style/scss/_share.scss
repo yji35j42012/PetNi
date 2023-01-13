@@ -1060,8 +1060,14 @@ svg {
             }
         }
         .ok {
+            @include d_f(flex,center,center);
             background-color: #262626;
             color: #ffffff;
+        }
+        .icon_google{
+            display: block;
+            width: 17px;
+            height: 17px;
         }
         .cancel {
             background-color: #dedede;
