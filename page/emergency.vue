@@ -42,11 +42,7 @@
             :key="outIndex"
         >
             <li class="emergency_group_title">
-                <i>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 23">
-                        <path :d="icon_all.address" />
-                    </svg>
-                </i>
+                <i v-html="icon_all.address"></i>
                 {{ showLists.city_map[outIndex] }}
             </li>
             <li
@@ -62,17 +58,10 @@
                     <p>{{ insideItem.address }}</p>
                 </div>
                 <div class="state">
-                    <span :class="insideItem.epidemic ? '' : 'hide'"
-                        >*疫情期間有開</span
-                    >
-                    <a href="">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                        >
-                            <path :d="icon_all.phone" />
-                        </svg>
-                    </a>
+                    <span :class="insideItem.epidemic ? '' : 'hide'">
+                        *疫情期間有開
+                    </span>
+                    <a href="" v-html="icon_all.phone"></a>
                 </div>
             </li>
         </ul>
