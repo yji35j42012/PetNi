@@ -24,14 +24,7 @@
                     :class="['menu_item', nowPage == 'collect' ? 'on' : '']"
                 >
                     <router-link to="/collect">
-                        <i>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 25"
-                            >
-                                <path :d="icon_all.favorites" />
-                            </svg>
-                        </i>
+                        <i v-html="icon_all.favorites"></i>
                         <span>收藏</span>
                     </router-link>
                 </li>
@@ -40,14 +33,7 @@
                     :class="['menu_item', nowPage == 'theme' ? 'on' : '']"
                 >
                     <router-link to="/theme">
-                        <i>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 25"
-                            >
-                                <path :d="icon_all.theme" />
-                            </svg>
-                        </i>
+                        <i v-html="icon_all.theme"></i>
                         <span>主題館</span>
                     </router-link>
                 </li>
@@ -56,14 +42,7 @@
                     :class="['menu_item', nowPage == 'adoption' ? 'on' : '']"
                 >
                     <router-link to="/adoption">
-                        <i>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 26 25"
-                            >
-                                <path :d="icon_all.collar" />
-                            </svg>
-                        </i>
+                        <i v-html="icon_all.collar"></i>
                         <span>送養</span>
                     </router-link>
                 </li>
@@ -72,14 +51,7 @@
                     :class="['menu_item', nowPage == 'emergency' ? 'on' : '']"
                 >
                     <router-link to="/emergency">
-                        <i>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 25"
-                            >
-                                <path :d="icon_all.hospital" />
-                            </svg>
-                        </i>
+                        <i v-html="icon_all.hospital"></i>
                         <span>急診</span>
                     </router-link>
                 </li>

@@ -10,27 +10,13 @@
                         :class="['square', search.type == 'cat' ? 'on' : '']"
                         @click="searchType('cat')"
                     >
-                        <i class="animal">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 36 36"
-                            >
-                                <path :d="icon_all.cat" />
-                            </svg>
-                        </i>
+                        <i class="animal" v-html="icon_all.cat"></i>
                     </li>
                     <li
                         :class="['square', search.type == 'dog' ? 'on' : '']"
                         @click="searchType('dog')"
                     >
-                        <i class="animal">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 36 36"
-                            >
-                                <path :d="icon_all.dog" />
-                            </svg>
-                        </i>
+                        <i class="animal" v-html="icon_all.dog"></i>
                     </li>
                     <li
                         :class="['square', search.type == 'all' ? 'on' : '']"
@@ -51,14 +37,7 @@
                         ]"
                         @click="searchGender('male')"
                     >
-                        <i class="gender">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                            >
-                                <path :d="icon_all.male" />
-                            </svg>
-                        </i>
+                        <i class="gender" v-html="icon_all.male"></i>
                     </li>
                     <li
                         :class="[
@@ -68,14 +47,7 @@
                         ]"
                         @click="searchGender('female')"
                     >
-                        <i class="gender">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                            >
-                                <path :d="icon_all.female" />
-                            </svg>
-                        </i>
+                        <i class="gender" v-html="icon_all.female"></i>
                     </li>
                     <li
                         :class="['square', search.gender == 'all' ? 'on' : '']"
