@@ -131,36 +131,19 @@
                         class="slip_item_detail"
                         @click="detailHandler(item.animal_id)"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 51 51"
-                        >
-                            <path :d="icon_all.detail" />
-                        </svg>
+                        <i v-html="icon_all.detail"></i>
                     </button>
                     <div class="slip_item_box">
                         <button
                             class="unlike_btn"
                             @click="unlikeHandler('slip' + item.animal_id)"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 25 25"
-                            >
-                                <path :d="icon_all.unlike" />
-                            </svg>
+                            <i v-html="icon_all.unlike"></i>
                         </button>
                         <div class="slip_item_info">
                             <p class="name female">
                                 <span>{{ item.animal_id }}</span>
-                                <i class="gender">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path :d="icon_all.female" />
-                                    </svg>
-                                </i>
+                                <i class="gender" v-html="icon_all.female"></i>
                             </p>
                             <p class="address">{{ item.animal_place }}</p>
                         </div>
@@ -168,12 +151,7 @@
                             class="like_btn"
                             @click="likeHandler('slip' + item.animal_id)"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32"
-                            >
-                                <path :d="icon_all.like" />
-                            </svg>
+                            <i v-html="icon_all.like"></i>
                         </button>
                     </div>
                 </div>

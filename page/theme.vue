@@ -18,14 +18,7 @@
                     <div class="theme_txt_p">{{ item.txt }}</div>
                     <label class="searchBox">
                         <input type="text" :placeholder="item.searchTxt" />
-                        <i class="searchBox_icon">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 25 24"
-                            >
-                                <path :d="icon_all.search" />
-                            </svg>
-                        </i>
+                        <i class="searchBox_icon" v-html="icon_all.search"></i>
                     </label>
                 </div>
                 <div class="theme_pic">

@@ -13,12 +13,7 @@
                     <div class="collect_pic"></div>
                     <petinfo></petinfo>
                     <button class="close_btn">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 7 7"
-                        >
-                            <path :d="icon_all.close" />
-                        </svg>
+                        <i v-html="icon_all.unlike"></i>
                     </button>
                 </li>
             </ul>

@@ -5,9 +5,7 @@
         <ul v-if="tab == 'card'" class="petCard">
             <li class="petCard_item _new" @click="addPetCard">
                 <div class="petCard_item_add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68">
-                        <path :d="icon_all.add" />
-                    </svg>
+                    <i v-html="icon_all.add"></i>
                 </div>
             </li>
             <petcard v-for="(item, index) in 7" :key="index"></petcard>
@@ -24,24 +22,10 @@
                         <h2>種類<span class="required_txt">(*必選)</span></h2>
                         <ul class="ul">
                             <li class="square on">
-                                <i class="animal">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 36 36"
-                                    >
-                                        <path :d="icon_all.cat" />
-                                    </svg>
-                                </i>
+                                <i class="animal" v-html="icon_all.cat"></i>
                             </li>
                             <li class="square">
-                                <i class="animal">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 36 36"
-                                    >
-                                        <path :d="icon_all.dog" />
-                                    </svg>
-                                </i>
+                                <i class="animal" v-html="icon_all.dog"></i>
                             </li>
                         </ul>
                     </div>
@@ -49,24 +33,10 @@
                         <h2>性別<span class="required_txt">(*必選)</span></h2>
                         <ul class="ul">
                             <li class="square male on">
-                                <i class="gender">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path :d="icon_all.male" />
-                                    </svg>
-                                </i>
+                                <i class="gender" v-html="icon_all.male"></i>
                             </li>
                             <li class="square female">
-                                <i class="gender">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path :d="icon_all.female" />
-                                    </svg>
-                                </i>
+                                <i class="gender" v-html="icon_all.female"></i>
                             </li>
                             <li class="square">不明</li>
                         </ul>

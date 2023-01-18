@@ -985,6 +985,7 @@ input:checked ~ .switch_ball::after {
 }
 
 .slip_item_detail {
+  overflow: hidden;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -993,10 +994,16 @@ input:checked ~ .switch_ball::after {
   fill: #ffffff;
   -webkit-transform: rotate(3deg);
           transform: rotate(3deg);
-  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
   border-radius: 100%;
   cursor: pointer;
+}
+
+.slip_item_detail i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 }
 
 .detail .slip_item_detail {
@@ -1459,8 +1466,8 @@ input:checked ~ .switch_ball::after {
 }
 
 .petCard_item_add {
-  width: 68px;
-  height: 68px;
+  width: 56px;
+  height: 56px;
   fill: #fdaaa2;
 }
 

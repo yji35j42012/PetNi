@@ -28,13 +28,8 @@
                             </p>
                             <p class="address">臺南市南區</p>
                         </div>
-                        <button class="like_btn">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32"
-                            >
-                                <path :d="icon_all.like" />
-                            </svg>
+                        <button class="like_btn" >
+                          <i v-html="icon_all.like"></i>
                         </button>
                     </div>
                 </div>
@@ -47,9 +42,7 @@
                     <p class="address">臺南市南區</p>
                 </span>
                 <button class="like_btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                        <path :d="icon_all.like" />
-                    </svg>
+                    <i v-html="icon_all.like"></i>
                 </button>
             </div>
             <ul class="basic_serial">
@@ -65,34 +58,19 @@
             <ul class="basic_introduction">
                 <li>
                     <div class="basic_introduction_pic">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 25 25"
-                        >
-                            <path :d="icon_all.status" />
-                        </svg>
+                        <i v-html="icon_all.status"></i>
                     </div>
                     <div class="basic_introduction_txt">求包養</div>
                 </li>
                 <li>
                     <div class="basic_introduction_pic">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                        >
-                            <path :d="icon_all.female" />
-                        </svg>
+                        <i v-html="icon_all.female"></i>
                     </div>
                     <div class="">女生</div>
                 </li>
                 <li>
                     <div class="basic_introduction_pic">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 25"
-                        >
-                            <path :d="icon_all.theme" />
-                        </svg>
+                        <i v-html="icon_all.theme"></i>
                     </div>
                     <div class="basic_introduction_txt">黑白色</div>
                 </li>
@@ -105,13 +83,7 @@
         </div>
 
         <button class="close_btn" @click="close" style="display:none">
-            <svg
-                class="showPC"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 25 25"
-            >
-                <path :d="icon_all.unlike" />
-            </svg>
+            <i v-html="icon_all.unlike"></i>
             <svg
                 class="showPAD"
                 xmlns="http://www.w3.org/2000/svg"
