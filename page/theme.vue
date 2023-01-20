@@ -165,6 +165,20 @@ module.exports = {
     components: {},
     mounted() {
         // console.log(store.state.nowPage);
+        var showBtn = document.querySelector(".theme_btn");
+        window.innerWidth <= 995
+            ? (showBtn.style.display = "none")
+            : (showBtn.style.display = "block");
+        window.onresize = () => {
+            return (() => {  
+                if (window.innerWidth <= 995) {
+                    showBtn.style.display = "none";
+                    theme_group.style=''
+                } else {
+                    showBtn.style.display = "block";
+                }
+            })();
+        };
     },
     computed: {
         showThemes() {
