@@ -10,7 +10,12 @@
                     v-for="(item, index) in 7"
                     :key="index"
                 >
-                    <div class="collect_pic"></div>
+                    <div class="collect_pic">
+                        <img
+                            :src="'./images/cardimg/cardimg' + index + '.jpg'"
+                            alt=""
+                        />
+                    </div>  
                     <petinfo></petinfo>
                     <button class="close_btn">
                         <i v-html="icon_all.unlike"></i>

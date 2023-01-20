@@ -16,11 +16,11 @@
 		<div :class="['content' , nowPage]">
 			<router-view></router-view>
 		</div>
-		<!-- <div class="homeAni" style="display: none">
+		<div id="homeAni" class="homeAni">
 			<img src="./images/petnilogo.gif" alt="" />
 			<p>PetNi © Code: Alex Han / Design: K.T</p>
 		</div>
-		<htitle></htitle>
+		<!-- <htitle></htitle>
 		<div :class="['content' , nowPage]">
 			<router-view></router-view>
 		</div> -->
@@ -97,6 +97,10 @@
 			mounted() {
 				console.log('index');
 				store.dispatch("SET_PETDATA_ACTION", this.oldpetData)
+				var time = setTimeout(() => {
+					var homeAni = document.querySelector("#homeAni");
+					homeAni.style.display = 'none'
+				}, 1500);
 			},
 			computed: {},
 			watch: {

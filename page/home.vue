@@ -126,12 +126,14 @@
                     @mousedown="slipMouseDown('slip' + item.animal_id)"
                     @touchstart="slipMouseDown('slip' + item.animal_id)"
                 >
-                    <img class="hide" :src="item.album_file" alt="" />
+                    <img class="" :src="item.album_file" alt="" />
                     <button
                         class="slip_item_detail"
                         @click="detailHandler(item.animal_id)"
+                        style=""
                     >
-                        <i v-html="icon_all.detail"></i>
+                        !
+                        <!-- <i v-html="icon_all.detail"></i> -->
                     </button>
                     <div class="slip_item_box">
                         <button

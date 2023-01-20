@@ -243,6 +243,8 @@ select {
 
 .theme .container {
   overflow: hidden;
+  max-width: 1100px;
+  padding: 0;
 }
 
 .menu {
@@ -544,6 +546,9 @@ input:checked ~ .switch_ball::after {
   width: 100%;
   height: 100%;
   background-color: #f8f8f8;
+  z-index: 999;
+  -webkit-animation: homani 0.5s 1s forwards;
+          animation: homani 0.5s 1s forwards;
 }
 
 .homeAni img {
@@ -578,6 +583,24 @@ input:checked ~ .switch_ball::after {
 @media screen and (max-width: 599px) {
   .homeAni p {
     font-size: 12px;
+  }
+}
+
+@-webkit-keyframes homani {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes homani {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
@@ -985,25 +1008,27 @@ input:checked ~ .switch_ball::after {
 }
 
 .slip_item_detail {
-  overflow: hidden;
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 50px;
-  height: 50px;
-  fill: #ffffff;
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  fill: #eee;
   -webkit-transform: rotate(3deg);
           transform: rotate(3deg);
+  -webkit-box-shadow: 0px 0px 5px rgba(10, 10, 10, 0.5);
+          box-shadow: 0px 0px 5px rgba(10, 10, 10, 0.5);
   border-radius: 100%;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .slip_item_detail i {
   display: block;
-  width: 100%;
-  height: 100%;
-  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 2px 0px #0a0a0a;
+          box-shadow: 0px 2px 0px #0a0a0a;
 }
 
 .detail .slip_item_detail {
@@ -1909,6 +1934,7 @@ input:checked ~ .switch_ball::after {
 .theme_txt_title {
   font-weight: 700;
   font-size: 76px;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 995px) {

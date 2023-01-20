@@ -8,7 +8,7 @@
                     <i v-html="icon_all.add"></i>
                 </div>
             </li>
-            <petcard v-for="(item, index) in 7" :key="index"></petcard>
+            <petcard v-for="(item, index) in 7" :key="index" :imgnum="index"></petcard>
         </ul>
 
         <div v-if="tab == 'info'" class="adoption_info">

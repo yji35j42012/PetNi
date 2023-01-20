@@ -2,12 +2,12 @@
 
 <template>
     <li class="petCard_item">
-        <div class="collect_pic"></div>
+        <div class="collect_pic">
+            <img :src="'./images/cardimg/cardimg' + imgnum + '.jpg'" alt="" />
+        </div>
         <petinfo></petinfo>
         <button class="close_btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7">
-                <path :d="icon_all.close" />
-            </svg>
+            <i v-html="icon_all.unlike"></i>
         </button>
     </li>
 </template>
@@ -19,6 +19,7 @@ module.exports = {
             icon_all: icon_all,
         };
     },
+    props: ["imgnum"],
     components: {
         petinfo: httpVueLoader("../components/PetInfo.vue"),
     },

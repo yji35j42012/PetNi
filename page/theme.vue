@@ -22,8 +22,8 @@
                     </label>
                 </div>
                 <div class="theme_pic">
-                    <!-- <img src="../images/theme/orange_cat.png" alt="" /> -->
-                    <img :src="item.src" alt="" style="opacity:0;" />
+                    <!-- <img src="../images/theme/cat1.png" alt="" /> -->
+                    <img :src="item.src" alt="" style="opacity:1;" />
                 </div>
             </div>
         </div>
@@ -40,14 +40,10 @@
 
         <div class="theme_btn">
             <button class="theme_btn_page" @click="themePageHandler(-1)">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path :d="icon_all.arrowLeft" />
-                </svg>
+                <i v-html="icon_all.arrowLeft"></i>
             </button>
             <button class="theme_btn_page" @click="themePageHandler(1)">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path :d="icon_all.arrowRight" />
-                </svg>
+                <i v-html="icon_all.arrowRight"></i>
             </button>
         </div>
     </div>
