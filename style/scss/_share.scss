@@ -13,6 +13,9 @@
 	@include mw(M) {
 		display: block;
 	}
+	@include mw(XS) {
+		height: 62px;
+	}
 }
 .container {
 	width: 100%;
@@ -28,6 +31,7 @@
 	@include mw(M) {
 		order: 1;
 		height: 56px;
+		padding: 0 16px;
 	}
 	// menu_nav
 	&_nav {

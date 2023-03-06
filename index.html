@@ -13,28 +13,7 @@
 <body>
 	<div id="app" class="wrap">
 		<div class="head"></div>
-		<div class="menu">
-			<div class="logo">
-				<img class="logo_img" src="./images/logo.png" alt="">
-			</div>
-			<ul class="menu_nav">
-				<li class="menu_nav_item on" data-txt="配對">
-					<i v-html="icon_all.pair"></i>
-				</li>
-				<li class="menu_nav_item" data-txt="收藏">
-					<i v-html="icon_all.favorites"></i>
-				</li>
-				<li class="menu_nav_item" data-txt="主題館">
-					<i v-html="icon_all.theme"></i>
-				</li>
-				<li class="menu_nav_item" data-txt="送養">
-					<i v-html="icon_all.collar"></i>
-				</li>
-				<li class="menu_nav_item" data-txt="急診">
-					<i v-html="icon_all.hospital"></i>
-				</li>
-			</ul>
-		</div>
+		<menubar></menubar>
 		<div class="container"></div>
 	</div>
 
@@ -102,7 +81,7 @@
 				};
 			},
 			components: {
-
+				menubar: httpVueLoader("./components/Menu.vue"),
 			},
 			router,
 			mounted() {
