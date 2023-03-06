@@ -141,7 +141,7 @@ select {
           transition-duration: 0.3s;
 }
 
-.head_btn, .menu_nav_item {
+.head_btn, .menu_nav_item, .tab_item {
   cursor: pointer;
 }
 
@@ -161,6 +161,7 @@ select {
           flex-direction: column;
   width: 100%;
   height: 100%;
+  background-color: #e5e5e5;
 }
 
 .head {
@@ -206,9 +207,30 @@ select {
   height: 46px;
 }
 
+@media screen and (max-width: 599px) {
+  .head_btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 .container {
   width: 100%;
   height: 100%;
+}
+
+.emergency .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  align-items: flex-start;
+  padding-top: 42px;
 }
 
 .menu {
@@ -351,5 +373,70 @@ select {
 
 .logo_img {
   width: 100%;
+}
+
+.emergency_nav {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.emergency_nav span {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.showPAD {
+  display: none;
+}
+
+@media screen and (max-width: 995px) {
+  .showPAD {
+    display: block;
+  }
+}
+
+.tab {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tab_item {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 95px;
+  height: 38px;
+  background-color: #fff;
+  color: #262626;
+  border-radius: 10px;
+}
+
+.tab_item + .tab_item {
+  margin-left: 12px;
+}
+
+.tab_item.on {
+  background-color: #fdaaa2;
+  color: #fff;
 }
 /*# sourceMappingURL=all.css.map */

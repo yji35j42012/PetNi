@@ -11,8 +11,8 @@
 </head>
 
 <body>
-	<div id="app" class="wrap">
-		<div class="head">
+	<div id="app" class="wrap emergency">
+		<div class="head" style="display: none;">
 			<button class="head_btn _back">
 				<i v-html="icon_all.back"></i>
 			</button>
@@ -22,7 +22,19 @@
 			</button>
 		</div>
 		<menubar></menubar>
-		<div class="container"></div>
+		<div class="container">
+			<div class="emergency_nav">
+				<div class="name showPAD" data-txt="急診">24H</div>
+				<ul class="tab">
+					<li @click="emergency_area('N')" :class="['on','tab_item',area=='M' ? 'on' :'']">北部</li>
+					<li @click="emergency_area('W')" :class="['tab_item',area=='W' ? 'on' :'']">中部</li>
+					<li @click="emergency_area('S')" :class="['tab_item',area=='S' ? 'on' :'']">南部</li>
+					<li @click="emergency_area('E')" :class="['tab_item',area=='E' ? 'on' :'']">東部</li>
+				</ul>
+				<span>*資訊僅供參考，建議先電話聯絡再前往。</span>
+			</div>
+
+		</div>
 	</div>
 
 	<script src="./js/libs/axios.js"></script>

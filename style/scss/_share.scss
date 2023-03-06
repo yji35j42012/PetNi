@@ -3,6 +3,7 @@
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
+	background-color: #e5e5e5;
 }
 .head {
 	display: none;
@@ -27,19 +28,21 @@
 		width: 46px;
 		height: 46px;
 		@extend %hand;
-		// &._back{
-		// 	width: 46px;
-		// 	height: 46px;
-		// }
-		// &._setting{
-		// 	width: 38px;
-		// 	height: 38px;
-		// }
+		@include mw(XS) {
+			width: 36px;
+			height: 36px;
+		}
 	}
 }
 .container {
 	width: 100%;
 	height: 100%;
+
+	@at-root .emergency & {
+		@include d_f(flex, center, flex-start);
+		align-items: flex-start;
+		padding-top: 42px;
+	}
 }
 .menu {
 	flex: none;
@@ -118,5 +121,184 @@
 	// logo_img
 	&_img {
 		width: 100%;
+	}
+}
+.emergency {
+	// .emergency_nav
+	&_nav {
+		display: inline-flex;
+		flex-direction: column;
+		span {
+			display: inline-block;
+			width: 100%;
+			margin-top: 10px;
+			text-align: right;
+		}
+	}
+}
+// .emergency {
+// 	// .emergency_head
+// 	&_head {
+// 		display: inline-flex;
+// 		flex-direction: column;
+// 		margin-top: 42px;
+// 		text-align: right;
+// 		@include mw(M) {
+// 			position: relative;
+// 			justify-content: space-between;
+// 			align-content: center;
+// 			flex-direction: row;
+// 			flex-wrap: wrap;
+// 			width: 100%;
+// 			height: 92px;
+// 			margin-top: 0;
+// 			padding: 0 24px;
+// 			background-color: #fff;
+// 			.tab {
+// 				width: auto;
+// 				margin-bottom: 0;
+// 			}
+// 			span {
+// 				@include pos_a(calc(100% + 20px), 16px, n, n);
+// 				width: 100%;
+// 			}
+// 		}
+// 		@include mw(XS) {
+// 			height: 62px;
+// 			padding: 0 16px;
+// 		}
+// 		.name {
+// 			font-weight: 700;
+// 			font-size: 20px;
+// 			&::after {
+// 				content: attr(data-txt);
+// 				@include mw(XS) {
+// 					display: none;
+// 				}
+// 			}
+// 		}
+// 	}
+// 	// .emergency_group
+// 	&_group {
+// 		@include d_f(flex);
+// 		flex-wrap: wrap;
+// 		width: 100%;
+// 		margin-top: 48px;
+// 		text-align: left;
+// 		@include mw(M) {
+// 			margin-top: 43px;
+// 			padding: 0 16px;
+// 		}
+// 		// .emergency_group_title
+// 		&_title {
+// 			@include d_f(flex);
+// 			width: 100%;
+// 			margin-bottom: 8px;
+// 			font-weight: 700;
+// 			font-size: 20px;
+// 			line-height: 27px;
+// 			fill: #fdaaa2;
+// 			i {
+// 				display: block;
+// 				width: 24px;
+// 				height: 23px;
+// 			}
+// 		}
+// 		// .emergency_group_card
+// 		&_card {
+// 			@include d_f(flex, space-between, stretch);
+// 			width: calc(100% / 3 - 5.5px);
+// 			margin-right: 8px;
+// 			margin-bottom: 8px;
+// 			padding: 12px;
+// 			background-color: #fff;
+// 			box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+// 			border-radius: 20px;
+// 			&:nth-child(3n + 1) {
+// 				margin-right: 0;
+// 			}
+// 			@include mw(M) {
+// 				width: calc(100% / 2 - 4px);
+// 				&:nth-child(3n + 1) {
+// 					margin-right: 8px;
+// 				}
+// 				&:nth-child(2n + 1) {
+// 					margin-right: 0;
+// 				}
+// 			}
+// 			@include mw(XS) {
+// 				width: 100%;
+// 				&:nth-child(3n + 1) {
+// 					margin-right: 0;
+// 				}
+// 			}
+// 			p {
+// 				font-weight: 400;
+// 				font-size: 14px;
+// 				line-height: 21px;
+// 				&.title {
+// 					font-weight: 500;
+// 					font-size: 16px;
+// 					line-height: 24px;
+// 				}
+// 			}
+// 			p + p {
+// 				margin-top: 8px;
+// 			}
+// 			span {
+// 				display: block;
+// 				width: 100%;
+// 				font-weight: 400;
+// 				font-size: 14px;
+// 				line-height: 21px;
+// 				color: #fdaaa2;
+// 				text-align: right;
+// 				white-space: nowrap;
+// 			}
+// 			.state {
+// 				@include d_f(flex, flex-end, space-between);
+// 				align-content: space-between;
+// 				flex-wrap: wrap;
+// 			}
+// 			a {
+// 				@include d_f(flex, center, center);
+// 				width: 40px;
+// 				height: 40px;
+// 				background: #262626;
+// 				fill: #ffffff;
+// 				border-radius: 50px;
+// 				svg {
+// 					width: 24px;
+// 					height: 24px;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+.showPAD {
+	display: none;
+	@include mw(M) {
+		display: block;
+	}
+}
+.tab {
+	@include d_f(inline-flex, center, center);
+	// tab_item
+	&_item {
+		@include d_f(inline-flex, center, center);
+		width: 95px;
+		height: 38px;
+		background-color: #fff;
+		color: #262626;
+		border-radius: 10px;
+		@extend %hand;
+		& + & {
+			margin-left: 12px;
+		}
+		&.on {
+			background-color: #fdaaa2;
+			color: #fff;
+		}
 	}
 }
