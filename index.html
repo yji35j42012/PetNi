@@ -12,19 +12,30 @@
 
 <body>
 	<div id="app" class="wrap">
-		<menubar></menubar>
-		<div :class="['content' , nowPage]">
-			<router-view></router-view>
+		<div class="head"></div>
+		<div class="menu">
+			<div class="logo">
+				<img class="logo_img" src="./images/logo.png" alt="">
+			</div>
+			<ul class="menu_nav">
+				<li class="menu_nav_item on" data-txt="配對">
+					<i v-html="icon_all.pair"></i>
+				</li>
+				<li class="menu_nav_item" data-txt="收藏">
+					<i v-html="icon_all.favorites"></i>
+				</li>
+				<li class="menu_nav_item" data-txt="主題館">
+					<i v-html="icon_all.theme"></i>
+				</li>
+				<li class="menu_nav_item" data-txt="送養">
+					<i v-html="icon_all.collar"></i>
+				</li>
+				<li class="menu_nav_item" data-txt="急診">
+					<i v-html="icon_all.hospital"></i>
+				</li>
+			</ul>
 		</div>
-		<div id="homeAni" class="homeAni">
-			<img src="./images/petnilogo.gif" alt="" />
-			<p>PetNi © Code: Alex Han / Design: K.T</p>
-		</div>
-		<!-- <htitle></htitle>
-		<div :class="['content' , nowPage]">
-			<router-view></router-view>
-		</div> -->
-		<!-- <loading></loading> -->
+		<div class="container"></div>
 	</div>
 
 	<script src="./js/libs/axios.js"></script>
@@ -47,34 +58,34 @@
 				path: "/",
 				component: httpVueLoader("./page/home.vue"),
 			},
-			{
-				path: "/home",
-				component: httpVueLoader("./page/home.vue"),
-			},
-			{
-				path: "/home/:id",
-				component: httpVueLoader("./page/detail.vue"),
-			},
-			{
-				path: "/collect",
-				component: httpVueLoader("./page/collect.vue"),
-			},
-			{
-				path: "/theme",
-				component: httpVueLoader("./page/theme.vue"),
-			},
-			{
-				path: "/adoption",
-				component: httpVueLoader("./page/adoption.vue"),
-			},
-			{
-				path: "/emergency",
-				component: httpVueLoader("./page/emergency.vue"),
-			},
-			{
-				path: "/test",
-				component: httpVueLoader("./page/test.vue"),
-			},
+			// {
+			// 	path: "/home",
+			// 	component: httpVueLoader("./page/home.vue"),
+			// },
+			// {
+			// 	path: "/home/:id",
+			// 	component: httpVueLoader("./page/detail.vue"),
+			// },
+			// {
+			// 	path: "/collect",
+			// 	component: httpVueLoader("./page/collect.vue"),
+			// },
+			// {
+			// 	path: "/theme",
+			// 	component: httpVueLoader("./page/theme.vue"),
+			// },
+			// {
+			// 	path: "/adoption",
+			// 	component: httpVueLoader("./page/adoption.vue"),
+			// },
+			// {
+			// 	path: "/emergency",
+			// 	component: httpVueLoader("./page/emergency.vue"),
+			// },
+			// {
+			// 	path: "/test",
+			// 	component: httpVueLoader("./page/test.vue"),
+			// },
 		];
 		const router = new VueRouter({
 			// mode: 'history',
@@ -87,20 +98,15 @@
 				return {
 					nowPage: "",
 					oldpetData: pet,
+					icon_all: icon_all
 				};
 			},
 			components: {
-				menubar: httpVueLoader("./components/Menu.vue"),
-				loading: httpVueLoader("./components/Loading.vue"),
+
 			},
 			router,
 			mounted() {
-				console.log('index');
-				store.dispatch("SET_PETDATA_ACTION", this.oldpetData)
-				var time = setTimeout(() => {
-					var homeAni = document.querySelector("#homeAni");
-					homeAni.style.display = 'none'
-				}, 1500);
+				// store.dispatch("SET_PETDATA_ACTION", this.oldpetData)
 			},
 			computed: {},
 			watch: {
