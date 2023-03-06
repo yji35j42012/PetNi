@@ -12,7 +12,15 @@
 
 <body>
 	<div id="app" class="wrap">
-		<div class="head"></div>
+		<div class="head">
+			<button class="head_btn _back">
+				<i v-html="icon_all.back"></i>
+			</button>
+			<div class="head_title">雙色狗</div>
+			<button class="head_btn _setting">
+				<i v-html="icon_all.setting"></i>
+			</button>
+		</div>
 		<menubar></menubar>
 		<div class="container"></div>
 	</div>
