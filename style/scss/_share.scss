@@ -35,13 +35,23 @@
 	}
 }
 .container {
+	overflow-x: hidden;
+	overflow-y: auto;
 	width: 100%;
 	height: 100%;
-
+	@at-root .home & {
+		@include d_f(flex);
+	}
 	@at-root .emergency & {
-		@include d_f(flex, center, flex-start);
-		align-items: flex-start;
+		// overflow: hidden;
+		@include d_f(flex, flex-start, center);
+		flex-direction: column;
+		// padding: 42px 87px 0;
 		padding-top: 42px;
+		@include mw(M) {
+			padding: 0;
+			// padding: 0 16px 0;
+		}
 	}
 }
 .menu {
@@ -49,6 +59,7 @@
 	@include d_f(flex, space-between, center);
 	width: 100%;
 	height: 77px;
+	background-color: #fff;
 	box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
 	padding: 0 80px;
 	@include mw(M) {
@@ -65,48 +76,55 @@
 		}
 		// menu_nav_item
 		&_item {
-			@include d_f(flex, center, center);
 			width: 95px;
-			color: #dedede;
-			fill: #dedede;
 			@extend %hand;
 			@include mw(M) {
 				width: calc(100% / 5);
 			}
-			&:after {
-				content: attr(data-txt);
-				overflow: hidden;
-				width: 0;
-				white-space: nowrap;
-				@extend %transition;
-			}
-			&.on {
-				color: #fdaaa2;
-				fill: #fdaaa2;
+			a {
+				@include d_f(flex, center, center);
+				color: #dedede;
+				fill: #dedede;
 				&:after {
-					width: 100%;
-					margin-left: 14px;
-					@include mw(M) {
-						width: 0;
-						margin-left: 0;
+					content: attr(data-txt);
+					overflow: hidden;
+					width: 0;
+					white-space: nowrap;
+					@extend %transition;
+				}
+				> i {
+					width: 24px;
+					height: 24px;
+					// margin-right: 14px;
+				}
+			}
+
+			&.on {
+				a {
+					color: #fdaaa2;
+					fill: #fdaaa2;
+					&:after {
+						width: 100%;
+						margin-left: 14px;
+						@include mw(M) {
+							width: 0;
+							margin-left: 0;
+						}
 					}
 				}
 			}
 
 			@include hoverHandler {
-				&:after {
-					width: 100%;
-					margin-left: 14px;
-					@include mw(M) {
-						width: 0;
-						margin-left: 0;
+				& {
+					a:after {
+						width: 100%;
+						margin-left: 14px;
+						@include mw(M) {
+							width: 0;
+							margin-left: 0;
+						}
 					}
 				}
-			}
-			> i {
-				width: 24px;
-				height: 24px;
-				// margin-right: 14px;
 			}
 		}
 	}
@@ -123,158 +141,6 @@
 		width: 100%;
 	}
 }
-.emergency {
-	// .emergency_nav
-	&_nav {
-		display: inline-flex;
-		flex-direction: column;
-		span {
-			display: inline-block;
-			width: 100%;
-			margin-top: 10px;
-			text-align: right;
-		}
-	}
-}
-// .emergency {
-// 	// .emergency_head
-// 	&_head {
-// 		display: inline-flex;
-// 		flex-direction: column;
-// 		margin-top: 42px;
-// 		text-align: right;
-// 		@include mw(M) {
-// 			position: relative;
-// 			justify-content: space-between;
-// 			align-content: center;
-// 			flex-direction: row;
-// 			flex-wrap: wrap;
-// 			width: 100%;
-// 			height: 92px;
-// 			margin-top: 0;
-// 			padding: 0 24px;
-// 			background-color: #fff;
-// 			.tab {
-// 				width: auto;
-// 				margin-bottom: 0;
-// 			}
-// 			span {
-// 				@include pos_a(calc(100% + 20px), 16px, n, n);
-// 				width: 100%;
-// 			}
-// 		}
-// 		@include mw(XS) {
-// 			height: 62px;
-// 			padding: 0 16px;
-// 		}
-// 		.name {
-// 			font-weight: 700;
-// 			font-size: 20px;
-// 			&::after {
-// 				content: attr(data-txt);
-// 				@include mw(XS) {
-// 					display: none;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	// .emergency_group
-// 	&_group {
-// 		@include d_f(flex);
-// 		flex-wrap: wrap;
-// 		width: 100%;
-// 		margin-top: 48px;
-// 		text-align: left;
-// 		@include mw(M) {
-// 			margin-top: 43px;
-// 			padding: 0 16px;
-// 		}
-// 		// .emergency_group_title
-// 		&_title {
-// 			@include d_f(flex);
-// 			width: 100%;
-// 			margin-bottom: 8px;
-// 			font-weight: 700;
-// 			font-size: 20px;
-// 			line-height: 27px;
-// 			fill: #fdaaa2;
-// 			i {
-// 				display: block;
-// 				width: 24px;
-// 				height: 23px;
-// 			}
-// 		}
-// 		// .emergency_group_card
-// 		&_card {
-// 			@include d_f(flex, space-between, stretch);
-// 			width: calc(100% / 3 - 5.5px);
-// 			margin-right: 8px;
-// 			margin-bottom: 8px;
-// 			padding: 12px;
-// 			background-color: #fff;
-// 			box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
-// 			border-radius: 20px;
-// 			&:nth-child(3n + 1) {
-// 				margin-right: 0;
-// 			}
-// 			@include mw(M) {
-// 				width: calc(100% / 2 - 4px);
-// 				&:nth-child(3n + 1) {
-// 					margin-right: 8px;
-// 				}
-// 				&:nth-child(2n + 1) {
-// 					margin-right: 0;
-// 				}
-// 			}
-// 			@include mw(XS) {
-// 				width: 100%;
-// 				&:nth-child(3n + 1) {
-// 					margin-right: 0;
-// 				}
-// 			}
-// 			p {
-// 				font-weight: 400;
-// 				font-size: 14px;
-// 				line-height: 21px;
-// 				&.title {
-// 					font-weight: 500;
-// 					font-size: 16px;
-// 					line-height: 24px;
-// 				}
-// 			}
-// 			p + p {
-// 				margin-top: 8px;
-// 			}
-// 			span {
-// 				display: block;
-// 				width: 100%;
-// 				font-weight: 400;
-// 				font-size: 14px;
-// 				line-height: 21px;
-// 				color: #fdaaa2;
-// 				text-align: right;
-// 				white-space: nowrap;
-// 			}
-// 			.state {
-// 				@include d_f(flex, flex-end, space-between);
-// 				align-content: space-between;
-// 				flex-wrap: wrap;
-// 			}
-// 			a {
-// 				@include d_f(flex, center, center);
-// 				width: 40px;
-// 				height: 40px;
-// 				background: #262626;
-// 				fill: #ffffff;
-// 				border-radius: 50px;
-// 				svg {
-// 					width: 24px;
-// 					height: 24px;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
 
 .showPAD {
 	display: none;
@@ -284,7 +150,13 @@
 }
 .tab {
 	@include d_f(inline-flex, center, center);
-	// tab_item
+	@include mw(M) {
+		padding-right: 24px;
+	}
+	@include mw(XS) {
+		padding-right: 16px;
+	}
+	// .tab_item
 	&_item {
 		@include d_f(inline-flex, center, center);
 		width: 95px;
@@ -293,12 +165,175 @@
 		color: #262626;
 		border-radius: 10px;
 		@extend %hand;
+
+		@include mw(M) {
+			background-color: #f8f8f8;
+		}
+		@include mw(XS) {
+			width: 64px;
+		}
+		@include mw(XXS) {
+			width: 50px;
+		}
 		& + & {
 			margin-left: 12px;
+			@include mw(XS) {
+				margin-left: 6px;
+			}
 		}
 		&.on {
 			background-color: #fdaaa2;
 			color: #fff;
 		}
 	}
+}
+
+.scroll_y {
+	overflow-x: hidden;
+	overflow-y: auto;
+	@at-root .emergency & {
+		padding: 0 87px;
+		@include mw(M) {
+			padding: 0;
+		}
+	}
+}
+.func {
+	flex: none;
+	width: 413px;
+	height: 100%;
+	padding: 20px 36px 16px 87px;
+	background-color: #fafafa;
+	box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+	// .func_box
+	&_box {
+		& + & {
+			margin-top: 8px;
+		}
+
+		& + .func_switch {
+			margin-top: 23px;
+		}
+	}
+	// .func_switch
+	&_switch {
+		@include d_f(flex, space-between);
+		& + & {
+			margin-top: 10px;
+		}
+	}
+	// .func_ul
+	&_ul {
+		@include d_f(flex);
+		flex-wrap: wrap;
+		h2 + & {
+			margin-top: 4px;
+		}
+	}
+	// .func_li
+	&_li {
+		flex: none;
+		@extend %hand;
+		@extend %transition;
+		@include d_f(flex, center, center);
+		width: 90px;
+		height: 40px;
+		fill: #262626;
+		background: #ffffff;
+		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+		border-radius: 14px;
+		color: #262626;
+		& + &:not(:nth-child(3n + 1)) {
+			margin-left: 10px;
+		}
+		&:nth-child(n + 4) {
+			margin-top: 8px;
+		}
+		&.on {
+			background-color: #262626;
+			fill: #fff;
+			color: #fff;
+		}
+		&.square {
+			width: 90px;
+			height: 68px;
+		}
+	}
+	// .func_btn
+	&_btn {
+		width: 100%;
+		height: 50px;
+		margin-top: 15px;
+		background: #262626;
+		color: #fff;
+		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+		border-radius: 16px;
+		@extend %hand;
+	}
+}
+h2 {
+	color: #262626;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.icon {
+	display: block;
+	&._animal {
+		@include d_f(flex, center, center);
+		width: 36px;
+		height: 36px;
+	}
+}
+.male {
+	fill: #70d4f4;
+}
+.female {
+	fill: #fdaaa2;
+}
+
+.switch {
+	position: relative;
+	width: 52px;
+	height: 28px;
+	@extend %hand;
+	input {
+		position: absolute;
+		top: 0;
+		right: 0;
+		opacity: 0;
+		display: none;
+		&:checked {
+			& + .switch_ball {
+				background-color: #fdaaa2;
+				&:after {
+					transform: translateX(100%);
+				}
+			}
+		}
+	}
+	// .switch_ball
+	&_ball {
+		@include d_f(flex, none, center);
+		width: 100%;
+		height: 100%;
+		padding-left: 4px;
+		background: #dedede;
+		border-radius: 50px;
+		@extend %transition;
+		&:after {
+			content: "";
+			display: block;
+			width: 22px;
+			height: 22px;
+			background-color: #fff;
+			border-radius: 50px;
+			@extend %transition;
+		}
+	}
+}
+.info{
+	width: 100%;
+	height: 100%;
+	padding: 0 55px;
 }
