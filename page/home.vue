@@ -83,7 +83,21 @@
 			<button class="func_btn">套用</button>
 		</div>
 		<div class="info">
-			
+			<div class="slip"></div>
+			<ul class="recommend">
+				<li class="recommend_li">
+					<div class="recommend_pic"></div>
+					<petinfo></petinfo>
+				</li>
+				<li class="recommend_li">
+					<div class="recommend_pic"></div>
+					<petinfo></petinfo>
+				</li>
+				<li class="recommend_li">
+					<div class="recommend_pic"></div>
+					<petinfo></petinfo>
+				</li>
+			</ul>
 		</div>
 		<!--
 		<div id="info" class="info">
@@ -135,20 +149,6 @@
 					</div>
 				</div>
 			</div>
-			<ul class="recommend">
-				<li>
-					<div class="recommend_pic"></div>
-					<petinfo></petinfo>
-				</li>
-				<li>
-					<div class="recommend_pic"></div>
-					<petinfo></petinfo>
-				</li>
-				<li>
-					<div class="recommend_pic"></div>
-					<petinfo></petinfo>
-				</li>
-			</ul>
 		</div>
 		<div class="headFunc">
 			<button class="backCard" @click="backCard">
@@ -195,7 +195,7 @@ module.exports = {
 		};
 	},
 	components: {
-		// petinfo: httpVueLoader("../components/PetInfo.vue"),
+		petinfo: httpVueLoader("../components/PetInfo.vue")
 	},
 	mounted() {
 		// console.log("state", store.state.petData);

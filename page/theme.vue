@@ -24,7 +24,6 @@
 				<button class="dog_btn" @click="themeSwitchHandler('dog')">汪星人</button>
 			</div>
 		</div>
-
 		<div class="theme_btn">
 			<button class="theme_btn_page" @click="themePageHandler(-1)">
 				<i v-html="icon_all.arrowLeft"></i>

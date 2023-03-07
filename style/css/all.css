@@ -686,10 +686,86 @@ h2 {
   border-radius: 50px;
 }
 
-.info {
+.slip {
   width: 100%;
   height: 100%;
-  padding: 0 55px;
+}
+
+.info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0 55px 30px;
+}
+
+.recommend {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.recommend_li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: calc(100% / 3 - 10px);
+  height: 70px;
+  padding: 10px 12px;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 23px;
+}
+
+.recommend_li + .recommend_li {
+  margin-left: 10px;
+}
+
+.recommend_pic {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background-color: #ccc;
+}
+
+.petInfoTxt_name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.petInfoTxt .gender {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 .emergency_nav {
