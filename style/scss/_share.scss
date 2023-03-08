@@ -11,7 +11,7 @@
 	width: 100%;
 	height: 92px;
 	padding: 0 16px;
-	background-color: #ccc;
+	background-color: #e5e5e5;
 	color: #262626;
 	fill: #262626;
 	font-weight: 700;
@@ -41,6 +41,9 @@
 	height: 100%;
 	@at-root .home & {
 		@include d_f(flex);
+		@include mw(M) {
+			flex-direction: column;
+		}
 	}
 	@at-root .emergency & {
 		// overflow: hidden;
@@ -62,6 +65,9 @@
 	background-color: #fff;
 	box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
 	padding: 0 80px;
+	@include mw(XL) {
+		padding: 0 40px;
+	}
 	@include mw(M) {
 		order: 1;
 		height: 56px;
@@ -141,13 +147,6 @@
 		width: 100%;
 	}
 }
-
-.showPAD {
-	display: none;
-	@include mw(M) {
-		display: block;
-	}
-}
 .tab {
 	@include d_f(inline-flex, center, center);
 	@include mw(M) {
@@ -205,6 +204,10 @@
 	padding: 20px 36px 16px 87px;
 	background-color: #fafafa;
 	box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+	@include mw(XL) {
+		width: 370px;
+		padding: 20px 36px 16px 40px;
+	}
 	// .func_box
 	&_box {
 		& + & {
@@ -333,8 +336,145 @@ h2 {
 	}
 }
 .slip {
+	position: relative;
+	@include d_f(flex, center);
 	width: 100%;
 	height: 100%;
+	@include mw(XS) {
+		align-items: center;
+	}
+	&::before {
+		content: "";
+		position: absolute;
+		top: 21.44%;
+		left: 40%;
+		width: 223px;
+		height: 387px;
+		background: #ffffff;
+		/* shadow */
+		box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
+		border-radius: 32px;
+		transform: matrix(0.96, 0.29, -0.29, 0.96, 0, 0);
+		@include mw(M) {
+			// top: unset;
+			left: 50px;
+			right: 0;
+			margin: 0 auto;
+		}
+		@include mw(XS) {
+			left: 84px;
+			width: 210px;
+			height: 265px;
+		}
+	}
+
+	// .slip_item
+	&_item {
+		overflow: hidden;
+		position: absolute;
+		top: 12.36%;
+		width: 276px;
+		height: 444px;
+		background: #ffffff;
+		border: 12px solid #fff;
+		box-shadow: 0px 9px 11px rgba(0, 0, 0, 0.25);
+		border-radius: 32px;
+		transform: rotate(-3deg);
+		@include mw(XS) {
+			flex: none;
+			width: 261px;
+			height: 419px;
+		}
+		&:not(._noData)::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(
+				179.93deg,
+				rgba(0, 0, 0, 0) 56.33%,
+				#000000 98.5%
+			);
+		}
+		&._noData {
+			@include d_f(flex, center, center);
+			width: 244px;
+			height: 413px;
+			color: #fdaaa2;
+			transform: rotate(14deg);
+			@include mw(XS) {
+				width: 230px;
+				height: 390px;
+			}
+			span {
+				transform: rotate(-14deg);
+			}
+		}
+
+		// .slip_item_detail
+		&_detail {
+			flex: none;
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			@include d_f(flex, center, center);
+			width: 36px;
+			height: 36px;
+			transform: rotate(3deg);
+			// background-color: #fff;
+			@extend %hand;
+			border-radius: 50px;
+			box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+			i {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				@include d_f(flex, center, center);
+				margin: auto;
+			}
+		}
+		// .slip_item_info
+		&_info {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			@include d_f(flex, space-between);
+			padding: 0 14px;
+			transform: rotate(3deg);
+
+			button {
+				flex: none;
+				@include d_f(flex, center, center);
+				width: 50px;
+				height: 50px;
+				background-color: #fff;
+				border-radius: 50px;
+				@extend %hand;
+			}
+			.unlike {
+				fill: #262626;
+				i {
+					width: 14px;
+					height: 14px;
+				}
+			}
+			.like {
+				fill: #fdaaa2;
+				i {
+					width: 22px;
+					height: 18px;
+				}
+				svg {
+					width: 22px;
+				}
+			}
+		}
+	}
 }
 .info {
 	@include d_f(flex);
@@ -342,6 +482,9 @@ h2 {
 	width: 100%;
 	height: 100%;
 	padding: 0 55px 30px;
+	@include mw(XL) {
+		padding: 0 20px 30px;
+	}
 }
 .recommend {
 	@include d_f(flex, space-between);
@@ -376,5 +519,23 @@ h2 {
 		display: block;
 		width: 24px;
 		height: 24px;
+	}
+	@at-root .slip_item_info & {
+		color: #fff;
+	}
+}
+
+.showPC {
+	@include mw(M) {
+		display: none;
+	}
+}
+.showPAD {
+	display: none;
+	@include mw(M) {
+		display: block;
+		@at-root &.head {
+			display: flex;
+		}
 	}
 }

@@ -2,7 +2,16 @@
 
 <template>
 	<div id="container" class="container">
-		<div class="func">
+		<div class="head showPAD">
+			<button class="head_btn _back">
+				<i v-html="icon_all.back"></i>
+			</button>
+			<div class="head_title">雙色狗</div>
+			<button class="head_btn _setting">
+				<i v-html="icon_all.setting"></i>
+			</button>
+		</div>
+		<div class="func showPC">
 			<div class="func_box">
 				<h2>我想尋找</h2>
 				<ul class="func_ul">
@@ -83,8 +92,36 @@
 			<button class="func_btn">套用</button>
 		</div>
 		<div class="info">
-			<div class="slip"></div>
-			<ul class="recommend">
+			<div class="slip">
+				<div class="slip_item _noData">
+					<span>
+						很抱歉！
+						<br />已沒有單身狗、單身貓了，
+						<br />請嘗試修改篩選條件。
+					</span>
+				</div>
+				<div
+					id="slip1"
+					class="slip_item"
+					@mousedown="slipMouseDown('slip1')"
+					@touchstart="slipMouseDown('slip1')"
+				>
+					<img src="../images/test.jpeg" alt />
+					<button class="slip_item_detail">
+						<i v-html="icon_all.detail"></i>
+					</button>
+					<div class="slip_item_info">
+						<button class="unlike" @click="recordUnLike">
+							<i v-html="icon_all.unlike"></i>
+						</button>
+						<petinfo></petinfo>
+						<button class="like" @click="recordLike">
+							<i v-html="icon_all.like"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<ul class="recommend showPC">
 				<li class="recommend_li">
 					<div class="recommend_pic"></div>
 					<petinfo></petinfo>
@@ -99,70 +136,6 @@
 				</li>
 			</ul>
 		</div>
-		<!--
-		<div id="info" class="info">
-			<div class="slip">
-				<div class="slip_item _noData">
-					<span>
-						很抱歉！<br />
-						已沒有單身狗、單身貓了，<br />
-						請嘗試修改篩選條件。
-					</span>
-				</div>
-				<div
-					v-for="item in petItem"
-					:key="item.animal_id"
-					:id="'slip' + item.animal_id"
-					class="slip_item"
-					@mousedown="slipMouseDown('slip' + item.animal_id)"
-					@touchstart="slipMouseDown('slip' + item.animal_id)"
-				>
-					<img class="" :src="item.album_file" alt="" />
-					<button
-						class="slip_item_detail"
-						@click="detailHandler(item.animal_id)"
-						style=""
-					>
-						!
-		<!-- <i v-html="icon_all.detail"></i>-->
-		<!--</button>
-					<div class="slip_item_box">
-						<button
-							class="unlike_btn"
-							@click="unlikeHandler('slip' + item.animal_id)"
-						>
-							<i v-html="icon_all.unlike"></i>
-						</button>
-						<div class="slip_item_info">
-							<p class="name female">
-								<span>{{ item.animal_id }}</span>
-								<i class="gender" v-html="icon_all.female"></i>
-							</p>
-							<p class="address">{{ item.animal_place }}</p>
-						</div>
-						<button
-							class="like_btn"
-							@click="likeHandler('slip' + item.animal_id)"
-						>
-							<i v-html="icon_all.like"></i>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="headFunc">
-			<button class="backCard" @click="backCard">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46">
-					<path :d="icon_all.back" />
-				</svg>
-			</button>
-			<span class="name">{{ showTitle }}</span>
-			<button class="searchBtn">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
-					<path :d="icon_all.filter" />
-				</svg>
-			</button>
-		</div>-->
 	</div>
 </template>
 
@@ -175,13 +148,14 @@ module.exports = {
 				gender: "all",
 				age: "all"
 			},
-			icon_all: icon_all
+			icon_all: icon_all,
 			// 	// oldpetData: pet,
 			// 	who: "",
-			// 	move: {
-			// 		startX: "",
-			// 		startY: "",
-			// 	},
+			move: {
+				startX: "",
+				startY: "",
+				who: ""
+			}
 			// 	cardL: "",
 			// 	cardT: "",
 			// 	moveRotateRight: 0, //移動兼具＋
@@ -270,6 +244,44 @@ module.exports = {
 		},
 		searchAge(str) {
 			this.search.age = str;
+		},
+		recordUnLike() {
+			console.log("unlike btn");
+			// this.unlikeList.push(this.who.split("slip")[1]);
+		},
+		recordLike() {
+			console.log("like btn");
+		},
+		slipMouseDown(str) {
+			console.log("按下卡片", str);
+			this.move.who = str;
+			// 點擊位置
+			if (!event.touches) {
+				//相容移動端
+				this.move.startX = event.clientX;
+				this.move.startY = event.clientY;
+			} else {
+				//相容PC端
+				this.move.startX = event.touches[0].pageX;
+				this.move.startY = event.touches[0].pageY;
+			}
+
+			window.addEventListener("mousemove", this.slipMouseMove);
+			window.addEventListener("mouseup", this.slipMouseUp);
+			window.addEventListener("touchmove", this.slipMouseMove);
+			window.addEventListener("touchend", this.slipMouseUp);
+		},
+		slipMouseMove() {
+			console.log("滑動卡片");
+			var moveWho = document.getElementById(this.move.who);
+			console.log("moveWho", moveWho);
+		},
+		slipMouseUp() {
+			console.log("鬆開卡片");
+			window.removeEventListener("mousemove", this.slipMouseMove);
+			window.removeEventListener("mouseup", this.slipMouseUp);
+			window.removeEventListener("touchmove", this.slipMouseMove);
+			window.removeEventListener("touchend", this.slipMouseUp);
 		}
 		// detailHandler(id) {
 		// 	this.$router.push("/home/" + id);
@@ -406,12 +418,6 @@ module.exports = {
 		// 	} else {
 		// 		console.log("來亂？");
 		// 	}
-		// },
-		// recordLike() {
-		// 	this.likeList.push(this.who.split("slip")[1]);
-		// },
-		// recordUnLike() {
-		// 	this.unlikeList.push(this.who.split("slip")[1]);
 		// },
 	}
 };
