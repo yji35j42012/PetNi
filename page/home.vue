@@ -1,4 +1,9 @@
-<style scoped></style>
+<style scoped>
+body {
+	　-moz-user-select: none;
+	　-webkit-user-select: none;
+}
+</style>
 
 <template>
 	<div id="container" class="container">
@@ -91,7 +96,7 @@
 			</div>
 			<button class="func_btn">套用</button>
 		</div>
-		<div class="info">
+		<div id="info" class="info">
 			<div class="slip">
 				<div class="slip_item _noData">
 					<span>
@@ -154,6 +159,7 @@ module.exports = {
 			move: {
 				startX: "",
 				startY: "",
+				rotate: "",
 				who: ""
 			}
 			// 	cardL: "",
@@ -265,7 +271,6 @@ module.exports = {
 				this.move.startX = event.touches[0].pageX;
 				this.move.startY = event.touches[0].pageY;
 			}
-
 			window.addEventListener("mousemove", this.slipMouseMove);
 			window.addEventListener("mouseup", this.slipMouseUp);
 			window.addEventListener("touchmove", this.slipMouseMove);
@@ -287,9 +292,14 @@ module.exports = {
 			}
 			let newX = ny - this.move.startY;
 			let newY = nx - this.move.startX;
+			let boxW = document.getElementById("info");
+			let boxWMin = boxW.offsetWidth * (1 / 5);
+			let boxWMax = boxW.offsetWidth * (4 / 5);
+			// let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
+
 			// let rotate = 45 / this.moveRotateRight;
 			// let nowRotate = rotate * newY + -3;
-			console.log("newl", newY);
+			// 左邊-54deg  右邊48deg
 			moveWho.style = `transform: rotate(-3deg) translate(${newY}px,${newX}px);transition-duration:0s`;
 		},
 		slipMouseUp() {
