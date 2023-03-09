@@ -271,13 +271,31 @@ module.exports = {
 			window.addEventListener("touchmove", this.slipMouseMove);
 			window.addEventListener("touchend", this.slipMouseUp);
 		},
-		slipMouseMove() {
+		slipMouseMove($event) {
 			console.log("滑動卡片");
 			var moveWho = document.getElementById(this.move.who);
-			console.log("moveWho", moveWho);
+			// console.log("moveWho", moveWho);
+			if (!event.touches) {
+				//相容移動端
+				$event.preventDefault();
+				var nx = $event.clientX;
+				var ny = $event.clientY;
+			} else {
+				//相容PC端
+				var nx = $event.touches[0].pageX;
+				var ny = $event.touches[0].pageY;
+			}
+			let newX = ny - this.move.startY;
+			let newY = nx - this.move.startX;
+			// let rotate = 45 / this.moveRotateRight;
+			// let nowRotate = rotate * newY + -3;
+			console.log("newl", newY);
+			moveWho.style = `transform: rotate(-3deg) translate(${newY}px,${newX}px);transition-duration:0s`;
 		},
 		slipMouseUp() {
 			console.log("鬆開卡片");
+			var moveWho = document.getElementById(this.move.who);
+			moveWho.style = `transform: rotate(-3deg) translate(0px,0px)`;
 			window.removeEventListener("mousemove", this.slipMouseMove);
 			window.removeEventListener("mouseup", this.slipMouseUp);
 			window.removeEventListener("touchmove", this.slipMouseMove);

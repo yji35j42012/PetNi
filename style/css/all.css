@@ -136,7 +136,7 @@ select {
   }
 }
 
-.menu_nav_item a:after, .func_li, .switch_ball, .switch_ball:after {
+.menu_nav_item a:after, .func_li, .switch_ball, .switch_ball:after, .slip_item {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
 }

@@ -379,7 +379,8 @@ h2 {
 		border: 12px solid #fff;
 		box-shadow: 0px 9px 11px rgba(0, 0, 0, 0.25);
 		border-radius: 32px;
-		transform: rotate(-3deg);
+		transform: rotate(-3deg) ;
+		@extend %transition;
 		@include mw(XS) {
 			flex: none;
 			width: 261px;
