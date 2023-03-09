@@ -1,9 +1,4 @@
-<style scoped>
-body {
-	　-moz-user-select: none;
-	　-webkit-user-select: none;
-}
-</style>
+<style scoped></style>
 
 <template>
 	<div id="container" class="container">
@@ -11,6 +6,7 @@ body {
 			<button class="head_btn _back">
 				<i v-html="icon_all.back"></i>
 			</button>
+
 			<div class="head_title">雙色狗</div>
 			<button class="head_btn _setting">
 				<i v-html="icon_all.setting"></i>
@@ -295,10 +291,14 @@ module.exports = {
 			let boxW = document.getElementById("info");
 			let boxWMin = boxW.offsetWidth * (1 / 5);
 			let boxWMax = boxW.offsetWidth * (4 / 5);
-			// let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
+			let boxCenter = boxW.offsetWidth / 2;
+			console.log("boxW", boxW.offsetWidth);
+			console.log("boxWMin", boxWMin);
+			console.log("boxWMax", boxWMax);
+			console.log("boxCenter", boxCenter);
+			console.log("newY", newY);
+			// 367 587.2
 
-			// let rotate = 45 / this.moveRotateRight;
-			// let nowRotate = rotate * newY + -3;
 			// 左邊-54deg  右邊48deg
 			moveWho.style = `transform: rotate(-3deg) translate(${newY}px,${newX}px);transition-duration:0s`;
 		},

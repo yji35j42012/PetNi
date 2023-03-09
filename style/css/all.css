@@ -950,6 +950,7 @@ h2 {
 }
 
 .recommend {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

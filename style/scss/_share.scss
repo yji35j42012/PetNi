@@ -449,7 +449,6 @@ h2 {
 			@include d_f(flex, space-between);
 			padding: 0 14px;
 			transform: rotate(3deg);
-
 			button {
 				flex: none;
 				@include d_f(flex, center, center);
@@ -491,6 +490,7 @@ h2 {
 	}
 }
 .recommend {
+	position: relative;
 	@include d_f(flex, space-between);
 	// .recommend_li
 	&_li {
