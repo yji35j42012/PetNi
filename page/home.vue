@@ -66,7 +66,6 @@ I don’t wanna live without you
 			<button class="head_btn _back">
 				<i v-html="icon_all.back"></i>
 			</button>
-
 			<div class="head_title">雙色狗</div>
 			<button class="head_btn _setting">
 				<i v-html="icon_all.setting"></i>
@@ -164,19 +163,19 @@ I don’t wanna live without you
 				<div
 					id="slip1"
 					class="slip_item"
-					@mousedown="slipMouseDown('slip1')"
+					@mousedown.left="slipMouseDown('slip1')"
 					@touchstart="slipMouseDown('slip1')"
 				>
 					<img src="../images/test.jpeg" alt />
-					<button class="slip_item_detail">
+					<button class="slip_item_detail" @click="detailHandler(123)">
 						<i v-html="icon_all.detail"></i>
 					</button>
 					<div class="slip_item_info">
-						<button class="unlike" @click="recordUnLike">
+						<button class="unlike" @click="recordUnLike('slip1')">
 							<i v-html="icon_all.unlike"></i>
 						</button>
 						<petinfo></petinfo>
-						<button class="like" @click="recordLike">
+						<button class="like" @click="recordLike('slip1')">
 							<i v-html="icon_all.like"></i>
 						</button>
 					</div>
@@ -216,7 +215,11 @@ module.exports = {
 				startX: "",
 				startY: "",
 				rotate: "",
-				who: ""
+				who: "",
+				boxWMin: 0,
+				boxWMax: 0,
+				boxWCenter: 0,
+				startNewX: 0
 			}
 			// 	cardL: "",
 			// 	cardT: "",
@@ -307,12 +310,14 @@ module.exports = {
 		searchAge(str) {
 			this.search.age = str;
 		},
-		recordUnLike() {
+		recordUnLike(str) {
 			console.log("unlike btn");
+			this.addClassHandler(str, "unlike", 10);
 			// this.unlikeList.push(this.who.split("slip")[1]);
 		},
-		recordLike() {
+		recordLike(str) {
 			console.log("like btn");
+			this.addClassHandler(str, "like", 10);
 		},
 		slipMouseDown(str) {
 			console.log("按下卡片", str);
@@ -327,172 +332,81 @@ module.exports = {
 				this.move.startX = event.touches[0].pageX;
 				this.move.startY = event.touches[0].pageY;
 			}
+			let boxW = document.getElementById("info");
+			this.move.boxWMin = boxW.offsetWidth * (1 / 5);
+			this.move.boxWMax = boxW.offsetWidth * (4 / 5);
+			this.move.boxWCenter = boxW.offsetWidth / 2;
+			this.move.startNewX = 0;
 			window.addEventListener("mousemove", this.slipMouseMove);
 			window.addEventListener("mouseup", this.slipMouseUp);
 			window.addEventListener("touchmove", this.slipMouseMove);
 			window.addEventListener("touchend", this.slipMouseUp);
 		},
-		slipMouseMove($event) {
+		slipMouseMove() {
 			console.log("滑動卡片");
 			var moveWho = document.getElementById(this.move.who);
 			// console.log("moveWho", moveWho);
 			if (!event.touches) {
 				//相容移動端
-				$event.preventDefault();
-				var nx = $event.clientX;
-				var ny = $event.clientY;
+				var nx = event.clientX;
+				var ny = event.clientY;
 			} else {
 				//相容PC端
-				var nx = $event.touches[0].pageX;
-				var ny = $event.touches[0].pageY;
+				var nx = event.touches[0].pageX;
+				var ny = event.touches[0].pageY;
 			}
 			let newX = ny - this.move.startY;
 			let newY = nx - this.move.startX;
-			let boxW = document.getElementById("info");
-			let boxWMin = boxW.offsetWidth * (1 / 5);
-			let boxWMax = boxW.offsetWidth * (4 / 5);
-			let boxCenter = boxW.offsetWidth / 2;
-			console.log("boxW", boxW.offsetWidth);
-			console.log("boxWMin", boxWMin);
-			console.log("boxWMax", boxWMax);
-			console.log("boxCenter", boxCenter);
-			console.log("newY", newY);
-			// 367 587.2
-
-			// 左邊-54deg  右邊48deg
-			moveWho.style = `transform: rotate(-3deg) translate(${newY}px,${newX}px);transition-duration:0s`;
+			var itemRotateArea =
+				(51 / (this.move.boxWMax - this.move.boxWCenter)) * newY - 3;
+			if (itemRotateArea >= 45) {
+				itemRotateArea = 45;
+			} else if (itemRotateArea <= -48) {
+				itemRotateArea = -48;
+			}
+			this.move.startNewX = newY;
+			this.transformHandler(newY, newX, itemRotateArea, 0);
 		},
 		slipMouseUp() {
 			console.log("鬆開卡片");
 			var moveWho = document.getElementById(this.move.who);
-			moveWho.style = `transform: rotate(-3deg) translate(0px,0px)`;
+			var itemCenter = moveWho.offsetWidth / 2;
+			if (
+				this.move.startNewX + this.move.boxWCenter >
+				this.move.boxWMax
+			) {
+				console.log("like");
+				this.transformHandler(0, 0, -3, 0.5);
+				this.addClassHandler(this.move.who, "like", 10);
+			} else if (
+				this.move.startNewX + this.move.boxWCenter <
+				this.move.boxWMin
+			) {
+				this.transformHandler(0, 0, -3, 0.5);
+				this.addClassHandler(this.move.who, "unlike", 10);
+				console.log("unlike");
+			} else {
+				this.transformHandler(0, 0, -3, 0.5);
+			}
 			window.removeEventListener("mousemove", this.slipMouseMove);
 			window.removeEventListener("mouseup", this.slipMouseUp);
 			window.removeEventListener("touchmove", this.slipMouseMove);
 			window.removeEventListener("touchend", this.slipMouseUp);
+		},
+		transformHandler(x, y, rotate, time) {
+			let scrollitem = document.getElementById(this.move.who);
+			scrollitem.style = `transform: translate3d(${x}px ,${y}px , 0) rotate(${rotate}deg); transition-duration: ${time}s;`;
+		},
+		addClassHandler(who, what, when) {
+			let addObj = document.getElementById(who);
+			setTimeout(() => {
+				addObj.classList.add(what);
+			}, when);
+		},
+		detailHandler(id) {
+			this.$router.push("/home/" + id);
 		}
-		// detailHandler(id) {
-		// 	this.$router.push("/home/" + id);
-		// },
-		// // 鬆開卡片
-		// slipMouseUp() {
-		// 	console.log("鬆開卡片");
-		// 	let outside = document.getElementById("app");
-		// 	outside.style = "";
-		// 	window.removeEventListener("mousemove", this.slipMouseMove);
-		// 	window.removeEventListener("mouseup", this.slipMouseUp);
-		// 	window.removeEventListener("touchmove", this.slipMouseMove);
-		// 	window.removeEventListener("touchend", this.slipMouseUp);
-		// 	let boxW = document.getElementById("info");
-		// 	let scrollitem = document.getElementById(this.who);
-		// 	let boxWMin = boxW.offsetWidth * (1 / 5);
-		// 	let boxWMax = boxW.offsetWidth * (4 / 5);
-		// 	let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
-		// 	let itemLeft = scrollitem.offsetLeft;
-		// 	if (itemCenter + this.newL >= boxWMax) {
-		// 		console.log("like", itemCenter, this.newL, boxWMax);
-		// 		this.transformHandler(0, 0, -3, 0.5);
-		// 		this.addClassHandler(this.who, "like", 10);
-		// 		this.scolled++;
-		// 	} else if (itemCenter + this.newL <= boxWMin) {
-		// 		console.log("unlike", itemCenter, this.newL, boxWMax);
-		// 		this.addClassHandler(this.who, "unlike", 10);
-		// 		this.scolled++;
-		// 	} else {
-		// 		// console.log("恢復", itemCenter, this.newL, boxWMax);
-		// 		this.transformHandler(0, 0, -3, 0.5);
-		// 	}
-		// },
-		// // 卡片滑動
-		// slipMouseMove($event) {
-		// 	console.log("卡片滑動");
-		// 	let scrollitem = document.getElementById(this.who);
-		// 	if (!event.touches) {
-		// 		//相容移動端
-		// 		$event.preventDefault();
-		// 		var nx = event.clientX;
-		// 		var ny = event.clientY;
-		// 	} else {
-		// 		//相容PC端
-		// 		var nx = event.touches[0].pageX;
-		// 		var ny = event.touches[0].pageY;
-		// 	}
-		// 	let newl = nx - this.move.startX;
-		// 	this.newL = newl;
-		// 	let newt = ny - this.move.startY;
-		// 	// 程式碼關鍵處
-		// 	let boxW = document.getElementById("container");
-		// 	let boxWMin = boxW.offsetWidth * (1 / 5);
-		// 	let boxWCen = boxW.offsetWidth * (1 / 2);
-		// 	let boxWMax = boxW.offsetWidth * (4 / 5);
-		// 	let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
-		// 	let rotate = 45 / this.moveRotateRight;
-		// 	let nowRotate = rotate * newl + -3;
-		// 	if (nowRotate >= this.rotateMaxNum) {
-		// 		nowRotate = this.rotateMaxNum;
-		// 	} else if (nowRotate <= -this.rotateMaxNum) {
-		// 		nowRotate = -this.rotateMaxNum;
-		// 	}
-		// 	this.transformHandler(newl, newt, nowRotate, 0);
-		// },
-		// // 按下卡片
-		// slipMouseDown(str, $event) {
-		// 	console.log("按下卡片", str);
-		// 	this.who = str;
-		// 	this.move.startX = event.clientX;
-		// 	this.newL = 0;
-		// 	// 點擊位置
-		// 	if (!event.touches) {
-		// 		//相容移動端
-		// 		this.move.startX = event.clientX;
-		// 		this.move.startY = event.clientY;
-		// 	} else {
-		// 		//相容PC端
-		// 		this.move.startX = event.touches[0].pageX;
-		// 		this.move.startY = event.touches[0].pageY;
-		// 	}
-		// 	let scrollitem = document.getElementById(str);
-		// 	let boxW = document.getElementById("container");
-		// 	window.addEventListener("mousemove", this.slipMouseMove);
-		// 	window.addEventListener("mouseup", this.slipMouseUp);
-		// 	window.addEventListener("touchmove", this.slipMouseMove);
-		// 	window.addEventListener("touchend", this.slipMouseUp);
-		// 	this.cardL = scrollitem.offsetLeft;
-		// 	this.cardT = scrollitem.offsetTop;
-		// 	let boxWMax = boxW.offsetWidth * (4 / 5);
-		// 	let boxWTotal = boxW.offsetWidth;
-		// 	if (boxWTotal > 768) {
-		// 		this.rotateNum = 30;
-		// 		this.rotateMaxNum = 45;
-		// 	} else {
-		// 		this.rotateNum = 10;
-		// 		this.rotateMaxNum = 15;
-		// 	}
-		// 	let itemCenter = scrollitem.offsetWidth / 2 + scrollitem.offsetLeft;
-		// 	this.moveRotateRight = boxWMax - itemCenter;
-		// 	this.transformHandler(0, 0, -3, 0);
-		// },
-		// transformHandler(x, y, rotate, time) {
-		// 	let scrollitem = document.getElementById(this.who);
-		// 	scrollitem.style = `transform: translate3d(${x}px ,${y}px , 0) rotate(${rotate}deg); transition-duration: ${time}s;`;
-		// },
-		// unlikeHandler(str) {
-		// 	// console.log("unlikeHandler", str);
-		// 	this.addClassHandler(str, "unlike", 10);
-		// 	this.recordUnLike();
-		// 	this.scolled++;
-		// },
-		// likeHandler(str) {
-		// 	this.addClassHandler(str, "like", 10);
-		// 	this.recordLike();
-		// 	this.scolled++;
-		// },
-		// addClassHandler(who, what, when) {
-		// 	let addObj = document.getElementById(who);
-		// 	setTimeout(() => {
-		// 		addObj.classList.add(what);
-		// 	}, when);
-		// },
+
 		// backCard() {
 		// 	let returnId = this.totalItem - this.scolled;
 		// 	if (this.scolled == 0) return;

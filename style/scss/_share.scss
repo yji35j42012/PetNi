@@ -349,9 +349,11 @@ h2 {
 		content: "";
 		position: absolute;
 		top: 21.44%;
-		left: 40%;
+		left: 90px;
+		right: 0;
 		width: 223px;
 		height: 387px;
+		margin: 0 auto;
 		background: #ffffff;
 		/* shadow */
 		box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
@@ -360,8 +362,6 @@ h2 {
 		@include mw(M) {
 			// top: unset;
 			left: 50px;
-			right: 0;
-			margin: 0 auto;
 		}
 		@include mw(XS) {
 			left: 84px;
@@ -415,7 +415,20 @@ h2 {
 				transform: rotate(-14deg);
 			}
 		}
-
+		&.like {
+			transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
+			transition-duration: 1s !important;
+			@include mw(S) {
+				transform: translate3d(1000px, 0, 0) rotate(30deg) !important;
+			}
+		}
+		&.unlike {
+			transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
+			transition-duration: 1s !important;
+			@include mw(S) {
+				transform: translate3d(-1000px, 0, 0) rotate(-30deg) !important;
+			}
+		}
 		// .slip_item_detail
 		&_detail {
 			flex: none;
