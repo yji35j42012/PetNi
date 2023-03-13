@@ -2,7 +2,7 @@
 
 <template>
 	<div class="menu">
-		<div class="logo">
+		<div class="logo" @click="menuHandler(1)">
 			<router-link to="/home">
 				<img class="logo_img" src="./images/logo.png" alt />
 			</router-link>
@@ -14,7 +14,7 @@
 				</router-link>
 			</li>
 			<li :class="['menu_nav_item', menuItem==2?'on':'']" @click="menuHandler(2)">
-				<router-link to="/" data-txt="收藏">
+				<router-link to="/collect" data-txt="收藏">
 					<i v-html="icon_all.favorites"></i>
 				</router-link>
 			</li>

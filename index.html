@@ -69,14 +69,14 @@
 				path: "/home",
 				component: httpVueLoader("./page/home.vue"),
 			},
-			// {
-			// 	path: "/home/:id",
-			// 	component: httpVueLoader("./page/detail.vue"),
-			// },
-			// {
-			// 	path: "/collect",
-			// 	component: httpVueLoader("./page/collect.vue"),
-			// },
+			{
+				path: "/home/:id",
+				component: httpVueLoader("./page/detail.vue"),
+			},
+			{
+				path: "/collect",
+				component: httpVueLoader("./page/collect.vue"),
+			},
 			// {
 			// 	path: "/theme",
 			// 	component: httpVueLoader("./page/theme.vue"),
@@ -119,9 +119,11 @@
 			watch: {
 				$route(to, from) {
 					var now = this.$route.path;
-					if (now.split('home').length == 2) {
-						this.nowPage = "home detail";
-						store.dispatch("PAGE", "home detail");
+					console.log('aaa', now.split('home'));
+
+					if ((now.split('home')[0] == 'home' || now.split('home')[0] == '/') && now.split('home')[1] !== '') {
+						this.nowPage = "detail";
+						store.dispatch("PAGE", "detail");
 					} else if (now == "/" || now == 'home') {
 						this.nowPage = "home";
 						store.dispatch("PAGE", "home");

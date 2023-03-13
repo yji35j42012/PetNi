@@ -2,7 +2,7 @@
 
 <template>
     <div class="container">
-        <div class="collect_head showPAD">寵物名單</div>
+        <!-- <div class="collect_head showPAD">寵物名單</div>
         <div class="scroll_y">
             <ul class="collect_group">
                 <li
@@ -15,7 +15,7 @@
                             :src="'./images/cardimg/cardimg' + index + '.jpg'"
                             alt=""
                         />
-                    </div>  
+                    </div>
                     <petinfo></petinfo>
                     <button class="close_btn">
                         <i v-html="icon_all.unlike"></i>
@@ -24,7 +24,7 @@
             </ul>
         </div>
 
-        <confirm style="display:none;"></confirm>
+        <confirm style="display:none;"></confirm> -->
     </div>
 </template>
 

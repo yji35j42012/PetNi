@@ -107,7 +107,7 @@
 					@touchstart="slipMouseDown('slip1')"
 				>
 					<img src="../images/test.jpeg" alt />
-					<button class="slip_item_detail" @click="detailHandler(123)">
+					<button class="slip_item_detail" @click="detailHandler(238721)">
 						<i v-html="icon_all.detail"></i>
 					</button>
 					<div class="slip_item_info">
@@ -161,16 +161,6 @@ module.exports = {
 				boxWCenter: 0,
 				startNewX: 0
 			}
-			// 	cardL: "",
-			// 	cardT: "",
-			// 	moveRotateRight: 0, //移動兼具＋
-			// 	rotateNum: 30,
-			// 	rotateMaxNum: 45,
-			// 	newL: 0,
-			// 	totalItem: null,
-			// 	scolled: 0,
-			// 	likeList: [],
-			// 	unlikeList: [],
 		};
 	},
 	components: {
