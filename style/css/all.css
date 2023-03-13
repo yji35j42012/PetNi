@@ -271,6 +271,10 @@ select {
   }
 }
 
+.collect .container {
+  padding-top: 42px;
+}
+
 .emergency .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1077,15 +1081,23 @@ h2 {
   font-size: 18px;
 }
 
-.recommend_li .petInfoTxt_name {
+.recommend_li .petInfoTxt_name,
+.collect .petInfoTxt_name {
   font-size: 16px;
+}
+
+.collect .petInfoTxt_name {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .petInfoTxt_address {
   font-size: 14px;
 }
 
-.recommend_li .petInfoTxt_address {
+.recommend_li .petInfoTxt_address,
+.collect .petInfoTxt_address {
   font-size: 12px;
   color: #878787;
 }
@@ -1358,6 +1370,30 @@ h2 {
 
 .detail_basic_normal li + li {
   margin-top: 10px;
+}
+
+.collect_group {
+  width: 100%;
+  max-width: 1044px;
+  margin: auto;
+}
+
+.collect_item {
+  display: inline-block;
+  margin: 6px;
+  padding: 12px 12px 17px;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+          box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+  border-radius: 28px;
+}
+
+.collect_item_pic {
+  overflow: hidden;
+  width: 138px;
+  height: 132px;
+  margin-bottom: 8px;
+  border-radius: 28px;
 }
 
 .close_btn {

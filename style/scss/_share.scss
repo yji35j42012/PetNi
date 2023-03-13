@@ -57,6 +57,9 @@
 			padding-top: 0;
 		}
 	}
+	@at-root .collect & {
+		padding-top: 42px;
+	}
 	@at-root .emergency & {
 		// overflow: hidden;
 		@include d_f(flex, flex-start, center);
@@ -548,14 +551,19 @@ h2 {
 	&_name {
 		@include d_f(flex, none, center);
 		font-size: 18px;
-		@at-root .recommend_li & {
+		@at-root .recommend_li &,
+			.collect & {
 			font-size: 16px;
+		}
+		@at-root .collect & {
+			justify-content: space-between;
 		}
 	}
 	// .petInfoTxt_address
 	&_address {
 		font-size: 14px;
-		@at-root .recommend_li & {
+		@at-root .recommend_li &,
+			.collect & {
 			font-size: 12px;
 			color: #878787;
 		}
@@ -733,6 +741,34 @@ h2 {
 			li + li {
 				margin-top: 10px;
 			}
+		}
+	}
+}
+
+.collect {
+	// .collect_group
+	&_group {
+		width: 100%;
+		max-width: 1044px;
+		margin: auto;
+	}
+	// .collect_item
+	&_item {
+		// max-width: 162px;
+		display: inline-block;
+		margin: 6px;
+		padding: 12px 12px 17px;
+		background: #ffffff;
+		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+		border-radius: 28px;
+
+		// .collect_item_pic
+		&_pic {
+			overflow: hidden;
+			width: 138px;
+			height: 132px;
+			margin-bottom: 8px;
+			border-radius: 28px;
 		}
 	}
 }
