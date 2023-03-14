@@ -30,7 +30,7 @@
 					<div class="pic">
 						<i v-html="icon_all.status"></i>
 					</div>
-					<div class="txt">求包養</div>
+					<div class="txt">求</div>
 				</li>
 				<li>
 					<div class="pic">
