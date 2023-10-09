@@ -5,6 +5,7 @@
 	height: 100%;
 	background-color: #e5e5e5;
 }
+
 .head {
 	display: none;
 	flex: none;
@@ -16,40 +17,50 @@
 	fill: #262626;
 	font-weight: 700;
 	font-size: 20px;
+
 	@include mw(M) {
 		@include d_f(flex, space-between, center);
 	}
+
 	@include mw(XS) {
 		height: 62px;
 	}
+
 	// head_btn
 	&_btn {
 		flex: none;
 		width: 46px;
 		height: 46px;
 		@extend %hand;
+
 		@include mw(XS) {
 			width: 36px;
 			height: 36px;
 		}
 	}
 }
+
 .container {
-	overflow-x: hidden;
-	overflow-y: auto;
+	// overflow-x: hidden;
+	// overflow-y: auto;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
+
 	@at-root .home & {
 		@include d_f(flex);
+		height: 100%;
+
 		@include mw(M) {
 			flex-direction: column;
 		}
 	}
+
 	@at-root .detail & {
 		@include d_f(flex, center, center);
 		max-width: 880px;
 		margin: auto;
-		padding-top: 35px;
+		padding: 35px 0;
+
 		@include mw(M) {
 			flex-direction: column;
 			justify-content: flex-start;
@@ -57,21 +68,32 @@
 			padding-top: 0;
 		}
 	}
+
 	@at-root .collect & {
 		padding-top: 42px;
 	}
+
 	@at-root .emergency & {
 		// overflow: hidden;
 		@include d_f(flex, flex-start, center);
 		flex-direction: column;
 		// padding: 42px 87px 0;
 		padding-top: 42px;
+
 		@include mw(M) {
 			padding: 0;
 			// padding: 0 16px 0;
 		}
 	}
 }
+
+.main {
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+	height: 100%;
+}
+
 .menu {
 	flex: none;
 	@include d_f(flex, space-between, center);
@@ -80,32 +102,40 @@
 	background-color: #fff;
 	box-shadow: 0px 1px 9px rgba(38, 38, 38, 0.05);
 	padding: 0 80px;
+
 	@include mw(XL) {
 		padding: 0 40px;
 	}
+
 	@include mw(M) {
 		order: 1;
 		height: 56px;
 		padding: 0 16px;
 	}
+
 	// menu_nav
 	&_nav {
 		@include d_f(flex);
+
 		@include mw(M) {
 			width: 100%;
 			justify-content: space-between;
 		}
+
 		// menu_nav_item
 		&_item {
 			width: 95px;
 			@extend %hand;
+
 			@include mw(M) {
 				width: calc(100% / 5);
 			}
+
 			a {
 				@include d_f(flex, center, center);
 				color: #dedede;
 				fill: #dedede;
+
 				&:after {
 					content: attr(data-txt);
 					overflow: hidden;
@@ -113,7 +143,8 @@
 					white-space: nowrap;
 					@extend %transition;
 				}
-				> i {
+
+				>i {
 					width: 24px;
 					height: 24px;
 					// margin-right: 14px;
@@ -124,9 +155,11 @@
 				a {
 					color: #fdaaa2;
 					fill: #fdaaa2;
+
 					&:after {
 						width: 100%;
 						margin-left: 14px;
+
 						@include mw(M) {
 							width: 0;
 							margin-left: 0;
@@ -140,6 +173,7 @@
 					a:after {
 						width: 100%;
 						margin-left: 14px;
+
 						@include mw(M) {
 							width: 0;
 							margin-left: 0;
@@ -154,22 +188,28 @@
 .logo {
 	width: 118px;
 	height: 53px;
+
 	@include mw(M) {
 		display: none;
 	}
+
 	// logo_img
 	&_img {
 		width: 100%;
 	}
 }
+
 .tab {
 	@include d_f(inline-flex, center, center);
+
 	@include mw(M) {
 		padding-right: 24px;
 	}
+
 	@include mw(XS) {
 		padding-right: 16px;
 	}
+
 	// .tab_item
 	&_item {
 		@include d_f(inline-flex, center, center);
@@ -183,18 +223,23 @@
 		@include mw(M) {
 			background-color: #f8f8f8;
 		}
+
 		@include mw(XS) {
 			width: 64px;
 		}
+
 		@include mw(XXS) {
 			width: 50px;
 		}
-		& + & {
+
+		&+& {
 			margin-left: 12px;
+
 			@include mw(XS) {
 				margin-left: 6px;
 			}
 		}
+
 		&.on {
 			background-color: #fdaaa2;
 			color: #fff;
@@ -205,14 +250,19 @@
 .scroll_y {
 	overflow-x: hidden;
 	overflow-y: auto;
+
 	@at-root .emergency & {
 		padding: 0 87px;
+
 		@include mw(M) {
 			padding: 0;
 		}
 	}
 }
+
 .func {
+	overflow-x: hidden;
+	overflow-y: auto;
 	flex: none;
 	position: relative;
 	width: 413px;
@@ -221,35 +271,42 @@
 	background-color: #fafafa;
 	box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 	z-index: 1;
+
 	@include mw(XL) {
 		width: 370px;
-		padding: 20px 36px 16px 40px;
+		padding: 20px 30px 16px 40px;
 	}
+
 	// .func_box
 	&_box {
-		& + & {
+		&+& {
 			margin-top: 8px;
 		}
 
-		& + .func_switch {
+		&+.func_switch {
 			margin-top: 23px;
 		}
 	}
+
 	// .func_switch
 	&_switch {
 		@include d_f(flex, space-between);
-		& + & {
+
+		&+& {
 			margin-top: 10px;
 		}
 	}
+
 	// .func_ul
 	&_ul {
 		@include d_f(flex);
 		flex-wrap: wrap;
-		h2 + & {
+
+		h2+& {
 			margin-top: 4px;
 		}
 	}
+
 	// .func_li
 	&_li {
 		flex: none;
@@ -263,22 +320,27 @@
 		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 		border-radius: 14px;
 		color: #262626;
-		& + &:not(:nth-child(3n + 1)) {
+
+		&+&:not(:nth-child(3n + 1)) {
 			margin-left: 10px;
 		}
+
 		&:nth-child(n + 4) {
 			margin-top: 8px;
 		}
+
 		&.on {
 			background-color: #262626;
 			fill: #fff;
 			color: #fff;
 		}
+
 		&.square {
 			width: 90px;
 			height: 68px;
 		}
 	}
+
 	// .func_btn
 	&_btn {
 		width: 100%;
@@ -291,6 +353,7 @@
 		@extend %hand;
 	}
 }
+
 h2 {
 	color: #262626;
 	font-weight: 500;
@@ -299,15 +362,18 @@ h2 {
 
 .icon {
 	display: block;
+
 	&._animal {
 		@include d_f(flex, center, center);
 		width: 36px;
 		height: 36px;
 	}
 }
+
 .male {
 	fill: #70d4f4;
 }
+
 .female {
 	fill: #fdaaa2;
 }
@@ -317,21 +383,25 @@ h2 {
 	width: 52px;
 	height: 28px;
 	@extend %hand;
+
 	input {
 		position: absolute;
 		top: 0;
 		right: 0;
 		opacity: 0;
 		display: none;
+
 		&:checked {
-			& + .switch_ball {
+			&+.switch_ball {
 				background-color: #fdaaa2;
+
 				&:after {
 					transform: translateX(100%);
 				}
 			}
 		}
 	}
+
 	// .switch_ball
 	&_ball {
 		@include d_f(flex, none, center);
@@ -341,6 +411,7 @@ h2 {
 		background: #dedede;
 		border-radius: 50px;
 		@extend %transition;
+
 		&:after {
 			content: "";
 			display: block;
@@ -352,14 +423,17 @@ h2 {
 		}
 	}
 }
+
 .slip {
 	position: relative;
 	@include d_f(flex, center);
 	width: 100%;
 	height: 100%;
+
 	@include mw(XS) {
 		align-items: center;
 	}
+
 	&::before {
 		content: "";
 		position: absolute;
@@ -374,10 +448,12 @@ h2 {
 		box-shadow: 0px 4px 24px rgba(10, 10, 10, 0.25);
 		border-radius: 32px;
 		transform: matrix(0.96, 0.29, -0.29, 0.96, 0, 0);
+
 		@include mw(M) {
 			// top: unset;
 			left: 50px;
 		}
+
 		@include mw(XS) {
 			left: 84px;
 			width: 210px;
@@ -398,11 +474,13 @@ h2 {
 		border-radius: 32px;
 		transform: rotate(-3deg);
 		@extend %transition;
+
 		@include mw(XS) {
 			flex: none;
 			width: 261px;
 			height: 419px;
 		}
+
 		&:not(._noData)::before {
 			content: "";
 			position: absolute;
@@ -410,40 +488,46 @@ h2 {
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(
-				179.93deg,
-				rgba(0, 0, 0, 0) 56.33%,
-				#000000 98.5%
-			);
+			background: linear-gradient(179.93deg,
+					rgba(0, 0, 0, 0) 56.33%,
+					#000000 98.5%);
 		}
+
 		&._noData {
 			@include d_f(flex, center, center);
 			width: 244px;
 			height: 413px;
 			color: #fdaaa2;
 			transform: rotate(14deg);
+
 			@include mw(XS) {
 				width: 230px;
 				height: 390px;
 			}
+
 			span {
 				transform: rotate(-14deg);
 			}
 		}
+
 		&.like {
 			transform: translate3d(1000px, 0, 0) rotate(45deg) !important;
 			transition-duration: 1s !important;
+
 			@include mw(S) {
 				transform: translate3d(1000px, 0, 0) rotate(30deg) !important;
 			}
 		}
+
 		&.unlike {
 			transform: translate3d(-1000px, 0, 0) rotate(-45deg) !important;
 			transition-duration: 1s !important;
+
 			@include mw(S) {
 				transform: translate3d(-1000px, 0, 0) rotate(-30deg) !important;
 			}
 		}
+
 		// .slip_item_detail
 		&_detail {
 			flex: none;
@@ -458,6 +542,7 @@ h2 {
 			@extend %hand;
 			border-radius: 50px;
 			box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+
 			i {
 				position: absolute;
 				top: 0;
@@ -468,6 +553,7 @@ h2 {
 				margin: auto;
 			}
 		}
+
 		// .slip_item_info
 		&_info {
 			position: absolute;
@@ -477,6 +563,7 @@ h2 {
 			@include d_f(flex, space-between);
 			padding: 0 14px;
 			transform: rotate(3deg);
+
 			button {
 				flex: none;
 				@include d_f(flex, center, center);
@@ -487,19 +574,24 @@ h2 {
 				box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 				@extend %hand;
 			}
+
 			.unlike {
 				fill: #262626;
+
 				i {
 					width: 14px;
 					height: 14px;
 				}
 			}
+
 			.like {
 				fill: #fdaaa2;
+
 				i {
 					width: 22px;
 					height: 18px;
 				}
+
 				svg {
 					width: 22px;
 				}
@@ -507,19 +599,27 @@ h2 {
 		}
 	}
 }
+
 .info {
+	overflow-x: hidden;;
+	overflow-y: auto;
 	@include d_f(flex);
-	flex-direction: column;
+	flex-wrap: wrap;
+	// flex-direction: column;
 	width: 100%;
 	height: 100%;
 	padding: 0 55px 30px;
+
 	@include mw(XL) {
 		padding: 0 20px 30px;
 	}
 }
+
 .recommend {
 	position: relative;
 	@include d_f(flex, space-between);
+	width: 100%;
+
 	// .recommend_li
 	&_li {
 		@include d_f(flex);
@@ -530,10 +630,11 @@ h2 {
 		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 		border-radius: 23px;
 
-		& + & {
+		&+& {
 			margin-left: 10px;
 		}
 	}
+
 	// .recommend_pic
 	&_pic {
 		width: 50px;
@@ -543,42 +644,51 @@ h2 {
 		background-color: #ccc;
 	}
 }
+
 .petInfoTxt {
 	@include d_f(flex, center);
 	flex-direction: column;
 	color: #262626;
+
 	// .petInfoTxt_name
 	&_name {
 		@include d_f(flex, none, center);
 		font-size: 18px;
+
 		@at-root .recommend_li &,
-			.collect & {
+		.collect & {
 			font-size: 16px;
 		}
+
 		@at-root .collect & {
 			justify-content: space-between;
 		}
 	}
+
 	// .petInfoTxt_address
 	&_address {
 		font-size: 14px;
+
 		@at-root .recommend_li &,
-			.collect & {
+		.collect & {
 			font-size: 12px;
 			color: #878787;
 		}
 	}
+
 	.gender {
 		display: block;
 		width: 24px;
 		height: 24px;
 	}
+
 	@at-root .slip_item_info & {
 		color: #fff;
 	}
 }
 
 .detail {
+
 	// .detail_img
 	&_img {
 		overflow: hidden;
@@ -590,6 +700,7 @@ h2 {
 		border: 18.5px solid #fff;
 		border-radius: 32px;
 		box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
+
 		&:after {
 			content: "";
 			position: absolute;
@@ -597,14 +708,13 @@ h2 {
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(
-				180.01deg,
-				rgba(0, 0, 0, 0) 48.59%,
-				rgba(0, 0, 0, 0) 70.09%,
-				rgba(0, 0, 0, 0.55) 90.71%
-			);
+			background: linear-gradient(180.01deg,
+					rgba(0, 0, 0, 0) 48.59%,
+					rgba(0, 0, 0, 0) 70.09%,
+					rgba(0, 0, 0, 0.55) 90.71%);
 			pointer-events: none;
 		}
+
 		@include mw(M) {
 			flex: none;
 			max-width: 768px;
@@ -614,10 +724,12 @@ h2 {
 			border-radius: 0;
 			border: none;
 		}
+
 		@include mw(XS) {
 			max-height: 274px;
 		}
 	}
+
 	// .detail_basic
 	&_basic {
 		@include d_f(flex);
@@ -631,19 +743,24 @@ h2 {
 			padding: 0 15px;
 			transform: translateY(-90px);
 		}
+
 		// .detail_basic_info
 		&_info {
 			@include d_f(flex, space-between);
 			padding: 20px;
+
 			@include mw(M) {
 				padding: 20px 24px;
+
 				.petInfoTxt {
 					color: #fff;
 				}
 			}
+
 			@include mw(XS) {
 				padding: 20px 0;
 			}
+
 			button {
 				flex: none;
 				@include d_f(flex, center, center);
@@ -654,46 +771,56 @@ h2 {
 				box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 				@extend %hand;
 			}
+
 			.like {
 				fill: #fdaaa2;
+
 				i {
 					width: 22px;
 					height: 18px;
 				}
+
 				svg {
 					width: 22px;
 				}
 			}
 
-			& + .detail_basic_serial {
+			&+.detail_basic_serial {
 				margin-top: 15px;
+
 				@include mw(M) {
 					margin-top: 46px;
 				}
 			}
 		}
+
 		// .detail_basic_serial
 		&_serial {
 			padding: 30px 24px;
 			background: #ffffff;
 			box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 			border-radius: 20px;
+
 			.big,
 			.small {
 				@include d_f(flex, space-between);
 			}
+
 			.big {
 				font-size: 20px;
 				color: #262626;
 			}
+
 			.small {
 				font-size: 14px;
 				color: #878787;
 			}
-			& + .detail_basic_introduction {
+
+			&+.detail_basic_introduction {
 				margin-top: 13px;
 			}
 		}
+
 		// .detail_basic_introduction
 		&_introduction {
 			@include d_f(flex, space-between);
@@ -703,34 +830,42 @@ h2 {
 			border-radius: 20px;
 			text-align: center;
 			fill: #fdaaa2;
+
 			@include mw(M) {
 				justify-content: center;
-				li + li {
+
+				li+li {
 					margin-left: 77px;
+
 					@include mw(XS) {
 						margin-left: 38px;
 					}
 				}
 			}
+
 			.pic {
 				@include d_f(flex, center, center);
 				width: 68px;
 				height: 68px;
 				background: #f8f8f8;
 				border-radius: 50px;
+
 				@include mw(XXS) {
 					width: 50px;
 					height: 50px;
 				}
 			}
+
 			.txt {
 				margin-top: 6px;
 				font-size: 16px;
 			}
-			& + .detail_basic_normal {
+
+			&+.detail_basic_normal {
 				margin-top: 13px;
 			}
 		}
+
 		// .detail_basic_normal
 		&_normal {
 			height: 100%;
@@ -738,7 +873,8 @@ h2 {
 			background: #ffffff;
 			box-shadow: 0px 2px 7px rgba(10, 10, 10, 0.07);
 			border-radius: 20px;
-			li + li {
+
+			li+li {
 				margin-top: 10px;
 			}
 		}
@@ -746,12 +882,14 @@ h2 {
 }
 
 .collect {
+
 	// .collect_group
 	&_group {
 		width: 100%;
 		max-width: 1044px;
 		margin: auto;
 	}
+
 	// .collect_item
 	&_item {
 		// max-width: 162px;
@@ -772,6 +910,7 @@ h2 {
 		}
 	}
 }
+
 .close_btn {
 	position: absolute;
 	top: 26px;
@@ -784,15 +923,19 @@ h2 {
 	@extend %hand;
 	// z-index: 1;
 }
+
 .showPC {
 	@include mw(M) {
 		display: none;
 	}
 }
+
 .showPAD {
 	display: none;
+
 	@include mw(M) {
 		display: block;
+
 		@at-root &.head {
 			display: flex;
 		}

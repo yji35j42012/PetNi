@@ -13,7 +13,10 @@
 <body>
 	<div id="app" :class="['wrap',nowPage]">
 		<menubar></menubar>
-		<router-view></router-view>
+		<div class="main">
+			<router-view></router-view>
+		</div>
+
 		<!-- <div class="container" style="display:none;">
 			<div class="emergency_nav">
 				<div class="name showPAD" data-txt="急診">24H</div>

@@ -15,51 +15,37 @@
 			<div class="func_box">
 				<h2>我想尋找</h2>
 				<ul class="func_ul">
-					<li
-						:class="['func_li','square',search.animal == 'cat' ? 'on' : '']"
-						@click="searchAnimal('cat')"
-					>
+					<li :class="['func_li', 'square', search.animal == 'cat' ? 'on' : '']" @click="searchAnimal('cat')">
 						<i class="icon _animal" v-html="icon_all.cat"></i>
 					</li>
-					<li
-						:class="['func_li','square',search.animal == 'dog' ? 'on' : '']"
-						@click="searchAnimal('dog')"
-					>
+					<li :class="['func_li', 'square', search.animal == 'dog' ? 'on' : '']" @click="searchAnimal('dog')">
 						<i class="icon _animal" v-html="icon_all.dog"></i>
 					</li>
-					<li
-						:class="['func_li','square',search.animal == 'all' ? 'on' : '']"
-						@click="searchAnimal('all')"
-					>不拘</li>
+					<li :class="['func_li', 'square', search.animal == 'all' ? 'on' : '']" @click="searchAnimal('all')">不拘
+					</li>
 				</ul>
 			</div>
 			<div class="func_box">
 				<h2>性別</h2>
 				<ul class="func_ul">
-					<li
-						:class="['func_li','square','male',search.gender == 'male' ? 'on' : '']"
-						@click="searchGender('male')"
-					>
+					<li :class="['func_li', 'square', 'male', search.gender == 'male' ? 'on' : '']"
+						@click="searchGender('male')">
 						<i class="gender" v-html="icon_all.male"></i>
 					</li>
-					<li
-						:class="['func_li','square','female',search.gender == 'female' ? 'on' : '']"
-						@click="searchGender('female')"
-					>
+					<li :class="['func_li', 'square', 'female', search.gender == 'female' ? 'on' : '']"
+						@click="searchGender('female')">
 						<i class="gender" v-html="icon_all.female"></i>
 					</li>
-					<li
-						:class="['func_li','square',search.gender == 'all' ? 'on' : '']"
-						@click="searchGender('all')"
-					>不拘</li>
+					<li :class="['func_li', 'square', search.gender == 'all' ? 'on' : '']" @click="searchGender('all')">不拘
+					</li>
 				</ul>
 			</div>
 			<div class="func_box">
 				<h2>年齡</h2>
 				<ul class="func_ul">
-					<li :class="['func_li',search.age == 'child' ? 'on' : '']" @click="searchAge('child')">幼齡</li>
-					<li :class="['func_li',search.age == 'adult' ? 'on' : '']" @click="searchAge('adult')">成年</li>
-					<li :class="['func_li',search.age == 'all' ? 'on' : '']" @click="searchAge('all')">不拘</li>
+					<li :class="['func_li', search.age == 'child' ? 'on' : '']" @click="searchAge('child')">幼齡</li>
+					<li :class="['func_li', search.age == 'adult' ? 'on' : '']" @click="searchAge('adult')">成年</li>
+					<li :class="['func_li', search.age == 'all' ? 'on' : '']" @click="searchAge('all')">不拘</li>
 				</ul>
 			</div>
 			<div class="func_box">
@@ -72,7 +58,7 @@
 					<li :class="['func_li']">虎斑貓</li>
 					<li :class="['func_li']">三色貓</li>
 					<li :class="['func_li']">玳瑁貓</li>
-					<li :class="['func_li','on']">不拘</li>
+					<li :class="['func_li', 'on']">不拘</li>
 				</ul>
 			</div>
 			<div class="func_switch">
@@ -100,12 +86,8 @@
 						<br />請嘗試修改篩選條件。
 					</span>
 				</div>
-				<div
-					id="slip1"
-					class="slip_item"
-					@mousedown.left="slipMouseDown('slip1')"
-					@touchstart="slipMouseDown('slip1')"
-				>
+				<div id="slip1" class="slip_item" @mousedown.left="slipMouseDown('slip1')"
+					@touchstart="slipMouseDown('slip1')">
 					<img src="../images/test.jpeg" alt />
 					<button class="slip_item_detail" @click="detailHandler(238721)">
 						<i v-html="icon_all.detail"></i>
@@ -335,6 +317,13 @@ module.exports = {
 		},
 		detailHandler(id) {
 			this.$router.push("/home/" + id);
+
+
+
+
+			var testget = document.querySelector(".content_r");
+			console.log('testget',testget.scrollTop);
+			
 		}
 
 		// backCard() {
