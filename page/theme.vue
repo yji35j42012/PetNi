@@ -16,7 +16,8 @@
 				<i v-html="icon_all.arrowRight"></i>
 			</button>
 		</div>
-		<!-- <div id="theme_group" class="theme_group" @mousedown="slipMouseDown" @touchstart="slipMouseDown">
+
+		<div id="theme_group" class="theme_group" @mousedown="slipMouseDown" @touchstart="slipMouseDown">
 			<div class="theme_item" v-for="(item, index) in showThemes" :key="index">
 				<div class="theme_txt">
 					<div class="theme_txt_title">{{ item.title }}</div>
@@ -31,10 +32,8 @@
 				</div>
 			</div>
 		</div>
-	
-		
-	
-	-->
+
+
 	</div>
 </template>
 
