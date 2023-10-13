@@ -1,0 +1,29 @@
+.theme {
+
+    // .theme_head
+    &_head {
+        
+    }
+
+    // .theme_btn
+    &_btn {
+        position: absolute;
+        right: 118px;
+        bottom: 40px;
+        @include d_f(flex);
+
+        // .theme_btn_page
+        &_page {
+            @include d_f(flex, center, center);
+            width: 42px;
+            height: 42px;
+            background-color: #fff;
+            border-radius: 14px;
+            @extend %hand;
+
+            &+& {
+                margin-left: 24px;
+            }
+        }
+    }
+}

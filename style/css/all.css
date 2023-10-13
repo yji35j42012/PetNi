@@ -136,7 +136,7 @@ select {
   transition-duration: 0.3s;
 }
 
-.close_btn, .detail_basic_info button, .slip_item_info button, .slip_item_detail, .switch, .func_btn, .func_li, .tab_item, .menu_nav_item, .head_btn {
+.theme_btn_page, .close_btn, .detail_basic_info button, .slip_item_info button, .slip_item_detail, .switch, .func_btn, .func_li, .tab_item, .menu_nav_item, .head_btn {
   cursor: pointer;
 }
 
@@ -1201,4 +1201,25 @@ h2 {
   background: #262626;
   fill: #fff;
   border-radius: 50px;
+}
+
+.theme_btn {
+  position: absolute;
+  right: 118px;
+  bottom: 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.theme_btn_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: #fff;
+  border-radius: 14px;
+}
+.theme_btn_page + .theme_btn_page {
+  margin-left: 24px;
 }/*# sourceMappingURL=all.css.map */

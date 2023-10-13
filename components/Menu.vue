@@ -20,7 +20,7 @@
 				</router-link>
 			</li>
 			<li :class="['menu_nav_item', menuItem==3?'on':'']" @click="menuHandler(3)">
-				<router-link to="/" data-txt="主題館">
+				<router-link to="/theme" data-txt="主題館">
 					<i v-html="icon_all.theme"></i>
 				</router-link>
 			</li>

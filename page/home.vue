@@ -317,13 +317,8 @@ module.exports = {
 		},
 		detailHandler(id) {
 			this.$router.push("/home/" + id);
-
-
-
-
-			var testget = document.querySelector(".content_r");
-			console.log('testget',testget.scrollTop);
-			
+			// var testget = document.querySelector(".content_r");
+			// console.log('testget', testget.scrollTop);
 		}
 
 		// backCard() {

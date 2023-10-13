@@ -2,22 +2,6 @@
 
 <template>
 	<div class="container">
-		<div id="theme_group" class="theme_group" @mousedown="slipMouseDown" @touchstart="slipMouseDown">
-			<div class="theme_item" v-for="(item, index) in showThemes" :key="index">
-				<div class="theme_txt">
-					<div class="theme_txt_title">{{ item.title }}</div>
-					<div class="theme_txt_p">{{ item.txt }}</div>
-					<label class="searchBox">
-						<input type="text" :placeholder="item.searchTxt" />
-						<i class="searchBox_icon" v-html="icon_all.search"></i>
-					</label>
-				</div>
-				<div class="theme_pic">
-					<!-- <img src="./images/theme/cat1.png" alt="" /> -->
-					<img :src="item.src" alt style="opacity:1;" />
-				</div>
-			</div>
-		</div>
 		<div class="theme_head">
 			<div :class="['theme_switch', themeSwitch]">
 				<button class="cat_btn" @click="themeSwitchHandler('cat')">喵星人</button>
@@ -32,6 +16,25 @@
 				<i v-html="icon_all.arrowRight"></i>
 			</button>
 		</div>
+		<!-- <div id="theme_group" class="theme_group" @mousedown="slipMouseDown" @touchstart="slipMouseDown">
+			<div class="theme_item" v-for="(item, index) in showThemes" :key="index">
+				<div class="theme_txt">
+					<div class="theme_txt_title">{{ item.title }}</div>
+					<div class="theme_txt_p">{{ item.txt }}</div>
+					<label class="searchBox">
+						<input type="text" :placeholder="item.searchTxt" />
+						<i class="searchBox_icon" v-html="icon_all.search"></i>
+					</label>
+				</div>
+				<div class="theme_pic">
+					<img :src="item.src" alt style="opacity:1;" />
+				</div>
+			</div>
+		</div>
+	
+		
+	
+	-->
 	</div>
 </template>
 
@@ -151,20 +154,20 @@ module.exports = {
 	components: {},
 	mounted() {
 		// console.log(store.state.nowPage);
-		var showBtn = document.querySelector(".theme_btn");
-		window.innerWidth <= 995
-			? (showBtn.style.display = "none")
-			: (showBtn.style.display = "block");
-		window.onresize = () => {
-			return (() => {
-				if (window.innerWidth <= 995) {
-					showBtn.style.display = "none";
-					theme_group.style = "";
-				} else {
-					showBtn.style.display = "block";
-				}
-			})();
-		};
+		// var showBtn = document.querySelector(".theme_btn");
+		// window.innerWidth <= 995
+		// 	? (showBtn.style.display = "none")
+		// 	: (showBtn.style.display = "block");
+		// window.onresize = () => {
+		// 	return (() => {
+		// 		if (window.innerWidth <= 995) {
+		// 			showBtn.style.display = "none";
+		// 			theme_group.style = "";
+		// 		} else {
+		// 			showBtn.style.display = "block";
+		// 		}
+		// 	})();
+		// };
 	},
 	computed: {
 		showThemes() {

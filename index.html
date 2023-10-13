@@ -80,10 +80,10 @@
 				path: "/collect",
 				component: httpVueLoader("./page/collect.vue"),
 			},
-			// {
-			// 	path: "/theme",
-			// 	component: httpVueLoader("./page/theme.vue"),
-			// },
+			{
+				path: "/theme",
+				component: httpVueLoader("./page/theme.vue"),
+			},
 			// {
 			// 	path: "/adoption",
 			// 	component: httpVueLoader("./page/adoption.vue"),
@@ -124,12 +124,13 @@
 					var now = this.$route.path;
 					console.log('aaa', now.split('home'));
 
-					if ((now.split('home')[0] == 'home' || now.split('home')[0] == '/') && now.split('home')[1] !== '') {
-						this.nowPage = "detail";
-						store.dispatch("PAGE", "detail");
-					} else if (now == "/" || now == 'home') {
+					if (now == "/" || now == 'home') {
+						console.log('!!!');
 						this.nowPage = "home";
 						store.dispatch("PAGE", "home");
+					} else if ((now.split('home')[0] == 'home' || now.split('home')[0] == '/') && now.split('home')[1] !== '') {
+						this.nowPage = "detail";
+						store.dispatch("PAGE", "detail");
 					} else {
 						store.dispatch("SET_LOADING", true);
 						this.nowPage = now.split("/")[1];
