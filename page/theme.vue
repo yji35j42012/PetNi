@@ -2,6 +2,7 @@
 
 <template>
 	<div class="container">
+
 		<div class="theme_head">
 			<div :class="['theme_switch', themeSwitch]">
 				<button class="cat_btn" @click="themeSwitchHandler('cat')">喵星人</button>
@@ -16,9 +17,8 @@
 				<i v-html="icon_all.arrowRight"></i>
 			</button>
 		</div>
-
 		<div id="theme_group" class="theme_group" @mousedown="slipMouseDown" @touchstart="slipMouseDown">
-			<div class="theme_item" v-for="(item, index) in showThemes" :key="index">
+			<div :id="'theme_item' + index" class="theme_item" v-for="(item, index) in showThemes" :key="index">
 				<div class="theme_txt">
 					<div class="theme_txt_title">{{ item.title }}</div>
 					<div class="theme_txt_p">{{ item.txt }}</div>
@@ -147,11 +147,19 @@ module.exports = {
 				]
 			},
 			themeSwitch: "cat",
-			themePage: 0
+			themePage: 0,
+			themeMax: 0,
 		};
 	},
 	components: {},
 	mounted() {
+		var showTheme = document.querySelector('#theme_item' + this.themePage);
+		showTheme.style = 'opacity: 1; z-index:2;'
+		if (this.themeSwitch == 'cat') {
+			this.themeMax = this.themes.cat.length
+		} else if (this.themeSwitch == 'dog') {
+			this.themeMax = this.themes.dog.length
+		}
 		// console.log(store.state.nowPage);
 		// var showBtn = document.querySelector(".theme_btn");
 		// window.innerWidth <= 995
@@ -179,21 +187,29 @@ module.exports = {
 		themeSwitchHandler(str) {
 			this.themeSwitch = str;
 			this.themePage = 0;
+			var showTheme = document.querySelector('#theme_item' + this.themePage);
+
 		},
 		themePageHandler(num) {
-			if (this.themePage + num < 0) {
-				this.themePage = 0;
-			} else if (
-				this.themePage + num >
-				this.themes[this.themeSwitch].length - 1
-			) {
-				this.themePage = this.themes[this.themeSwitch].length;
-			} else {
-				var theme_group = document.querySelector("#theme_group");
-				this.themePage = this.themePage + num;
-				var move = this.themePage * 100;
-				theme_group.style = `transform:translateX(-${move}%)`;
+			console.log(num);
+			console.log(this.themePage);
+			if (this.themePage == 0 && num !== -1) {
+				this.themePage = this.themePage + num
 			}
+			console.log(this.themePage);
+			// if (this.themePage + num < 0) {
+			// 	this.themePage = 0;
+			// } else if (
+			// 	this.themePage + num >
+			// 	this.themes[this.themeSwitch].length - 1
+			// ) {
+			// 	this.themePage = this.themes[this.themeSwitch].length;
+			// } else {
+			// 	var theme_group = document.querySelector("#theme_group");
+			// 	this.themePage = this.themePage + num;
+			// 	var move = this.themePage * 100;
+			// 	theme_group.style = `transform:translateX(-${move}%)`;
+			// }
 			// let scrollitem = document.getElementById(this.who);
 			// scrollitem.style = `transform: translate3d(${x}px ,${y}px , 0) rotate(${rotate}deg); transition-duration: ${time}s;`;
 		},

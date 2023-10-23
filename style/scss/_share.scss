@@ -40,6 +40,26 @@
 	}
 }
 
+.searchBox {
+	@include d_f(inline-flex, none, center);
+	padding: 4.5px 10px 4.5px 28px;
+	background-color: #fff;
+	border-radius: 16px;
+	box-shadow: 0px 2px 7px 0px rgba(10, 10, 10, 0.07);
+
+	// .searchBox_icon
+	&_icon {
+		flex: none;
+		@include d_f(flex, center, center);
+		width: 37px;
+		height: 37px;
+		background-color: #262626;
+		fill: #fff;
+		border-radius: 16px;
+		@extend %hand;
+	}
+}
+
 .container {
 	// overflow-x: hidden;
 	// overflow-y: auto;
@@ -151,19 +171,17 @@
 				}
 			}
 
-			&.on {
-				a {
-					color: #fdaaa2;
-					fill: #fdaaa2;
+			.router-link-exact-active {
+				color: #fdaaa2;
+				fill: #fdaaa2;
 
-					&:after {
-						width: 100%;
-						margin-left: 14px;
+				&:after {
+					width: 100%;
+					margin-left: 14px;
 
-						@include mw(M) {
-							width: 0;
-							margin-left: 0;
-						}
+					@include mw(M) {
+						width: 0;
+						margin-left: 0;
 					}
 				}
 			}
@@ -601,7 +619,8 @@ h2 {
 }
 
 .info {
-	overflow-x: hidden;;
+	overflow-x: hidden;
+	;
 	overflow-y: auto;
 	@include d_f(flex);
 	flex-wrap: wrap;
