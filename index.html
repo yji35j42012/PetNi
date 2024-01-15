@@ -122,8 +122,6 @@
 			watch: {
 				$route(to, from) {
 					var now = this.$route.path;
-					console.log('aaa', now.split('home'));
-
 					if (now == "/" || now == 'home') {
 						console.log('!!!');
 						this.nowPage = "home";
