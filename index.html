@@ -16,8 +16,21 @@
 				<img src="./images/logo.png" alt="">
 			</div>
 			<div class="nav">
-				<router-link class="nav_li" to="/">首頁</router-link>
-				<router-link class="nav_li" to="/about">關於</router-link>
+				<router-link class="nav_li" to="/" data-txt="配對">
+					<i v-html="icon_all.pair"></i>
+				</router-link>
+				<router-link class="nav_li" to="/collect" data-txt="收藏">
+					<i v-html="icon_all.collect"></i>
+				</router-link>
+				<router-link class="nav_li" to="/theme" data-txt="主題館">
+					<i v-html="icon_all.theme"></i>
+				</router-link>
+				<router-link class="nav_li" to="/rescue" data-txt="送養">
+					<i v-html="icon_all.rescue"></i>
+				</router-link>
+				<router-link class="nav_li" to="/hospital" data-txt="急診">
+					<i v-html="icon_all.hospital"></i>
+				</router-link>
 			</div>
 			<!-- <i v-html="icon_all.icon_home"></i> -->
 		</header>
@@ -33,6 +46,7 @@
 	<script src="./js/libs/vue-router_4_3_2.js"></script>
 	<script src="./js/libs/vuex_3_0_1.js"></script>
 	<script src="./store/store.js"></script>
+	<script src="./js/route.js"></script>
 	<script src="./js/icon_all.js"></script>
 	<script>
 		const options={
@@ -53,23 +67,7 @@
 				document.head.insertBefore(style, ref);
 			},
 		}
-
 		const { loadModule }=window['vue3-sfc-loader'];
-		const routes=[
-			{
-				path: '/',
-				component: () => loadModule('./page/home.vue', options),
-			},
-			{
-				path: '/about',
-				component: () => loadModule('./page/about.vue', options),
-			},
-		];
-		const router=VueRouter.createRouter({
-			history: VueRouter.createWebHistory(''),
-			routes
-		})
-
 		const app=Vue.createApp({
 			data() {
 				return {
